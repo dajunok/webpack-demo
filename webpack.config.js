@@ -3,7 +3,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports={
     context:path.resolve(__dirname,'src'),   //基础目录，绝对路径，用于从配置中解析入口起点(entry point)和 loader
-    mode:"production", // production：生产模式； development：开发模式  
+    mode:"development", // production：生产模式； development：开发模式  
     entry:'./main.js',  //JavaScript执行入口文件
     output:{   
       path:path.resolve(__dirname,'./dist'),   //将输出文件都放到dist目录下   
@@ -16,7 +16,7 @@ module.exports={
             {
                 test: /\.css$/,
                 use: [
-                  { loader: "style-loader" },
+                  { loader: "vue-style-loader" },
                   { loader: "css-loader" },
 
                 ]
@@ -65,6 +65,12 @@ module.exports={
                 ]
             },
         ]
+    },
+    resolve: {
+        // 设置别名
+        alias:{
+            '@': path.resolve('src')
+        }  
     },
     plugins: [
         new VueLoaderPlugin()  //创建Vue-Loader实例
