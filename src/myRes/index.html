@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>webpack-demo</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+  <div id="app1">
+      <script-component></script-component>
+      <hr>
+      <template-component></template-component>
+  </div>
+
+  <!-- 使用script标签创建组件模板内容 -->
+  <script type="text/x-template" id='component_script'>
+      <h4>这是一段使用"script"创建的组件模板内容。</h4>
+  </script>
+  
+  <!-- 使用template标签创建组件模板内容 -->
+  <template id='component_template'>
+      <p>这是一段使用"template标签"创建的组件模板内容。</p>
+  </template>
+
+  <script type="text/javascript">
+    new Vue({
+      components: {
+        'script-component': {
+          template: '#component_script'
+        },
+        'template-component': {
+          template: '#component_template'
+        }
+      }
+    }).$mount("#app1");
+  </script>
+  
+  
+  <script type="text/javascript" src="index.js"></script>
+</body>
+</html>
