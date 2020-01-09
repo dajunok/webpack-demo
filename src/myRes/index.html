@@ -6,24 +6,37 @@
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
-  <div id="app"></div>
-  <div id="app1">
-      <script-component></script-component>
-      <hr>
-      <template-component></template-component>
-  </div>
+  hello world!  hello world! OK
+<div id="app"></div>
+<div id="app1"></div>
+<div id="app2">    
+  <script-component>Hello script-component！</script-component>
+  <hr>
+  <template-component>Hello template-component！</template-component>
+</div>
+<div id="mycom">
+    <anchored-heading :level="1">Hello world!</anchored-heading>
+    <mycomponent title="OK"></mycomponent>
+</div>
 
-  <!-- 使用script标签创建组件模板内容 -->
-  <script type="text/x-template" id='component_script'>
-      <h4>这是一段使用"script"创建的组件模板内容。</h4>
-  </script>
-  
-  <!-- 使用template标签创建组件模板内容 -->
-  <template id='component_template'>
-      <p>这是一段使用"template标签"创建的组件模板内容。</p>
-  </template>
+<div id="app3"></div>
+<div id="app4"></div>
+<div id="app5"></div>
+<div id="app7"></div>
 
-  <script type="text/javascript">
+
+
+<!-- 使用script标签创建组件模板内容，不会显示在浏览器中-->
+<script type="text/x-template" id='component_script'>
+  <h4>这是一段使用"script"创建的组件模板内容。</h4>
+</script>
+<!-- 使用template标签创建组件模板内容，不会显示在浏览器中 -->
+<template id='component_template'>
+  <p>这是一段使用"template标签"创建的组件模板内容。</p>
+</template>
+
+
+<script type="text/javascript">
     new Vue({
       components: {
         'script-component': {
@@ -33,10 +46,90 @@
           template: '#component_template'
         }
       }
-    }).$mount("#app1");
-  </script>
-  
-  
-  <script type="text/javascript" src="index.js"></script>
+    }).$mount("#app2");
+    //在Vue实例中使用template选项
+    new Vue({
+        template:`<div id='temp'>在Vue实例中使用template选项</div>`,
+    }).$mount("#app4");
+
+    //在组件中使用渲染函数render
+    Vue.component('anchored-heading',{
+      render: function (createElement) {
+        // 创建 kebab-case 风格的 ID
+        var headingId = getChildrenTextContent(this.$slots.default)
+          .toLowerCase()
+          .replace(/\W+/g, '-')
+          .replace(/(^-|-$)/g, '');
+
+        return createElement(
+          'h' + this.level,
+          [
+            createElement('a', {
+              attrs: {
+                name: headingId,
+                href: '#' + headingId
+              }
+            }, this.$slots.default)
+          ]
+        );
+      },
+      props: {
+        level: {
+          type: Number,
+          required: true
+        }
+      }
+    });
+    var getChildrenTextContent = function (children) {
+      return children.map(function (node) {
+        return node.children
+          ? getChildrenTextContent(node.children)
+          : node.text
+      }).join('')
+    }; 
+
+    //在Vue实例中使用渲染函数render
+    new Vue({
+        render: function (createElement){
+            return createElement("p",{
+                domProps:{
+                    innerHTML: '使用渲染函数render生成的p节点！'
+                }
+            })
+        }
+
+    }).$mount("#app3");
+
+    //创建组件MyComponent作为渲染函数render的子对象
+    Vue.component('mycomponent',{
+        props: ['title'],
+        template:`<div>{{title}}我是组件MyComponent</div>`        
+    });
+    //在Vue实例中使用渲染函数render，设置属性与子对象
+    new Vue({
+        render:function(createElement){
+            return createElement('div',{
+                class:"box two",
+            },[
+                '先写一些文字!',//创建文本字节点
+                createElement("span",{  //创建子节点对象
+                    class:"son",
+                    domProps:{
+                        innerHTML:'我是子对象span!'
+                    }}),
+                createElement('mycomponent',{  //使用组件MyComponent作为子节点对象                    
+                    props:{
+                        title:'foobar',    //给mycomponent组件属性title赋值。
+                    }
+                })
+
+            ]);
+        }
+    }).$mount("#app5");
+    //注意，下面的语句很重要！！
+    new Vue({ el: '#mycom' }); //创建Vue根实例后（此处即单独挂载），挂载后，上面全局注册的组件：mycomponent才能起作用（Vue定义的东东必须挂载到原生节点下使用）。
+</script>
+
+<script type="text/javascript"  src="index.js" charset="utf-8" ></script>
 </body>
 </html>
