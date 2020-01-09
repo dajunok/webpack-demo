@@ -55,25 +55,28 @@
     //在组件中使用渲染函数render
     Vue.component('anchored-heading',{
       render: function (createElement) {
-        // 创建 kebab-case 风格的 ID
+        // 创建 kebab-case 风格的 ID，下面第replace函数是先把所有字母替换成短横杆'-'，再去掉所有'-'（即将'-'替换成空字符）。
         var headingId = getChildrenTextContent(this.$slots.default)
           .toLowerCase()
-          .replace(/\W+/g, '-')
-          .replace(/(^-|-$)/g, '');
+          .replace(/\W+/g, '-')      
+          .replace(/(^-|-$)/g, '');   
 
         return createElement(
           'h' + this.level,
           [
             createElement('a', {
-              attrs: {
+              attrs: {          //赋值普通属性（即<a xx="">中的xx指的就是普通属性）
                 name: headingId,
-                href: '#' + headingId
+                href: '#' + headingId,
+              },
+              domProps:{    //赋值DOM属性
+                innerHTML:"我是一个a元素"
               }
             }, this.$slots.default)
           ]
         );
       },
-      props: {
+      props: {  //赋值组件定义的props
         level: {
           type: Number,
           required: true
@@ -102,7 +105,7 @@
 
     //创建组件MyComponent作为渲染函数render的子对象
     Vue.component('mycomponent',{
-        props: ['title'],
+        props: ['title'], 
         template:`<div>{{title}}我是组件MyComponent</div>`        
     });
     //在Vue实例中使用渲染函数render，设置属性与子对象
@@ -118,7 +121,7 @@
                         innerHTML:'我是子对象span!'
                     }}),
                 createElement('mycomponent',{  //使用组件MyComponent作为子节点对象                    
-                    props:{
+                    props:{   //赋值组件定义的props
                         title:'foobar',    //给mycomponent组件属性title赋值。
                     }
                 })
