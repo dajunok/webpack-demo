@@ -23,6 +23,13 @@
 <div id="app4"></div>
 <div id="app5"></div>
 <div id="app7"></div>
+<!-- start==================================== 使用EJS模板引擎语法ejs.js ======================================================= -->
+<h1><%=htmlWebpackPlugin.options.title %></h1>  
+<h1><%= '<b>hello world</b>' %></h1>
+<h1><%=htmlWebpackPlugin.options.URLBase %></h1> 
+
+<!-- end====================================== 使用EJS模板引擎语法ejs.js ======================================================= -->
+
 
 
 
@@ -139,6 +146,5 @@
   
 </script>
 
-<script type="text/javascript"  src="index.js" charset="utf-8" ></script>
 </body>
 </html>
