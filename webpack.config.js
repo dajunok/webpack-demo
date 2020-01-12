@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports={
     context:path.resolve(__dirname,'src'),   //基础目录，绝对路径，用于从配置中解析入口起点(entry point)和 loader
     mode:"development", // production：生产模式； development：开发模式  
-    entry:'./myRes/testEjs.js',  //JavaScript执行入口文件
+    entry:'./myRes/index.js',  //JavaScript执行入口文件
     output:{   
       path:path.resolve(__dirname,'./dist'),   //将输出文件都放到dist目录下   
       filename:'index.js',   //将所有依赖的模块合并输出到一个bundle.js文件      
@@ -19,7 +19,6 @@ module.exports={
                 use: [
                   { loader: "vue-style-loader" },
                   { loader: "css-loader" },
-
                 ]
             },
             //配置加载器less-loader
@@ -74,7 +73,7 @@ module.exports={
     resolve: {
         // 设置别名
         alias:{
-            '@': path.resolve('src')
+            '@': path.resolve(__dirname,'src')
         }  
     },
     plugins: [
