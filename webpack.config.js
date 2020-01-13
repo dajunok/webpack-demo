@@ -1,3 +1,4 @@
+require('dotenv').config();
 const path=require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -98,7 +99,12 @@ module.exports={
             filename: 'index.html', // 生成的html文件名，该文件将被放置在输出目录        
             template: path.join(__dirname, './public/index.html')   // 源html文件路径
         }),
-        new webpack.DefinePlugin({
+        new webpack.DefinePlugin({       //用于定义全局变量
+            PRODUCTION: JSON.stringify(true),
+            VERSION: JSON.stringify("5fa3b9"),
+            BROWSER_SUPPORTS_HTML5: true,
+            TWO: "1+1",
+            "typeof window": JSON.stringify("object"),
             host: JSON.stringify(process.env.DB_HOST),          //使用Node.js模块：process.env 属性返回包含用户环境的对象。
         }),
     ],

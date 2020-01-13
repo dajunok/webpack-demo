@@ -8,8 +8,9 @@
     <title>vue-webpack</title>
   </head>
   <body>
-    <h2><%=author %></h2> 
-    <h2><%=host %></h2>
+    <h2><%=author %></h2>   <!-- 使用HtmlWebpackPlugin插件的templateParameters函数定义的author属性值替换 -->
+    <h2><%=VERSION %></h2>  <!-- 使用webpack.DefinePlugin插件定义全局变量VERSION的属性值替换 -->
+    <h2><%=host %></h2>     <!-- 使用webpack.DefinePlugin插件提取本地环境变量值替换host -->
     <noscript>
       <strong>We're sorry but vue-webpack doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
