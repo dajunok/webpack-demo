@@ -1,4 +1,13 @@
+var path = require('path');
 var _ = require('lodash');
+
+
+var options=null; 
+const userOptions = options || {title:"html-webpack-plugin",age:50};
+console.log(userOptions);
+
+
+
 
 
 
