@@ -1,12 +1,13 @@
 const path=require('path');
 var _ = require('lodash');
 var fs=require('fs');
-var file=path.resolve('jsondata.json');
 
 
-var json=JSON.parse(fs.readFileSync(file));
+
+var file=path.resolve('jsondata.json');  //指定json文件路径
+var json=JSON.parse(fs.readFileSync(file)); //读取json文件
 console.log(json.name);   //=>  webpack-demo
-console.log(_.isMap(json));
+console.log(_.isMap(json));  //_.isMap()是lodash函数
 
 //数组方式访问
 console.log(json['requires']);  //=>  true

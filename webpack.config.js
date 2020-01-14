@@ -1,8 +1,8 @@
-require('dotenv').config();
+require('dotenv').config();     //引入.env文件（放置在项目根目录）中定义的环境变量
 const path=require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack =require('webpack');
+const webpack =require('webpack');  
 
 module.exports={
     context:path.resolve(__dirname,'src'),   //基础目录，绝对路径，用于从配置中解析入口起点(entry point)和 loader
