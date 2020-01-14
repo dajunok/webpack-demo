@@ -5,6 +5,7 @@ import store from './store'
 
 
 
+
 Vue.config.productionTip = false  //消息提示的环境配置，设置为开发环境或者生产环境
 console.log("Running App version " + VERSION);  //打印全局变量VERSION
 console.log(host);      //打印全局变量host

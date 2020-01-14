@@ -1,11 +1,15 @@
 //测试函数对象属性apply()
 
-function myf(){};
+function myf(){return "ok"};
 
-myf.prototype.apply=function(arg){
-    return arg;
-};
 
-exports.a=myf;
-//exports.a="ok";
+
+//exports.a=myf;
+exports.a="ok";
+exports.firstName = 'Michael';
+exports.lastName = 'Jackson';
+exports.year = 1958;
+exports.fun=myf;
+
+
 
