@@ -2,6 +2,7 @@ require('dotenv').config();     //引入.env文件（放置在项目根目录）
 const path=require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin'); //将css单独打包成一个文件的插件，它为每个包含css的js文件都创建一个css文件。它支持css和sourceMaps的按需加载。
 const webpack =require('webpack');  
 
 module.exports={
@@ -22,6 +23,11 @@ module.exports={
                   { loader: "vue-style-loader" },
                   { loader: "css-loader" },
                 ]
+            },
+            {
+                test: /\.css$/i,
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+            
             },
             //配置加载器less-loader
             {
@@ -106,6 +112,12 @@ module.exports={
             TWO: "1+1",
             "typeof window": JSON.stringify("object"),
             host: JSON.stringify(process.env.DB_HOST),          //使用Node.js模块：process.env 属性返回包含用户环境的对象。
+        }),
+        new MiniCssExtractPlugin({
+          // Options similar to the same options in webpackOptions.output
+          // both options are optional
+          filename: '[name].css',
+          chunkFilename: '[id].css',
         }),
     ],
 
