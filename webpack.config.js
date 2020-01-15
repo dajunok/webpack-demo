@@ -21,19 +21,17 @@ module.exports={
                 test: /\.css$/,
                 use: [
                   { loader: "vue-style-loader" },
+                  { 
+                    loader: MiniCssExtractPlugin.loader,
+                  },
                   { loader: "css-loader" },
                 ]
-            },
-            {
-                test: /\.css$/i,
-                use: [MiniCssExtractPlugin.loader, 'css-loader'],
-            
             },
             //配置加载器less-loader
             {
                 test: /\.less$/,
                 use: [{
-                    loader: "style-loader" // creates style nodes from JS strings
+                    loader: MiniCssExtractPlugin.loader,
                 }, {
                     loader: "css-loader" // translates CSS into CommonJS
                 }, {
@@ -116,8 +114,8 @@ module.exports={
         new MiniCssExtractPlugin({
           // Options similar to the same options in webpackOptions.output
           // both options are optional
-          filename: '[name].css',
-          chunkFilename: '[id].css',
+          filename: 'css/[name].css',    //指定提取的CSS文件路径与名称
+          chunkFilename: 'css/[id].css',
         }),
     ],
 
