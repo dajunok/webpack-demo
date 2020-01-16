@@ -30,6 +30,9 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
+    <div class="img">
+        <a href="">我是一张png图片</a>
+    </div>
   </div>
 </template>
 
@@ -57,5 +60,16 @@ li {
 }
 a {
   color: #42b983;
+}
+.img > a{
+    left:100px;
+      width:auto;
+      height:auto;
+      line-height:auto;
+      background: #f4f4f4; 
+      background-image:url('../assets/logo.png');
+      background-size:200px,200px;
+      background-repeat:no-repeat;
+      background-position:center;
 }
 </style>

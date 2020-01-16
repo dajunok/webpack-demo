@@ -3,6 +3,7 @@ const path=require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); //将css单独打包成一个文件的插件，它为每个包含css的js文件都创建一个css文件。它支持css和sourceMaps的按需加载。
+const CopyWebpackPlugin = require('copy-webpack-plugin'); //将单个文件或整个目录复制到生成目录（dist）。
 const webpack =require('webpack');  
 
 module.exports={
@@ -55,19 +56,28 @@ module.exports={
                     plugins: ['@babel/plugin-transform-runtime'],  //babel引入 babel runtime 作为一个独立模块，来避免重复引入。
                 }
               }
-            },
-            //配置文件加载器file-loader
+            },            
+            //配置文件加载器url-loader
             {
-                test: /\.(png|jpg|gif)$/,
-                use: [
-                  {
-                    loader: 'file-loader',
-                    options: {
-                        name: '[path][name].[ext]',
-                        outputPath: '/img/'
-                    }
-                  }
-                ]
+                // 对下列资源文件使用loader
+                test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
+                loader: 'url-loader',
+                options: {
+                    esModule: false,    //esModule指你的模块是否采用ES modules。如果你的JS采用的是CommonJS模块语法，则此处应该设置为false，否则图片不能正常显示。
+                    limit: 10240,       // 小于10kb将会转换成base64
+                    name: 'img/[name].[hash:8].[ext]',   // 大于10kb的资源输出地[name]是名字[ext]后缀  
+                    fallback: 'file-loader'    // 大于10kb的资源采用file-loader加载器。file-loader是默认值可以不设置      
+                }
+            },
+            {
+                test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    esModule: false,  //esModule指你的模块是否采用ES modules。如果你的JS采用的是CommonJS模块语法，则此处应该设置为false，否则图片不能正常显示。
+                    limit: 10240,
+                    name: 'media/[name].[hash:8].[ext]',
+                    fallback: 'file-loader' // 大于10kb的资源采用file-loader加载器。file-loader是默认值可以不设置
+                }
             },
             //配置EJS模板引擎
             {
@@ -94,7 +104,7 @@ module.exports={
                     files: assets,
                     options
                   },
-                  'BASE_URL': '/',
+                  'BASE_URL': './',  //覆盖模板中使用的对应参数（即对模板中使用的BASE_URL参数进行赋值）
                   'author':"vue-webpack",
                 };
             },
@@ -103,7 +113,7 @@ module.exports={
             filename: 'index.html', // 生成的html文件名，该文件将被放置在输出目录        
             template: path.join(__dirname, './public/index.html')   // 源html文件路径
         }),
-        new webpack.DefinePlugin({       //用于定义全局变量
+        new webpack.DefinePlugin({       //用于定义全局变量，它可以对HtmlWebpackPlugin插件中的模板参数进行赋值（即模板参数可以使用全局变量）。
             PRODUCTION: JSON.stringify(true),
             VERSION: JSON.stringify("5fa3b9"),
             BROWSER_SUPPORTS_HTML5: true,
@@ -111,12 +121,20 @@ module.exports={
             "typeof window": JSON.stringify("object"),
             host: JSON.stringify(process.env.DB_HOST),          //使用Node.js模块：process.env 属性返回包含用户环境的对象。
         }),
+        //配置MiniCssExtractPlugin插件：提取与压缩.css文件。
         new MiniCssExtractPlugin({
-          // Options similar to the same options in webpackOptions.output
-          // both options are optional
           filename: 'css/[name].css',    //指定提取的CSS文件路径与名称
           chunkFilename: 'css/[id].css',
         }),
+        //配置CopyWebpackPlugin插件：将单个文件或整个目录复制到生成目录（dist）。
+        new CopyWebpackPlugin([
+            {
+                from:__dirname+'/public',
+                to:__dirname+'/dist',
+                toType: 'dir',
+                ignore: ['*.html','*.jpg']      //忽略.html和.jpj后缀的文件，注意构建生成所用文件不需要拷贝。
+            },
+        ]),
     ],
 
 
