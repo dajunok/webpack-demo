@@ -23,7 +23,7 @@ module.exports={
                 use: [
                   { loader: "vue-style-loader" },
                   { 
-                    loader: MiniCssExtractPlugin.loader,
+                    loader: MiniCssExtractPlugin.loader,  //提取.css文件
                   },
                   { loader: "css-loader" },
                 ]
@@ -32,7 +32,7 @@ module.exports={
             {
                 test: /\.less$/,
                 use: [{
-                    loader: MiniCssExtractPlugin.loader,
+                    loader: MiniCssExtractPlugin.loader,    //提取.css文件
                 }, {
                     loader: "css-loader" // translates CSS into CommonJS
                 }, {
@@ -79,6 +79,16 @@ module.exports={
                     fallback: 'file-loader' // 大于10kb的资源采用file-loader加载器。file-loader是默认值可以不设置
                 }
             },
+            //配置html-loader：将HTML导出为字符串。当编译器需要时，可以对其进行压缩使HTML被最小化。
+            {
+                  test: /\.(html)$/,
+                  use: {
+                    loader: 'html-loader',
+                    options: {
+                      attrs: [':data-src']
+                    }
+                  }
+            },
             //配置EJS模板引擎
             {
                 test: /\.(tpl|ejs)$/,
@@ -111,7 +121,7 @@ module.exports={
             //favicon:'../public/favicon.ico',
             title: 'webpack-ok',            
             filename: 'index.html', // 生成的html文件名，该文件将被放置在输出目录        
-            template: path.join(__dirname, './public/index.html')   // 源html文件路径
+            template: path.join(__dirname, './public/index.ejs')   // 模板源html或ejs文件路径
         }),
         new webpack.DefinePlugin({       //用于定义全局变量，它可以对HtmlWebpackPlugin插件中的模板参数进行赋值（即模板参数可以使用全局变量）。
             PRODUCTION: JSON.stringify(true),
