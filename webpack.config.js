@@ -5,41 +5,39 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); //将css单独打包成一个文件的插件，它为每个包含css的js文件都创建一个css文件。它支持css和sourceMaps的按需加载。
 const CopyWebpackPlugin = require('copy-webpack-plugin'); //将单个文件或整个目录复制到生成目录（dist）。
 const webpack =require('webpack');  
+const rm = require('rimraf');  //引入rimraf包，用于每次构建时先删除dist目录。
+
+//先删除dist目录再构建
+rm(path.join(__dirname, './dist'), (err) => {
+    if (err) throw err;
+});
 
 module.exports={
+    devtool:'source-map',      //源代码映射，方便开发环境调试
     context:path.resolve(__dirname,'src'),   //基础目录，绝对路径，用于从配置中解析入口起点(entry point)和 loader
     mode:"development", // production：生产模式； development：开发模式  
     entry:'./main.js',  //JavaScript执行入口文件
     output:{   
       path:path.resolve(__dirname,'./dist'),   //将输出文件都放到dist目录下 
-      filename:'index.js',   //将所有依赖的模块合并输出到一个bundle.js文件      
+      filename:'js/index.js',   //将所有依赖的模块合并输出到一个bundle.js文件      
       library:'myLibrary',    //library规定了组件库返回值的名字，也就是对外暴露的模块名称
       libraryTarget: 'umd',   //libraryTarget就是配置webpack打包内容的模块方式的参数：umd: 将你的library暴露为所有的模块定义下都可运行的方式。
     },
     module:{
         rules:[
             {
-                test: /\.css$/,
+                test: /\.(css|less)$/,
                 use: [
                   { loader: "vue-style-loader" },
                   { 
                     loader: MiniCssExtractPlugin.loader,  //提取.css文件
                   },
-                  { loader: "css-loader" },
+                  { loader: "css-loader" },     // translates CSS into CommonJS
+                  { loader: "postcss-loader" }, // 为css样式自动加入浏览器前缀
+                  { loader: "less-loader" },    // compiles Less to CSS
                 ]
             },
-            //配置加载器less-loader
-            {
-                test: /\.less$/,
-                use: [{
-                    loader: MiniCssExtractPlugin.loader,    //提取.css文件
-                }, {
-                    loader: "css-loader" // translates CSS into CommonJS
-                }, {
-                    loader: "less-loader" // compiles Less to CSS
-                }]
-            },
-            //Vue-Loader是一个webpack的loader，它允许你以一种名为单文件组件 (SFCs)的格式撰写 Vue 组件
+            //Vue-Loader是一个webpack的加载器，它允许你以一种名为单文件组件 (SFCs)的格式撰写 Vue 组件
             {
                 test:/\.vue$/,
                 loader:'vue-loader'
@@ -59,7 +57,7 @@ module.exports={
             },            
             //配置文件加载器url-loader
             {
-                // 对下列资源文件使用loader
+                //url-loader加载器处理图片文件
                 test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
                 loader: 'url-loader',
                 options: {
@@ -69,7 +67,7 @@ module.exports={
                     fallback: 'file-loader'    // 大于10kb的资源采用file-loader加载器。file-loader是默认值可以不设置      
                 }
             },
-            {
+            {   //url-loader加载器处理视频文件
                 test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
@@ -85,7 +83,8 @@ module.exports={
                   use: {
                     loader: 'html-loader',
                     options: {
-                      attrs: [':data-src']
+                        // 标签+属性
+                        attrs: ['img:src', 'audio:src', 'video:src']
                     }
                   }
             },
