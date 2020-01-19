@@ -4,6 +4,11 @@ import router from './router'
 import store from './store'
 import html from './file.html'    //利用html-loader加载器以字符串形式导入HTML文件。
 //const html=require('./file.html')   //利用html-loader加载器导入HTML文件。
+import './style/index.css'
+import './style/less.less'
+import './style/scss.scss'
+import './style/sass.sass'
+
 
 
 

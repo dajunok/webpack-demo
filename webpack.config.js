@@ -26,7 +26,7 @@ module.exports={
     module:{
         rules:[
             {
-                test: /\.(css|less)$/,
+                test: /\.(css|less|sass|scss)$/,
                 use: [
                   { loader: "vue-style-loader" },
                   { 
@@ -35,6 +35,10 @@ module.exports={
                   { loader: "css-loader" },     // translates CSS into CommonJS
                   { loader: "postcss-loader" }, // 为css样式自动加入浏览器前缀
                   { loader: "less-loader" },    // compiles Less to CSS
+                  {
+                    loader: "sass-loader", 
+                    options: {  sourceMap: false },
+                  },
                 ]
             },
             //Vue-Loader是一个webpack的加载器，它允许你以一种名为单文件组件 (SFCs)的格式撰写 Vue 组件
