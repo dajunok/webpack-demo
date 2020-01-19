@@ -2,13 +2,16 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import html from './file.html'    //利用html-loader加载器以字符串形式导入HTML文件。
+//const html=require('./file.html')   //利用html-loader加载器导入HTML文件。
 
 
 
 
 Vue.config.productionTip = false  //消息提示的环境配置，设置为开发环境或者生产环境
 console.log("Running App version " + VERSION);  //打印全局变量VERSION
-console.log(host);      //打印全局变量host
+console.log(host);      //打印全局变量host，该全局变量通过webpack.DefinePlugin插件进行设置。
+console.log(html);      //打印字符串html
 
 
 new Vue({

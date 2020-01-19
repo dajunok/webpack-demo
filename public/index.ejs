@@ -18,6 +18,7 @@
     <!-- built files will be auto injected -->
     <div>
         <img alt="XC-2.jpg" src="<%= require('./xc-2.jpg') %>" />
+        <%=require("../src/file.html") %>  <!-- 利用全局html-loader加载器以字符串导入HTML文件标签内容，再以ejs语法注入-->
     </div>
   </body>
 </html>

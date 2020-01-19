@@ -79,7 +79,7 @@ module.exports={
                     fallback: 'file-loader' // 大于10kb的资源采用file-loader加载器。file-loader是默认值可以不设置
                 }
             },
-            //配置html-loader：将HTML导出为字符串。当编译器需要时，可以对其进行压缩使HTML被最小化。
+            //配置html-loader：将HTML格式文件导出为字符串。当编译器需要时，可以对其进行压缩使HTML被最小化。
             {
                   test: /\.(html)$/,
                   use: {
@@ -142,7 +142,7 @@ module.exports={
                 from:__dirname+'/public',
                 to:__dirname+'/dist',
                 toType: 'dir',
-                ignore: ['*.html','*.jpg']      //忽略.html和.jpj后缀的文件，注意构建生成所用文件不需要拷贝。
+                ignore: ['*.html','*.jpg','*.ejs']      //忽略.html和.jpj后缀的文件，注意构建生成所用文件不需要拷贝。
             },
         ]),
     ],
