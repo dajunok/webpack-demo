@@ -12,7 +12,7 @@
           let html = ejs.render('<%= people.join(", "); %>', {people: people});
         </script>
 三、webpack引用EJS模板
-    1、安装配置ejs-loader加载器
+    1、安装配置ejs-loader加载器。ejs-loader简单理解为解析参数，帮你拼接字符串，返回一个拼接好的字符串(style，attr，class这些标签属性都是可以通过你传入的变量来设置的)
         npm install ejs-loader
     2、在webpack.config.js中配置ejs-loader加载器
         {

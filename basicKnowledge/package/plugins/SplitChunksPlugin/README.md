@@ -25,7 +25,7 @@
                 maxAsyncRequests: 5,    // 按需加载的最大并行请求数
                 maxInitialRequests: 3,       // 一个入口最大并行请求数
                 automaticNameDelimiter: '~', // 文件名的连接符
-                name: true,
+                name: true,             //使用name选项设置要控制分割块的块名称
                 cacheGroups: { // 缓存组
                     //缓存组名称vendors，可以自定义。
                     vendors: {  // split `node_modules`目录下被打包的代码到 `js/vendor.js`没找到可打包文件的话，则没有。
@@ -48,7 +48,7 @@
         },
     },
 //==================================================================
-附：runtimeChunk：作用是将包含chunks映射关系的list单独从main.js里提取出来，因为每一个chunk的id基本都是基于内容hash出来的，所以你每次改动都会影响它，如果不把它提取出来的话，等于app.js每次都会改变，缓存就失效了。
+附：runtimeChunk：作用是将包含chunks映射关系的list单独从main.js里提取出来，因为每一个chunk的id基本都是基于内容hash出来的，所以你每次改动都会影响它，如果不把它提取出来的话，等于main.js每次都会改变，缓存就失效了。
 在使用 CommonsChunkPlugin的时候，我们也通常把webpack runtime 的基础函数提取出来，单独作为一个chunk,毕竟code splitting想把不变的代码单独抽离出来，方便浏览器缓存，提升加载速度。
 其实就是单独分离出webpack的一些运行文件。
 
