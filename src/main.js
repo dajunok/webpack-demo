@@ -9,6 +9,12 @@ import './style/less.less'
 import './style/scss.scss'
 import './style/sass.sass'
 
+const $ = require('jquery');
+
+console.log($);
+$('#first').click(function () {
+    alert('hello');
+});
 
 
 

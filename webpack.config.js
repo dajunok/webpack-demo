@@ -4,7 +4,8 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); //将css单独打包成一个文件的插件，它为每个包含css的js文件都创建一个css文件。它支持css和sourceMaps的按需加载。
 const CopyWebpackPlugin = require('copy-webpack-plugin'); //将单个文件或整个目录复制到生成目录（dist）。
-const webpack =require('webpack');  
+const webpack =require('webpack');
+const InlineManifestWebpackPlugin =require('inline-manifest-webpack-plugin');  
 const rm = require('rimraf');  //引入rimraf包，用于每次构建时先删除dist目录。
 
 //先删除dist目录再构建
@@ -97,6 +98,20 @@ module.exports={
                 test: /\.(tpl|ejs)$/,
                 loader: 'ejs-loader'
             },
+            //把jquery暴露全局变量名'$'和'jQuery'。之后你可以在以main.js作为入口文件的任意.js文件里面调用$ jQuery
+            {
+              test: require.resolve('jquery'),
+              use: [
+                {
+                  loader: 'expose-loader',
+                  options: 'jQuery'
+                },
+                {
+                  loader: 'expose-loader',
+                  options: '$'
+                },
+              ]
+            },
         ]
     },
     resolve: {
@@ -148,7 +163,35 @@ module.exports={
                 ignore: ['*.html','*.jpg','*.ejs']      //忽略.html和.jpj后缀的文件，注意构建生成所用文件不需要拷贝。
             },
         ]),
+        //new InlineManifestWebpackPlugin('vendor01'),   // 将运行代码直接插入html文件中，因为这段代码非常少且时常改动，这样做可以避免一次请求的开销
     ],
+    //优化
+    optimization:{
+        //分割代码块,提取被重复引入的文件，单独生成一个或多个文件，这样避免在多入口重复打包文件
+        splitChunks: {
+            chunks: "async",        //chunks属性用来选择分割哪些代码块，可选值有：'all'（所有代码块），'async'（按需加载的代码块），'initial'（初始化代码块）。
+            minSize:30000,         // 模块的最小体积30kb
+            minChunks: 1,           // 模块的最小被引用次数
+            maxAsyncRequests: 5,    // 按需加载的最大并行请求数
+            maxInitialRequests: 3,       // 一个入口最大并行请求数
+            automaticNameDelimiter: '~', // 文件名的连接符
+            name: true,                 //使用name选项设置要控制分割块的块名称
+            cacheGroups: { // 缓存组
+                //缓存组名称vendors，可以自定义。
+                vendors: {  // split `node_modules`目录下被打包的代码到 `js/vendor.js`没找到可打包文件的话，则没有。
+                    test: /[\\/]node_modules[\\/]/,  //控制此缓存组选择的模块。忽略它将选择所有模块。它可以是正则表达式（RegExp）、字符串或函数。
+                    name:'chunk-vendors',  //打包后的路径与名称
+                    priority: -10,     //设置优先级别
+                },
+                //默认缓存组
+                default: {
+                    minChunks: 2,
+                    priority: -20,            //设置优先级别
+                    reuseExistingChunk: true  //允许在模块匹配准确的时候创建一个新的模块。
+                }
+            }
+        },
 
+    },
 
 };
