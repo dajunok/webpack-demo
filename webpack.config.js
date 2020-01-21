@@ -119,6 +119,35 @@ module.exports={
             '@': path.resolve(__dirname,'src')
         }  
     },
+    //优化-----------------------
+    optimization:{
+        //分割代码块,提取被重复引入的文件，单独生成一个或多个文件，这样避免在多入口重复打包文件
+        splitChunks: {
+            chunks: "async",        //chunks属性用来选择分割哪些代码块，可选值有：'all'（所有代码块），'async'（按需加载的代码块），'initial'（初始化代码块）。
+            minSize:30000,         // 模块的最小体积30kb
+            minChunks: 1,           // 模块的最小被引用次数
+            maxAsyncRequests: 5,    // 按需加载的最大并行请求数
+            maxInitialRequests: 3,       // 一个入口最大并行请求数
+            automaticNameDelimiter: '~', // 文件名的连接符
+            name: true,                 //使用name选项设置要控制分割块的块名称
+            cacheGroups: { // 缓存组
+                //缓存组名称vendors，可以自定义。
+                vendors: {  // split `node_modules`目录下被打包的代码到 `js/vendor.js`没找到可打包文件的话，则没有。
+                    test: /[\\/]node_modules[\\/]/,  //控制此缓存组选择的模块。忽略它将选择所有模块。它可以是正则表达式（RegExp）、字符串或函数。
+                    name:'chunk-vendors',  //打包后的路径与名称
+                    priority: -10,     //设置优先级别
+                },
+                //默认缓存组
+                default: {
+                    minChunks: 2,
+                    priority: -20,            //设置优先级别
+                    reuseExistingChunk: true  //允许在模块匹配准确的时候创建一个新的模块。
+                }
+            }
+        },
+        minimizer: [],
+    },
+    //配置插件---------------
     plugins: [
         new VueLoaderPlugin(),  //创建Vue-Loader实例
         new HtmlWebpackPlugin({
@@ -164,33 +193,6 @@ module.exports={
         ]),
         //new InlineManifestWebpackPlugin('vendor01'),   // 将运行代码直接插入html文件中，因为这段代码非常少且时常改动，这样做可以避免一次请求的开销
     ],
-    //优化
-    optimization:{
-        //分割代码块,提取被重复引入的文件，单独生成一个或多个文件，这样避免在多入口重复打包文件
-        splitChunks: {
-            chunks: "async",        //chunks属性用来选择分割哪些代码块，可选值有：'all'（所有代码块），'async'（按需加载的代码块），'initial'（初始化代码块）。
-            minSize:30000,         // 模块的最小体积30kb
-            minChunks: 1,           // 模块的最小被引用次数
-            maxAsyncRequests: 5,    // 按需加载的最大并行请求数
-            maxInitialRequests: 3,       // 一个入口最大并行请求数
-            automaticNameDelimiter: '~', // 文件名的连接符
-            name: true,                 //使用name选项设置要控制分割块的块名称
-            cacheGroups: { // 缓存组
-                //缓存组名称vendors，可以自定义。
-                vendors: {  // split `node_modules`目录下被打包的代码到 `js/vendor.js`没找到可打包文件的话，则没有。
-                    test: /[\\/]node_modules[\\/]/,  //控制此缓存组选择的模块。忽略它将选择所有模块。它可以是正则表达式（RegExp）、字符串或函数。
-                    name:'chunk-vendors',  //打包后的路径与名称
-                    priority: -10,     //设置优先级别
-                },
-                //默认缓存组
-                default: {
-                    minChunks: 2,
-                    priority: -20,            //设置优先级别
-                    reuseExistingChunk: true  //允许在模块匹配准确的时候创建一个新的模块。
-                }
-            }
-        },
-
-    },
+    
 
 };

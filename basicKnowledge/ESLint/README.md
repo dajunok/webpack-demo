@@ -9,8 +9,20 @@
    ESLint 使用 Node.js 编写，这样既可以有一个快速的运行环境的同时也便于安装。 
 二、安装与初始化生成配置文件.eslintrc.js：
     npm install eslint --save-dev 
-    ./node_modules/.bin/eslint --init
+    .\node_modules\.bin\eslint --init
 三、配置：
-https://eslint.bootcss.com/   #ESLint 中文文档
-https://www.jianshu.com/p/933b6b6a84c9
+
+
+四、常用插件：
+    这些都是eslint工具，请安装到当前目录按需安装--save-dev，方便不同的项目使用不同的方式！（服务器端支持nodejs，客户端是不支持nodejs的）。eslint语法解析常用插件：eslint-plugin-<plugin-name>
+    eslint-plugin-react
+    eslint-plugin-vue（支持vue规则）
+    eslint-plugin-node（支持nodejs规则）
+    eslint-plugin-import（import语句规则）
+    eslint-plugin-promise
+    eslint-plugin-html
+    eslint-plugin-json
+    eslint-plugin-es6
+    eslint-plugin-es5
     
+    插件搜索网站：https://www.npmjs.com
