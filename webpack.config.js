@@ -16,10 +16,13 @@ module.exports={
     devtool:'source-map',      //源代码映射，方便开发环境调试
     context:path.resolve(__dirname,'src'),   //基础目录，绝对路径，用于从配置中解析入口起点(entry point)和 loader
     mode:"development", // production：生产模式； development：开发模式  
-    entry:'./main.js',  //JavaScript执行入口文件
+    entry:{      //JavaScript执行入口文件
+        index:'./main.js',  
+        demo:'./demo.js'
+    },
     output:{   
       path:path.resolve(__dirname,'./dist'),   //将输出文件都放到dist目录下 
-      filename:'js/index.js',   //将所有依赖的模块合并输出到一个bundle.js文件      
+      filename:"js/[name].bundle.js",   //将所有依赖的模块合并输出到一个bundle.js文件     'js/index.js' 
       library:'myLibrary',    //library规定了组件库返回值的名字，也就是对外暴露的模块名称
       libraryTarget: 'umd',   //libraryTarget就是配置webpack打包内容的模块方式的参数：umd: 将你的library暴露为所有的模块定义下都可运行的方式。
     },
@@ -166,8 +169,14 @@ module.exports={
             },
             //favicon:'../public/favicon.ico',
             title: 'webpack-ok',            
-            filename: 'index.html', // 生成的html文件名，该文件将被放置在输出目录        
+            filename: 'index.html', // 生成的html文件名，该文件将被放置在输出目录 
+            chunks: ['index'],        
             template: path.join(__dirname, './public/index.ejs')   // 模板源html或ejs文件路径
+        }),
+        new HtmlWebpackPlugin({            
+            filename: 'demo.html', // 生成的html文件名，该文件将被放置在输出目录
+            chunks: ['demo'],            
+            template: path.join(__dirname, './public/demo.ejs')    // 模板源html或ejs文件路径
         }),
         new webpack.DefinePlugin({       //用于定义全局变量，它可以对HtmlWebpackPlugin插件中的模板参数进行赋值（即模板参数可以使用全局变量）。
             PRODUCTION: JSON.stringify(true),
