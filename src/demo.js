@@ -20,8 +20,8 @@ new Vue({
     render: h => h(Myconponent,{
       props:{   //赋值组件定义的props
           msg:'Hello Word!',    //给属性msg赋值。
-      }
-    }),
+      },
+    })
 }).$mount('#app')
 
 
