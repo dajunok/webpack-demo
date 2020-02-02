@@ -1,5 +1,5 @@
 <template>
-  <div id="slot" :pD.prop="propData" :dV="dataValue"> <!-- 通过 prop 修饰符绑定 DOM 属性。 通过自定义属性存储变量，避免暴露数据-->
+  <div id="slot" class="foo bar"  :pD.prop="propData" :dV="dataValue"> <!-- 通过 prop 修饰符绑定 DOM 属性。 通过自定义属性存储变量，避免暴露数据-->
     <p>我是张三【{{size}}；name：{{fullname}}】，年龄：{{age}}</p>
     <slot></slot>
   </div>
