@@ -9,7 +9,7 @@ import './style/sass.sass'
 
 //Node Package Manager (NPM)
 
-const $ = require('jquery');
+import $ from 'jquery';
 
 console.log($);
 $('#first').click(function () {

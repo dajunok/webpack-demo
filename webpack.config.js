@@ -3,8 +3,11 @@ const path=require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); //将css单独打包成一个文件的插件，它为每个包含css的js文件都创建一个css文件。它支持css和sourceMaps的按需加载。
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');  //用于优化、压缩CSS文件的webpack插件。
 const CopyWebpackPlugin = require('copy-webpack-plugin'); //将单个文件或整个目录复制到生成目录（dist）。
 const webpack =require('webpack');
+const TerserPlugin = require('terser-webpack-plugin');  //这个插件使用terser压缩JavaScript。
+
 const rm = require('rimraf');  //引入rimraf包，用于每次构建时先删除dist目录。
 
 //先删除dist目录再构建
@@ -13,7 +16,7 @@ rm(path.join(__dirname, './dist'), (err) => {
 });
 
 module.exports={
-    devtool:'source-map',      //源代码映射，方便开发环境调试
+    devtool:'source-map',      //源代码映射，source-map方便开发环境调试。 none 用于生产环境
     context:path.resolve(__dirname,'src'),   //基础目录，绝对路径，用于从配置中解析入口起点(entry point)和 loader
     mode:"development", // production：生产模式； development：开发模式  
     entry:{      //JavaScript执行入口文件
@@ -34,6 +37,9 @@ module.exports={
                   { loader: "vue-style-loader" },
                   { 
                     loader: MiniCssExtractPlugin.loader,  //提取.css文件
+                    options:{
+                        publicPath:'../',  //给提取后的目标.css文件中的url路径最前面添加../（解决css文件构建后图片路径url引用错误问题。url路径由加载器url-loader设置决定）
+                    },
                   },
                   { loader: "css-loader" },     // translates CSS into CommonJS
                   { loader: "postcss-loader" }, // 为css样式自动加入浏览器前缀
@@ -124,6 +130,7 @@ module.exports={
     },
     //优化-----------------------
     optimization:{
+        usedExports: true, // 哪些导出的模块被使用了，再做打包(Tree shaking摇树功能，在开发模式要配置，在生产模式已默认，不需要配置）。注意配置package.json文件中的项"sideEffects": ["*.css"]。
         //分割代码块,提取被重复引入的文件，单独生成一个或多个文件，这样避免在多入口重复打包文件
         splitChunks: {
             chunks: "async",        //chunks属性用来选择分割哪些代码块，可选值有：'all'（所有代码块），'async'（按需加载的代码块），'initial'（初始化代码块）。
@@ -137,7 +144,7 @@ module.exports={
                 //缓存组名称vendors，可以自定义。
                 vendors: {  // split `node_modules`目录下被打包的代码到 `js/vendor.js`没找到可打包文件的话，则没有。
                     test: /[\\/]node_modules[\\/]/,  //控制此缓存组选择的模块。忽略它将选择所有模块。它可以是正则表达式（RegExp）、字符串或函数。
-                    name:'chunk-vendors',  //打包后的路径与名称
+                    name:'js/chunk-vendors',  //打包后的路径与名称
                     priority: -10,     //设置优先级别
                 },
                 //默认缓存组
@@ -148,10 +155,50 @@ module.exports={
                 }
             }
         },
-        minimizer: [],
+        //minimizer: [],
+        minimize: true,    //生产环境默认压缩，不需要进行配（开发环境需要配置）
+        minimizer: [       //生产环境默认压缩，不需要进行配 （开发环境需要配置）
+                new TerserPlugin({  //这个插件使用terser压缩JavaScript。
+                  cache: true,
+                  parallel: true,
+                  sourceMap: true, // Must be set to true if using source-maps in production
+                  terserOptions: {
+                    compress: {
+                      arrows: false,
+                      collapse_vars: false,
+                      comparisons: false,
+                      computed_props: false,
+                      hoist_funs: false,
+                      hoist_props: false,
+                      hoist_vars: false,
+                      inline: false,
+                      loops: false,
+                      negate_iife: false,
+                      properties: false,
+                      reduce_funcs: false,
+                      reduce_vars: false,
+                      switches: false,
+                      toplevel: false,
+                      typeofs: false,
+                      booleans: true,
+                      if_return: true,
+                      sequences: true,
+                      unused: true,
+                      conditionals: true,
+                      dead_code: true,
+                      evaluate: true
+                    },
+                    mangle: {
+                      safari10: true
+                    }
+                  },
+                }),
+                new OptimizeCssAssetsPlugin(), //用于优化、压缩CSS文件的webpack插件。
+        ],
     },
     //配置插件---------------
     plugins: [
+        //new OptimizeCssAssetsPlugin(), //用于优化、压缩CSS文件的webpack插件。
         new VueLoaderPlugin(),  //创建Vue-Loader实例
         new HtmlWebpackPlugin({
             templateParameters: (compilation, assets, assetTags, options) => {
@@ -171,12 +218,26 @@ module.exports={
             title: 'webpack-ok',            
             filename: 'index.html', // 生成的html文件名，该文件将被放置在输出目录 
             chunks: ['index'],        
-            template: path.join(__dirname, './public/index.ejs')   // 模板源html或ejs文件路径
+            template: path.join(__dirname, './public/index.ejs'),   // 模板源html或ejs文件路径
+            minify:{  //代码压缩
+                    removeRedundantAttributes:true, // 删除多余的属性
+                    collapseWhitespace:true, // 折叠空白区域
+                    removeAttributeQuotes: true, // 移除属性的引号
+                    removeComments: true, // 移除注释
+                    collapseBooleanAttributes: true // 省略只有 boolean 值的属性值 例如：readonly checked
+            },
         }),
         new HtmlWebpackPlugin({            
             filename: 'demo.html', // 生成的html文件名，该文件将被放置在输出目录
             chunks: ['demo'],            
-            template: path.join(__dirname, './public/demo.ejs')    // 模板源html或ejs文件路径
+            template: path.join(__dirname, './public/demo.ejs'),    // 模板源html或ejs文件路径
+            minify:{  //代码压缩
+                    removeRedundantAttributes:true, // 删除多余的属性
+                    collapseWhitespace:true, // 折叠空白区域
+                    removeAttributeQuotes: true, // 移除属性的引号
+                    removeComments: true, // 移除注释
+                    collapseBooleanAttributes: true // 省略只有 boolean 值的属性值 例如：readonly checked
+            },
         }),
         new webpack.DefinePlugin({       //用于定义全局变量，它可以对HtmlWebpackPlugin插件中的模板参数进行赋值（即模板参数可以使用全局变量）。
             PRODUCTION: JSON.stringify(true),
