@@ -29,7 +29,7 @@
       <p v-on:[even]="mes='ok'">请点击我我会改变哦：{{mes}}</p> <!-- 使用中括号[]动态绑定事件 -->
       <p>当前时间：{{now}}</p><!-- 使用计算属性 -->
     </div>
-    <!-- Class 与 Style 绑定 -->
+    <!-- =====Class 与 Style 绑定======== -->
     <div :class="'static active'">动态绑定class（表达式）</div>  <!-- 动态绑定class（表达式） -->
     <div :class="classstr">动态绑定class（字符串数据形式）</div>    <!-- 动态绑定class （字符串数据形式）-->
     <div class="static" :class="{active:isActive,'text-danger': hasError}">使用对象语法绑定class</div> <!-- 使用对象语法绑定class  -->
@@ -37,12 +37,12 @@
     <div :class="[isActive ? activeClass : '', errorClass]">使用三元表达式绑定class</div>  <!-- 使用三元表达式绑定class -->
     <subcomponent class='baz' :age=60>自定义组件上使用 class 属性</subcomponent> <!-- 当在一个自定义组件上使用 class 属性时，这些 class 将被添加到该组件的根元素上面。这个元素上已经存在的 class 不会被覆盖。 -->
     <subcomponent :class="{active:isActive}" :age=60>自定义组件上使用 class 属性</subcomponent> 
-    <!-- 绑定内联样式 -->
+    <!-- ======绑定内联样式====== -->
     <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">绑定内联样式</div>
     <div :style="styleObject">使用对象绑定内联样式</div>
     <div :style="[styleObject,ovrStyle]">使用数组绑定内联样式</div>
     <div :style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }"></div>
-    <!-- 条件渲染 -->
+    <!-- ============条件渲染========= -->
     <div> 
       <h1 v-if="awesome">Vue is awesome!</h1>
       <h1 v-else>Oh no 😢</h1>     
@@ -107,8 +107,32 @@
       <li v-for="user in activeUsers" :key="user.id">  <!-- 使用过滤器：activeUsers -->
         {{ user.username }}   ------v-for与 过滤器（filter） 一起使用
       </li>
+    </ul>    
+    <!-- =========列表渲染======= -->
+    <ul>      
+      <li v-for="item in items">{{item.message}}</li>
     </ul>
     <!-- --------------------------------------- -->
+    <ul> <!-- 用 of 替代 in 作为分隔符，因为它更接近 JavaScript 迭代器的语法 -->
+      <li v-for="(item, index) of items">   
+        {{ parentMessage }} - {{ index }} - {{ item.message }}
+      </li>
+    </ul>
+    <!-- --------------------------------------- -->
+    <ul id="v-for-object" class="demo"> <!-- 用 v-for 来遍历一个对象的属性。 -->
+      <li v-for="value of object">
+        {{ value }}
+      </li>
+    </ul>
+    <!-- --------------------------------------- -->
+    <div v-for="(value, name) in object"> <!-- 提供第二个的参数为 property 名称 (也就是键名) -->
+      {{ name }}: {{ value }}
+    </div>
+    <!-- --------------------------------------- -->
+    <div v-for="(value, name, index) in object"> <!-- 用第三个参数作为索引 -->
+      {{ index }}. {{ name }}: {{ value }}
+    </div>
+
   </div>
   
 </template>
@@ -117,6 +141,7 @@
 <script type="text/javascript">
   import SubComponent from './SubComponent.vue';  
   import HelloWorld from '@/components/father.vue';
+  import _ from 'lodash';
 
   let data=[
               { text: '学习 JavaScript' },
@@ -148,6 +173,17 @@
     width:'300px',
     height:'30px',
     background:'white'
+  };
+
+  let data_1= [
+      { message: 'Foo' },
+      { message: 'Bar' }
+    ];
+
+  let data_2={
+      title: 'How to do lists in Vue',
+      author: 'Jane Doe',
+      publishedAt: '2016-04-10'
   };
 
 
@@ -184,6 +220,9 @@
         loginType:'username',
         users:userdata,
         shouldShowUsers:true,
+        items:data_1,     //列表渲染
+        parentMessage: 'Parent',
+        object:data_2,    
       };
     },
     methods:{

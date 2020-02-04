@@ -4,9 +4,10 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); //将css单独打包成一个文件的插件，它为每个包含css的js文件都创建一个css文件。它支持css和sourceMaps的按需加载。
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');  //用于优化、压缩CSS文件的webpack插件。
+const TerserPlugin = require('terser-webpack-plugin');  //这个插件使用terser压缩JavaScript。
 const CopyWebpackPlugin = require('copy-webpack-plugin'); //将单个文件或整个目录复制到生成目录（dist）。
 const webpack =require('webpack');
-const TerserPlugin = require('terser-webpack-plugin');  //这个插件使用terser压缩JavaScript。
+
 
 const rm = require('rimraf');  //引入rimraf包，用于每次构建时先删除dist目录。
 
