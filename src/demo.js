@@ -16,6 +16,16 @@ $('#first').click(function () {
     alert('hello');
 });
 
+//数组更新检测
+var arr=Myconponent.data().items;
+arr.push({ message: 'Good' });
+console.log(arr[0]);
+//替换数组(???替换不了)
+var arrf=Myconponent.data().items.filter(item=>item.message.match(/Good/));
+Myconponent.data().items=arrf;
+console.log(Myconponent.data().items);
+console.log(arrf);
+
 new Vue({
     render: h => h(Myconponent,{
       props:{   //赋值组件定义的props

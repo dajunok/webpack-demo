@@ -11,6 +11,10 @@
 
 <script>
 import box from './child.vue'  //引入box子组件
+
+var obj=box.data();
+console.log(obj);
+
 export default {
   name: 'HelloWorld',
   data() {

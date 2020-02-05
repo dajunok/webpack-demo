@@ -45,7 +45,7 @@
     <!-- ============条件渲染========= -->
     <div> 
       <h1 v-if="awesome">Vue is awesome!</h1>
-      <h1 v-else>Oh no 😢</h1>     
+      <h1 v-else>Oh no!</h1>     
     </div>
     <!-- --------------------------------------- -->
     <div v-if="Math.random() > 0.5">
@@ -132,13 +132,27 @@
     <div v-for="(value, name, index) in object"> <!-- 用第三个参数作为索引 -->
       {{ index }}. {{ name }}: {{ value }}
     </div>
-
+    <!-- 对象变更检测注意事项 -->
+    <div>
+      <button @click='replaceItems'>替换items</button>
+      <button @click='modify'>修改items[0]</button>
+    </div>
+    <!-- 显示过滤/排序后的结果 -->
+    <div>
+      <li v-for="n in evenNumbers">{{ n }}</li>   <!-- 使用计算属性 -->
+    </div>
+    <!-- --------------------------------- -->
+    <div>
+      <li v-for="n in evenf(numbers)">函数结果：{{ n }}</li> <!-- 使用带参数方法 -->
+      <button @click="evenff(numbers)">带参数事件回调函数evenf(numbers)</button>
+    </div>
+    
   </div>
-  
 </template>
 
 
 <script type="text/javascript">
+  import Vue from 'vue';
   import SubComponent from './SubComponent.vue';  
   import HelloWorld from '@/components/father.vue';
   import _ from 'lodash';
@@ -222,7 +236,8 @@
         shouldShowUsers:true,
         items:data_1,     //列表渲染
         parentMessage: 'Parent',
-        object:data_2,    
+        object:data_2, 
+        numbers: [ 1, 2, 3, 4, 5 ,6],   
       };
     },
     methods:{
@@ -236,12 +251,32 @@
             this.loginType='username';
         }
       },
+      replaceItems:function(){
+          this.items=this.items.filter(item=>item.message.match(/New/));  //filter是非响应式，但使用原数组名替换后变成响应式。
+      },
+      modify:function(){
+        //this.items[0]={message:'New'};          //使用数组下标修改数据是非响应式。(即不会立即在页面上刷新)
+        //Vue.set(this.items, 0, {message:'New'});  //响应式。
+        //this.items.splice(1,1,{message:'New'});   //响应式。(有趣的现象：响应式和非响应式搭配在一起时起到全部刷新的作用）)
+        //this.object.age=20;   //非响应式
+        Vue.set(this.object,'age',27); //响应式。
+      },
+      evenf: function (arr) {
+        return arr.filter(num=>num % 3 === 0);
+      },
+      evenff:function(arr){
+        arr.push(10);
+      }
     },
     computed:{ //计算属性
       now:function(){ return Date.now();},      
       activeUsers:function(){   // 创建过滤器对象activeUsers
         return this.users.filter(user=>user.isActive);
       },
+      evenNumbers:function(){
+        return this.numbers.filter(num=>num%2===0);
+      },
+      
     },
     watch:{ //侦听器
       mes:function(newMes,oldMes){

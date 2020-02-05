@@ -69,9 +69,71 @@ var v=fruits.push(false);  //=> 5  push()向数组的末尾添加一个或更多
 var revArray=fruits.reverse();   //=> [ false, 'Mango', 'Apple', 'Orange', 'Banana' ]   reverse()方法用于颠倒数组中元素的顺序。
 var fruits = ["Banana", "Orange", "Apple", "Mango",true];
 var v=fruits.shift();    //=> Banana   shift()方法用于把数组的第一个元素从其中删除，并返回第一个元素的值。
+/*slice() 方法
+  slice() 方法可从已有的数组中返回选定的元素。
+  slice()方法可提取字符串的某个部分，并以新的字符串返回被提取的部分。
+  注意： slice() 方法不会改变原始数组。
+  ------------------------------------------------------------------------------------------
+  参数                                        描述
+  -------------------------------------------------------------------------------------------  
+  start                     必需。规定从何处开始选取。如果是负数，那么它规定从数组尾部开始算起的位置。
+                            也就是说，-1 指最后一个元素，-2 指倒数第二个元素，以此类推。
+  -------------------------------------------------------------------------------------------                            
+  end                       可选。规定从何处结束选取。该参数是数组片断结束处的数组下标。
+                            如果没有指定该参数，那么切分的数组包含从 start 到数组结束的所有元素。
+                            如果这个参数是负数，那么它规定的是从数组尾部开始算起的元素。
+  -------------------------------------------------------------------------------------------  
+*/
+var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+var citrus = fruits.slice(1,3);  //=> [ 'Orange', 'Lemon' ]   
 
+var lenArr = [3, 10, 18, 20];
+function checklength(len) {
+    return len >= 18;
+}
+var isHave=lenArr.some(checklength);   //=> true  some()检测数组元素中是否有元素符合指定条件。
 
+//sort()方法。请注意，数组在原数组上进行排序，不生成副本。
+var points = [40,100,1,5,25,10];
+var sortpoints=points.sort(function(a,b){return a-b});  //=> [ 1, 5, 10, 25, 40, 100 ]    数字排序（数字和升序）：
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.sort();        //=> [ 'Apple', 'Banana', 'Mango', 'Orange' ]       字母和降序
+fruits.reverse();     //=>  [ 'Orange', 'Mango', 'Banana', 'Apple' ]
 
+/*splice() 方法用于插入、删除或替换数组的元素。
+  语法：array.splice(index,howmany,item1,.....,itemX)
+  ========================================================================
+  参数                          描述
+  ------------------------------------------------------------------------
+  index                必需。规定从何处添加/删除元素。
+                       该参数是开始插入和（或）删除的数组元素的下标，必须是数字。
+  ------------------------------------------------------------------------                      
+  howmany              必需。规定应该删除多少元素。必须是数字，但可以是 "0"。
+                       如果未规定此参数，则删除从 index 开始到原数组结尾的所有元素。
+  ------------------------------------------------------------------------
+  item1, ..., itemX    可选。要添加到数组的新元素
+  =========================================================================
+*/
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.splice(2,1,"Lemon","Kiwi");  //=> [ 'Banana', 'Orange', 'Lemon', 'Kiwi', 'Mango' ]
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.splice(2,0,"Lemon","Kiwi");  //=> [ 'Banana', 'Orange', 'Lemon', 'Kiwi', 'Apple', 'Mango' ]
+
+//toString() 方法可把数组转换为字符串，并返回结果。注意： 数组中的元素之间用逗号分隔。
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+var str=fruits.toString();  //=>  Banana,Orange,Apple,Mango
+
+//unshift() 方法可向数组的开头添加一个或更多元素，并返回新的长度。
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+var len=fruits.unshift("Lemon","Pineapple"); //=> 6
+
+//valueOf() 方法返回 Array 对象的原始值。valueOf() 方法通常由 JavaScript 在后台自动调用，并不显式地出现在代码中。
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+var v=fruits.valueOf();  //=> [ 'Banana', 'Orange', 'Apple', 'Mango' ]
+console.log(v);
+
+fruits[0]='new';
+console.log(fruits);
 
 
 
