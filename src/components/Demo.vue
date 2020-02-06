@@ -146,7 +146,57 @@
       <li v-for="n in evenf(numbers)">函数结果：{{ n }}</li> <!-- 使用带参数方法 -->
       <button @click="evenff(numbers)">带参数事件回调函数evenf(numbers)</button>
     </div>
-    
+    <!-- 在 v-for 里使用值范围 -->
+    <div>
+      <li v-for="n of 10">{{n}}</li>
+    </div>
+    <!-- 在 <template> 上使用 v-for -->
+    <ul>
+      <template v-for="(item,index) in items">
+        <li>{{item.message}}</li>
+        <li class="divider" role="presentation">{{index}}</li>
+      </template>
+    </ul>
+    <!-- v-for 与 v-if 一同使用，当它们处于同一节点，v-for 的优先级比 v-if 更高，这意味着 v-if 将分别重复运行于每个 v-for 循环中。-->
+    <li v-for="todo of mtodos" v-if="!(todo.isComplete)">{{todo.name}}</li>
+    <!-- 如果你的目的是有条件地跳过循环的执行，那么可以将 v-if 置于外层元素 (或 <template>)上。 -->
+    <ul v-if="todos.length">
+      <li v-for="todo in todos">
+        {{ todo }}
+      </li>
+    </ul>
+    <p v-else>No todos left!</p>
+    <!-- 在组件上使用 v-for -->
+    <componentDemo v-for="(item,index) of users" 
+                   v-bind:item="item" 
+                   v-bind:index="index" 
+                   v-bind:key="item.id"
+                   v-on:remove="users.splice(index,1)"> <!-- 2.2.0+ 的版本里，当在组件上使用 v-for 时，key 现在是必须的。 -->
+    </componentDemo>
+    <!-- 事件处理 v-on -->
+    <div>
+      <button @click="counter+=1">Add 1</button>
+      <p>The button above has been clicked {{ counter }} times.</p>
+    </div>
+    <!-- --------------------------------- -->
+    <div>      
+      <button v-on:click="greet">Greet</button>
+    </div>
+    <!-- 内联处理器中的方法, 除了直接绑定到一个方法，也可以在内联 JavaScript 语句中调用方法 -->
+    <div>
+      <button @click="say('我想说话！')">话筒</button>
+      <p>{{name}}</p>
+    </div>
+    <!-- 使用event对象访问原始的 DOM 事件 -->
+    <!-- 事件冒泡：假如用户单击了一个元素,该元素拥有一个click事件,那么同样的事件也将会被它的祖先触发,这个事件从该元素开始一直冒泡到DOM树的最上层,这一过程称为事件冒泡 -->
+    <div @click="alert('div被点击！')">DIV
+      <ul @click="alert('ul被点击！',$event)">UL   <!-- 调用event.preventDefault()可阻止事件继续冒泡 -->
+        <li @click="alert('li被点击！')">LI</li>
+      </ul>
+    </div>
+    <!-- stopPropagation()阻止标签元素的默认行为。例如：<a>标签的默认行为是跳转到新页面。-->
+    <a href="http://webpack-demo.com:8080/web" target="_blank">点击我可以跳转</a>
+    <a href="http://webpack-demo.com:8080/web" target="_blank" @click="alert('<a>标签被点击！',$event)">点击我不可以跳转</a>
   </div>
 </template>
 
@@ -155,6 +205,7 @@
   import Vue from 'vue';
   import SubComponent from './SubComponent.vue';  
   import HelloWorld from '@/components/father.vue';
+  import ComponentDemo from './ComponentDemo.vue';
   import _ from 'lodash';
 
   let data=[
@@ -238,6 +289,8 @@
         parentMessage: 'Parent',
         object:data_2, 
         numbers: [ 1, 2, 3, 4, 5 ,6],   
+        counter:0,
+        name:'Vue.js',
       };
     },
     methods:{
@@ -266,7 +319,20 @@
       },
       evenff:function(arr){
         arr.push(10);
-      }
+      },
+      greet:function(event){
+          alert("Hello "+this.name+"!"+"\n事件名："+event.target.tagName);
+      },
+      say:function(message){
+        this.name=message;
+      },
+      alert:function(str,event){
+        if(event){
+          event.stopPropagation();  //阻止事件继续冒泡
+          event.preventDefault();
+        }
+        alert(str);
+      },
     },
     computed:{ //计算属性
       now:function(){ return Date.now();},      
@@ -276,7 +342,14 @@
       evenNumbers:function(){
         return this.numbers.filter(num=>num%2===0);
       },
-      
+      mtodos:function(){
+          return [
+            {name:'洗衣',isComplete:true},
+            {name:'拖地',isComplete:false},
+            {name:'早餐',isComplete:true},
+            {name:'午餐',isComplete:false},
+          ];
+      },
     },
     watch:{ //侦听器
       mes:function(newMes,oldMes){
@@ -286,6 +359,7 @@
     components:{
       subcomponent:SubComponent,
       hellocomponent:HelloWorld,
+      componentDemo:ComponentDemo,
     },
     //下面是生命周期钩子回调
     beforeCreate:function(){
