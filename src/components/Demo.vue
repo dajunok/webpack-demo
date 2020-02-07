@@ -197,6 +197,79 @@
     <!-- stopPropagation()阻止标签元素的默认行为。例如：<a>标签的默认行为是跳转到新页面。-->
     <a href="http://webpack-demo.com:8080/web" target="_blank">点击我可以跳转</a>
     <a href="http://webpack-demo.com:8080/web" target="_blank" @click="alert('<a>标签被点击！',$event)">点击我不可以跳转</a>
+    <!-- 事件修饰符 -->
+    <div @click="alert('<div>标签被点击！')">
+      <ul @click="alert('<ul>标签被点击！')">
+        <li @click="alert('<li>标签被点击！')">
+          <a href="//webpack-demo.com:8080/web" target="_blank" @click="alert('<a>标签被点击！')">点击我可以跳转和冒泡</a>
+        </li>
+        <li @click="alert('<li>标签被点击！')">
+          <a href="//webpack-demo.com:8080/web" target="_blank" @click.stop="alert('<a>标签被点击！')">点击我可以跳转，但不会冒泡</a> <!-- stop修饰符阻止单击事件继续冒泡 -->
+        </li>
+        <li @click="alert('<li>标签被点击！')">
+          <a href="//webpack-demo.com:8080/web" target="_blank" @click.prevent="alert('<a>标签被点击！')">点击我不能跳转，但会冒泡</a> <!-- prevent修饰符阻止元素的默认动作 -->
+        </li>  
+        <li @click="alert('<li>标签被点击！')">
+          <a href="//webpack-demo.com:8080/web" target="_blank" @click.stop.prevent="alert('<a>标签被点击！')">点击我不能跳转，也不会冒泡</a> <!-- 串联使用修饰符stop和prevent -->
+        </li>  
+        <li @click="alert('<li>标签被点击！')">
+          <a href="//webpack-demo.com:8080/web" target="_blank" @click.stop.prevent>我只有修饰符，点击我不能跳转，也不会冒泡</a> <!-- 只有修饰符，没有事件方法 -->
+        </li>
+        <div v-on:click.capture="alert('使用事件修饰符capture，\n即内部元素触发的事件先在此处理，然后才交由内部元素进行处理')">
+           <a href="//webpack-demo.com:8080/web" target="_blank" @click="alert('<a>标签被点击！')">我采用事件捕获模式，而不是事件冒泡</a> 
+        </div>      
+        <div v-on:click.self="alert('使用事件修饰符self，\n只当在 event.target 是当前元素自身时触发处理函数\n即事件不是从内部元素触发的')">使用事件修饰符self</div>
+      </ul>
+    </div>
+    <!-- --------------------------------- 事件修饰符(end)-->
+    <!-- 按键修饰符 -->
+    <input type="text" v-on:keyup.f2="submit">    
+    <input type="text" v-on:keypress.k="submit">  
+    <br>
+    <input type="text" v-on:blur="submit"> <!--   元素失去焦点触发。 -->
+    <input v-on:keyup.page-down="submit"> <!-- 按PgDn键时触发 -->
+    <br>
+    <button v-on:click.once="submit">点击回调只会触发一次</button>  <!-- 点击回调只会触发一次 -->
+    <button v-on="{ mousedown: submit, mouseup: doEvent }">对象语法</button>  <!-- 对象语法 (2.4.0+) -->
+    <br>
+    <input @keyup.13="alert('按回车键Enter触发')"> <!-- 键修饰符，键代码 -->
+    <componentDemo :item="{id:'001',username:'zhYi',isActive:true}" :index="'3'" @click.native="doEvent">组件中的原生事件</componentDemo>
+    <!-- 按键码 keyCode 的事件用法已经被废弃了并可能不会被最新的浏览器支持。-->
+    <br>
+    <label>按键码[Tab]</label><input type="text" v-on:keyup.tab.prevent="submit()">
+    <br>
+    <label>按键码[Del]</label><input type="text" v-on:keyup.delete ="submit">  <!-- (捕获“删除”和“退格”键) -->
+    <br>
+    <label>按键码[Esc]</label><input type="text" v-on:keyup.esc="submit">
+    <br>
+    <label>按键码[Space]</label><input type="text" v-on:keyup.space="submit">
+    <br>
+    <label>按键码[up]</label><input type="text" v-on:keyup.up="submit">
+    <br>
+    <label>按键码[down]</label><input type="text" v-on:keyup.down="submit">
+    <br>
+    <label>按键码[left]</label><input type="text" v-on:keyup.left="submit">
+    <br>
+    <label>按键码[right]</label><input type="text" v-on:keyup.right="submit">
+    <br>
+    <!-- 系统修饰键 -->
+    <label>系统按键码[Alt+C]</label><input @keyup.alt.67="submit">
+    <br>
+    <div @click.ctrl="submit">系统按键码[Ctrl+Click]</div> <!-- Ctrl + Click -->
+    <br>
+    <label>Windows按键(⊞)+C</label><input @keyup.meta.67="submit"> <!-- Windows按键(⊞)+Ck -->
+    <br>
+    <!-- .exact 修饰符 精确控制由系统修饰符组合触发的事件。-->
+    <button @click.ctrl="submit">A</button> <!-- 即使其他键被一同按下时也会触发 -->
+    <button @click.ctrl.exact="submit">AB</button>  <!-- 有且只有 Ctrl 被按下的时候才触发（精确控制） -->
+    <button @click.exact="submit">ABC</button> <!-- 没有任何系统修饰符被按下的时候才触发 -->
+    <br>    
+    <!-- 鼠标按钮修饰符 -->
+    <button @click.left="submit">鼠标左键触发</button> <!-- 鼠标左键触发 -->
+    <br>
+    <button @click.right="submit">鼠标右键触发</button> <!-- 鼠标右键触发 -->
+    <br>
+
   </div>
 </template>
 
@@ -333,6 +406,12 @@
         }
         alert(str);
       },
+      submit:function(){
+        alert("提交");
+      },
+      doEvent:function(){
+        alert("弹起");
+      }
     },
     computed:{ //计算属性
       now:function(){ return Date.now();},      
@@ -351,7 +430,7 @@
           ];
       },
     },
-    watch:{ //侦听器
+    watch:{ //侦听器：检测数据是否改变，一旦改变就执行侦听器函数
       mes:function(newMes,oldMes){
           alert('新值：'+newMes+'；旧值：'+oldMes);
       }

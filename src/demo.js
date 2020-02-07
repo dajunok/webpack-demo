@@ -6,6 +6,8 @@ import './style/index.css'
 import './style/less.less'
 import './style/scss.scss'
 import './style/sass.sass'
+import ComponentDemo from '@/components/ComponentDemo.vue'
+
 
 //Node Package Manager (NPM)
 
@@ -31,9 +33,31 @@ new Vue({
       props:{   //赋值组件定义的props
           msg:'Hello Word!',    //给属性msg赋值。
       },
-    })
-}).$mount('#app')
+    }),
+    components:{Myconponent,ComponentDemo}
+}).$mount('#app');
 
+new Vue({
+    render: h => h(ComponentDemo,{
+      class:"son",      
+      domProps:{
+          //innerHTML:'第二个挂载组件', //注意：赋值组件innerHTML属性，会导致组件所有子元素被覆盖。
+      },
+      props:{
+        item:{id:'001',username:'zhYi',isActive:true},
+        index:'1',
+      },
+    },  
+    [ //添加子节点
+      '先写一些文字!',//创建文本节点（所有子节点对应父节点的innerHTML属性值）
+      h("span",{  //创建子节点对象
+          class:"son",
+          domProps:{
+              innerHTML:'我是子对象span!'
+          }
+      }),
+    ]),
+}).$mount('#app1');
 
 
 

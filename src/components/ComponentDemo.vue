@@ -1,9 +1,12 @@
 <template>
   <div class='componentDemo'>
     <div>{{item.id}}：{{item.username}}----index：{{index}}</div>
-    <button v-on:click="$emit('remove')">remove</button>    
-  </div>
+    <button v-on:click="$emit('remove')">remove</button> 
+    <br>
+    <slot></slot>  
 
+
+  </div>
 </template>
 
 
