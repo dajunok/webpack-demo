@@ -222,7 +222,7 @@
       </ul>
     </div>
     <!-- --------------------------------- 事件修饰符(end)-->
-    <!-- 按键修饰符 -->
+    <!-- 1、按键修饰符 -->
     <input type="text" v-on:keyup.f2="submit">    
     <input type="text" v-on:keypress.k="submit">  
     <br>
@@ -234,7 +234,7 @@
     <br>
     <input @keyup.13="alert('按回车键Enter触发')"> <!-- 键修饰符，键代码 -->
     <componentDemo :item="{id:'001',username:'zhYi',isActive:true}" :index="'3'" @click.native="doEvent">组件中的原生事件</componentDemo>
-    <!-- 按键码 keyCode 的事件用法已经被废弃了并可能不会被最新的浏览器支持。-->
+    <!-- 2、按键码 keyCode 的事件用法已经被废弃了并可能不会被最新的浏览器支持。-->
     <br>
     <label>按键码[Tab]</label><input type="text" v-on:keyup.tab.prevent="submit()">
     <br>
@@ -252,14 +252,14 @@
     <br>
     <label>按键码[right]</label><input type="text" v-on:keyup.right="submit">
     <br>
-    <!-- 系统修饰键 -->
+    <!-- 3、系统修饰键 -->
     <label>系统按键码[Alt+C]</label><input @keyup.alt.67="submit">
     <br>
     <div @click.ctrl="submit">系统按键码[Ctrl+Click]</div> <!-- Ctrl + Click -->
     <br>
     <label>Windows按键(⊞)+C</label><input @keyup.meta.67="submit"> <!-- Windows按键(⊞)+Ck -->
     <br>
-    <!-- .exact 修饰符 精确控制由系统修饰符组合触发的事件。-->
+    <!--4、 .exact 修饰符 精确控制由系统修饰符组合触发的事件。-->
     <button @click.ctrl="submit">A</button> <!-- 即使其他键被一同按下时也会触发 -->
     <button @click.ctrl.exact="submit">AB</button>  <!-- 有且只有 Ctrl 被按下的时候才触发（精确控制） -->
     <button @click.exact="submit">ABC</button> <!-- 没有任何系统修饰符被按下的时候才触发 -->
@@ -269,7 +269,82 @@
     <br>
     <button @click.right="submit">鼠标右键触发</button> <!-- 鼠标右键触发 -->
     <br>
-
+    <!-- 表单输入绑定：可以用 v-model 指令在表单 <input>、<textarea> 及 <select> 元素上创建双向数据绑定。
+      它会根据控件类型自动选取正确的方法来更新元素。尽管有些神奇，但 v-model 本质上不过是语法糖。
+      它负责监听用户的输入事件以更新数据，并对一些极端场景进行一些特殊处理。 -->
+    <!-- 1、文本输入：input -->
+    <input type="text" v-model.lazy="mes" placeholder="Edit me"> <!-- 懒加载修饰符.lazy（输入完成后触发） -->
+    <p>message is： {{mes}}</p>
+    <br>
+    <!-- 2、多行文本输入：textarea -->
+    <span>Multiline message is:</span>
+    <p style="white-space: pre-line;">{{ mes }}</p>
+    <textarea v-model.lazy="mes" placeholder="输入多行文本"></textarea>
+    <br>
+    <!-- 3、复选框： -->
+    <input type="checkbox" id="checkbox" v-model="checked">
+    <label for="checkbox">{{ checked }}</label>
+    <br>
+    <!-- 4、复选框组： 多个复选框，绑定到同一个数组：-->
+    <div id='example-3'>
+      <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+      <label for="jack">Jack</label>
+      <input type="checkbox" id="john" value="John" v-model="checkedNames">
+      <label for="john">John</label>
+      <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+      <label for="mike">Mike</label>
+      <br>
+      <span>Checked names: {{ checkedNames }}</span>
+    </div>
+    <!-- 5、单选按钮radio -->
+    <div id="example-4">
+      <input type="radio" id="one" value="One" v-model="picked">
+      <label for="one">One</label>
+      <br>
+      <input type="radio" id="two" value="Two" v-model="picked">
+      <label for="two">Two</label>
+      <br>
+      <span>Picked: {{ picked }}</span>
+    </div>
+    <!-- 6、选择框 -->
+    <div id="example-5">
+      <h3>单选框：</h3>
+      <select v-model="selectedStr">
+        <option disabled value="">请选择</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+      </select>
+      <span>Selected: {{ selectedStr }}</span>
+    </div>
+    <!-- 7、多选时 (绑定到一个数组)： -->
+    <div id="example-6">
+      <h3>多选框：</h3>
+      <select v-model="selectedArr" multiple style="width: 50px;"> <!-- multiple属性规定可同时选择多个选项。 -->
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+      </select>
+      <br>
+      <span>Selected: {{ selectedArr }}</span>
+    </div>
+    <!-- 8、值绑定：对于单选按钮，复选框及选择框的选项，v-model 绑定的值通常是静态字符串 (对于复选框也可以是布尔值)： -->
+    <!-- (1)单选框值绑定 -->
+    <h3>值绑定：</h3>
+    <input type="radio" id="A" v-model="picked" value="a"> <!-- 当选中时，`picked` 为字符串 "a" -->
+    <label for="A">A</label>
+    <br>
+    <!-- (2)复选框值绑定 -->
+    <input type="checkbox" v-model="toggle"> <!-- `toggle` 为 true 或 false -->
+    <br>
+    <!-- (3)选择框值绑定 -->
+    <select v-model="selectedStr">  <!-- 当选中第一个选项时，`selected` 为字符串 "abc" -->
+      <option value="abc">ABC</option>
+      <option value="efg">EFG</option>
+    </select>
+    <span>{{selectedStr}}</span>
+    <br>
+    <!--  -->
   </div>
 </template>
 
@@ -364,6 +439,12 @@
         numbers: [ 1, 2, 3, 4, 5 ,6],   
         counter:0,
         name:'Vue.js',
+        checked:false,
+        checkedNames:[],
+        picked:'One',
+        selectedArr:[],
+        selectedStr:'',
+        toggle:'',
       };
     },
     methods:{
