@@ -269,7 +269,8 @@
     <br>
     <button @click.right="submit">鼠标右键触发</button> <!-- 鼠标右键触发 -->
     <br>
-    <!-- 表单输入绑定：可以用 v-model 指令在表单 <input>、<textarea> 及 <select> 元素上创建双向数据绑定。
+    <!-- 表单输入绑定：
+      可以用 v-model 指令在表单 <input>、<textarea> 及 <select> 元素上创建双向数据绑定。
       它会根据控件类型自动选取正确的方法来更新元素。尽管有些神奇，但 v-model 本质上不过是语法糖。
       它负责监听用户的输入事件以更新数据，并对一些极端场景进行一些特殊处理。 -->
     <!-- 1、文本输入：input -->
@@ -344,7 +345,38 @@
     </select>
     <span>{{selectedStr}}</span>
     <br>
-    <!--  -->
+    <!-- 9、v-model与v-bind配合实现动态绑定 -->
+    <h3>v-model与v-bind配合实现动态绑定：</h3>
+    <!-- (1) 单选按钮-->
+    <input type="radio" v-model="pick" v-bind:value="a">
+    <span>{{pick}}</span>
+    <br>
+    <!-- (2) 选择框的选项 -->
+    <select v-model="selectedobj">       
+      <option v-bind:value="{ number: 123 }">123</option>  <!-- 内联对象字面量 -->
+      <option v-bind:value="{ number: 456 }">456</option>
+    </select>
+    <span>{{selectedobj}}</span>
+    <br>
+    <!-- (3) v-model修饰符 -->  
+    <h3>v-model修饰符：</h3>
+    <!--# .lazy -->
+    <input v-model.lazy="nmsg" > <!-- 懒加载.lazy，在“change”时而非“input”时更新。在默认情况下，v-model 在每次 input 事件触发后将输入框的值与数据进行同步 (除了上述输入法组合文字时)。你可以添加 lazy 修饰符，从而转变为使用 change 事件进行同步： -->
+    <span>{{nmsg}}</span>
+    <br>
+    <!--# .number -->
+    <input v-model.number="age" type="number"> <!-- 如果想自动将用户的输入值转为数值类型，可以给 v-model 添加 number 修饰符： -->
+    <span>{{age}}</span>
+    <br>
+    <!--# .trim -->
+    <input v-model.trim="nmsg"> <!-- 如果要自动过滤用户输入的首尾空白字符，可以给 v-model 添加 trim 修饰符： -->
+    <span>{{nmsg}}</span>
+    <br>
+    <!--10、 在组件上使用 v-model（自定义组件的 v-model）： 一个组件上的 v-model 默认会利用名为 value 的 prop 和名为 input 的事件，
+            但是像单选框、复选框等类型的输入控件可能会将 value attribute 用于不同的目的。
+            model 选项可以用来避免这样的冲突：-->
+    <componentDemo v-model="isBoole" :item="{id:'001',username:'zhYi',isActive:true}" :index="'3'"></componentDemo> <!-- 这里的 isBoole 的值将会传入这个名为 checked 的 prop。同时当 <base-checkbox> 触发一个 change 事件并附带一个新的值的时候，这个 isBoole 的属性将会被更新。 -->
+ 
   </div>
 </template>
 
@@ -445,6 +477,12 @@
         selectedArr:[],
         selectedStr:'',
         toggle:'',
+        pick:'',
+        a:'pick--a',
+        selectedobj:{},
+        nmsg:'懒加载',
+        age:0,
+        isBoole:false,
       };
     },
     methods:{
@@ -492,7 +530,8 @@
       },
       doEvent:function(){
         alert("弹起");
-      }
+      },
+      
     },
     computed:{ //计算属性
       now:function(){ return Date.now();},      
