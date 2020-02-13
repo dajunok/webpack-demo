@@ -377,6 +377,21 @@
             model 选项可以用来避免这样的冲突：-->
     <componentDemo v-model="isBoole" :item="{id:'001',username:'zhYi',isActive:true}" :index="'3'"></componentDemo> <!-- 这里的 isBoole 的值将会传入这个名为 checked 的 prop。同时当 <base-checkbox> 触发一个 change 事件并附带一个新的值的时候，这个 isBoole 的属性将会被更新。 -->
     <!-- ============================组件基础=============================== -->
+    <!-- 动态组件 -->
+    <button @click="chComponent('Home')">Home</button>
+    <button @click="chComponent('Posts')">Posts</button>
+    <button @click="chComponent('Archive')">Archive</button>
+    <component v-bind:is="currentTabComponent" :age="20" :item="{id:'001',username:'zhYi',isActive:true}"></component>
+    <!-- 解析 DOM 模板时的注意事项 
+      有些 HTML 元素，诸如 <ul>、<ol>、<table> 和 <select>，对于哪些元素可以出现在其内部是有严格限制的。
+      而有些元素，诸如 <li>、<tr> 和 <option>，只能出现在其它某些特定的元素内部。
+    -->
+    <!-- 组件属性Prop -->
+    <!-- 非 Prop 的 Attribute 一个非 prop 的 attribute 是指传向一个组件，但是该组件并没有相应 prop 定义的 attribute。
+         因为显式定义的 prop 适用于向一个子组件传入信息，然而组件库的作者并不总能预见组件会被用于怎样的场景。
+         这也是为什么组件可以接受任意的 attribute，而这些 attribute 会被添加到这个组件的根元素上。-->
+    
+
 
   </div>
 </template>
@@ -485,6 +500,7 @@
         nmsg:'懒加载',
         age:0,
         isBoole:false,
+        currentTabComponent:"",
       };
     },
     methods:{
@@ -533,7 +549,15 @@
       doEvent:function(){
         alert("弹起");
       },
-      
+      chComponent:function(componentName){
+        if(componentName==="Home"){
+          this.currentTabComponent="subcomponent";
+        }else if(componentName==="Posts"){
+          this.currentTabComponent="hellocomponent";
+        }else if(componentName==="Archive"){
+          this.currentTabComponent="componentDemo";
+        }
+      }
     },
     computed:{ //计算属性
       now:function(){ return Date.now();},      
