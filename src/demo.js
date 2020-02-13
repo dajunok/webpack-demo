@@ -7,6 +7,7 @@ import './style/less.less'
 import './style/scss.scss'
 import './style/sass.sass'
 import ComponentDemo from '@/components/ComponentDemo.vue'
+import Blogpost from '@/views/Blogpost.vue'
 
 
 //Node Package Manager (NPM)
@@ -59,6 +60,10 @@ new Vue({
     ]),
 }).$mount('#app1');
 
+
+new Vue({
+    render: h => h(Blogpost)
+}).$mount('#app2');
 
 
 

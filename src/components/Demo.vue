@@ -376,7 +376,8 @@
             但是像单选框、复选框等类型的输入控件可能会将 value attribute 用于不同的目的。
             model 选项可以用来避免这样的冲突：-->
     <componentDemo v-model="isBoole" :item="{id:'001',username:'zhYi',isActive:true}" :index="'3'"></componentDemo> <!-- 这里的 isBoole 的值将会传入这个名为 checked 的 prop。同时当 <base-checkbox> 触发一个 change 事件并附带一个新的值的时候，这个 isBoole 的属性将会被更新。 -->
- 
+    <!-- ============================组件基础=============================== -->
+
   </div>
 </template>
 
@@ -387,7 +388,8 @@
   import HelloWorld from '@/components/father.vue';
   import ComponentDemo from './ComponentDemo.vue';
   import _ from 'lodash';
-
+  
+  
   let data=[
               { text: '学习 JavaScript' },
               { text: '学习 Vue' },
