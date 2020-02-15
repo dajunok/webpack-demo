@@ -1,11 +1,11 @@
 import Vue from 'vue'
-import Myconponent from '@/components/Demo.vue'
 import html from './file.html'    //利用html-loader加载器以字符串形式导入HTML文件。
 //const html=require('./file.html')   //利用html-loader加载器导入HTML文件。
 import './style/index.css'
 import './style/less.less'
 import './style/scss.scss'
 import './style/sass.sass'
+import Myconponent from '@/views/Demo.vue'
 import ComponentDemo from '@/components/ComponentDemo.vue'
 import Blogpost from '@/views/Blogpost.vue'
 

@@ -20,6 +20,18 @@ export default{
     methods:{},
     watch:{},
     components:{},
+    // 生命周期钩子
+    beforeCreate:function(){},
+    created:function(){},
+    beforeMount:function(){},
+    mounted:function(){},
+    beforeUpdate:function(){},
+    updated:function(){},
+    activated:function(){},
+    deactivated:function(){},
+    beforeDestroy:function(){},
+    destroyed:function(){},
+    errorCaptured:function(){},
 
 }
 

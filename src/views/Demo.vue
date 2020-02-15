@@ -399,9 +399,9 @@
 
 <script type="text/javascript">
   import Vue from 'vue';
-  import SubComponent from './SubComponent.vue';  
+  import SubComponent from '@/components/SubComponent.vue';  
   import HelloWorld from '@/components/father.vue';
-  import ComponentDemo from './ComponentDemo.vue';
+  import ComponentDemo from '@/components/ComponentDemo.vue';
   import _ from 'lodash';
   
   

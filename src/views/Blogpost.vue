@@ -38,6 +38,50 @@
         placeholder="Enter your username" 
         data-date-picker="activated">
     </baseinput>
+    <!-- 将原生事件绑定到组件：$listeners 属性 -->
+    <div>
+      <h2>组件A 数据项:{{myData}}</h2>
+      <B @changeMyData="changeMyData" :myData="myData" fullName="涂胜利"></B>
+    </div>
+    <!-- .sync 修饰符 
+      $emit(update: prop, "newPropVulue")  这个模式，使子组件向父组件传达：更新属性，
+      并抛出新的属性值.sync 修饰符 是以上模式的简写
+    -->
+    <text-document :age="age" v-on:update:age="(res)=>age=res" ></text-document>
+    <text-document :age="age" v-on:update:age="age=$event" ></text-document>
+    <text-document :age.sync="age" ></text-document>
+    <!-- 插槽 -->
+    <text-document :age.sync="age" >{{fullname}}</text-document>  
+    <!--1、 插槽的后备内容 -->
+    <text-document :age.sync="age" ></text-document>
+    <!--2、 具名插槽 -->
+    <text-document :age.sync="age" >
+      <template v-slot:header>
+        <h1>Here might be a page title</h1>
+      </template>
+      <template v-slot:default>
+        <p>A paragraph for the main content.</p>
+        <p>And another one.</p>
+      </template>
+      <template v-slot:footer>
+        <p>Here's some contact info</p>
+      </template>
+    </text-document>
+    <!--3、 作用域插槽。 让插槽内容能够访问子组件中才有的数据是很有用的。-->
+    <text-document :age.sync="age" >
+      <template v-slot:scope="slotpro">
+        <h1>{{ slotpro.user.lastName }}{{slotpro.user.firstname}}</h1>
+      </template>
+    </text-document>
+    <!--4、 独占默认插槽的缩写语法 -->
+    <text-document :age.sync="age" >
+      <template v-slot="slotdef">
+        <h1>{{ slotdef.user.lastName }}{{slotdef.user.firstname}}----独占默认插槽的缩写语法</h1>
+      </template>
+    </text-document>
+    <!--5、 解构插槽 Prop -->
+
+
   </div>
 </template>
 
@@ -46,6 +90,8 @@
 import BlogComponent from '@/components/BlogComponent.vue'; 
 import PropComponent from '@/components/PropComponent.vue';
 import Baseinput from "@/components/Baseinput.vue";
+import B from "@/components/B.vue";
+import TextDocument from "@/components/TextDocument.vue";
 
 let postsdata=[
         { id: 1, title: 'My journey with Vue' },
@@ -59,17 +105,25 @@ export default{
     return {
       posts:postsdata,
       postFontSize:1,
+      myData: "100",
+      age:0,
+      fullname:'涂阳',
     }
   },
   methods:{
     computFontSize:function(size){
        this.postFontSize+=size;
-    }
+    },
+    changeMyData:function(val) {
+      this.myData = val;
+    },
   },
   components:{
     blogComponent:BlogComponent,
     propComponent:PropComponent,
     baseinput:Baseinput,
+    B:B,
+    'text-document':TextDocument,
   }
 }
 
