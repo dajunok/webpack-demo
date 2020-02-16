@@ -50,7 +50,7 @@
     <text-document :age="age" v-on:update:age="(res)=>age=res" ></text-document>
     <text-document :age="age" v-on:update:age="age=$event" ></text-document>
     <text-document :age.sync="age" ></text-document>
-    <!-- 插槽 -->
+    <!-- ==============插槽============================= -->
     <text-document :age.sync="age" >{{fullname}}</text-document>  
     <!--1、 插槽的后备内容 -->
     <text-document :age.sync="age" ></text-document>
@@ -79,7 +79,50 @@
         <h1>{{ slotdef.user.lastName }}{{slotdef.user.firstname}}----独占默认插槽的缩写语法</h1>
       </template>
     </text-document>
-    <!--5、 解构插槽 Prop -->
+    <!--5、 解构插槽 Prop 。作用域插槽的内部工作原理是将你的插槽内容包括在一个传入单个参数的函数里-->
+    <text-document :age.sync="age" >
+      <template v-slot="{user}">  
+        <h1>{{ user.lastName }}{{user.firstname}}----解构插槽 Prop</h1>
+      </template>
+    </text-document>
+    <!-- -------------------------------------- -->
+    <text-document :age.sync="age" >
+      <template v-slot="{user:person}">  
+        <h1>{{ person.lastName }}{{person.firstname}}----使用别名解构插槽 Prop</h1>
+      </template>
+    </text-document>
+    <!-- -------------------------------------- -->
+    <text-document :age.sync="age" >
+      <template v-slot="{guest={fullname:'张万三'}}">  
+        <h1>{{ guest.fullname }}----给没有定义的prop使用默认值，解构插槽 Prop</h1>
+      </template>
+    </text-document>
+    <!--6、 动态插槽名 。动态指令参数也可以用在 v-slot 上，来定义动态的插槽名：-->
+    <text-document :age.sync="age" >
+      <template v-slot:[dynamicSlotName]>  
+        <h1>动态插槽名{{dynamicSlotName}}</h1>
+      </template>
+    </text-document>
+    <!--7、 具名插槽的缩写 。
+           跟 v-on 和 v-bind 一样，v-slot 也有缩写，即把参数之前的所有内容 (v-slot:) 替换为字符 #。
+           例如 v-slot:header 可以被重写为 #header：-->
+    <text-document :age.sync="age" >
+      <template #other>  
+        <h1>具名插槽的缩写</h1>
+      </template>
+    </text-document>
+    <!-- =================动态组件 & 异步组件============== -->
+    <!--1、 在动态组件上使用 keep-alive -->
+    <button @click="chComponent('Home')">Home</button>
+    <button @click="chComponent('Posts')">Posts</button>
+    <button @click="chComponent('Archive')">Archive</button>
+    <keep-alive> <!-- 失活的组件将会被缓存！-->
+      <component v-bind:is="currentTabComponent" :age="20" :item="{id:'001',username:'zhYi',isActive:true}"></component>
+    </keep-alive>
+    <!--2、 可复用性 & 组合 -->
+    <h1 @click="hello">年龄：{{age}}，电脑：{{computer}}</h1>
+    
+    
 
 
   </div>
@@ -87,11 +130,18 @@
 
 
 <script type="text/javascript">
+import SubComponent from '@/components/SubComponent.vue';  
+import HelloWorld from '@/components/father.vue';
+import ComponentDemo from '@/components/ComponentDemo.vue';
 import BlogComponent from '@/components/BlogComponent.vue'; 
 import PropComponent from '@/components/PropComponent.vue';
 import Baseinput from "@/components/Baseinput.vue";
 import B from "@/components/B.vue";
 import TextDocument from "@/components/TextDocument.vue";
+
+
+
+
 
 let postsdata=[
         { id: 1, title: 'My journey with Vue' },
@@ -99,8 +149,24 @@ let postsdata=[
         { id: 3, title: 'Why Vue is so fun' }
       ];
 
+//选项合并
+var son={
+  data:function(){
+    return {
+      age:20,
+      computer:'台式',
+    }    
+  },
+  methods: {
+    hello: function () {
+      console.log('hello from mixin!')
+    }
+  },
+}
+
 export default{
   name:'blogpost',
+  mixins:[son],   //data数据合并混入
   data:function(){
     return {
       posts:postsdata,
@@ -108,6 +174,8 @@ export default{
       myData: "100",
       age:0,
       fullname:'涂阳',
+      dynamicSlotName:'other',
+      currentTabComponent:"",
     }
   },
   methods:{
@@ -117,14 +185,26 @@ export default{
     changeMyData:function(val) {
       this.myData = val;
     },
+    chComponent:function(componentName){
+      if(componentName==="Home"){
+        this.currentTabComponent="subcomponent";
+      }else if(componentName==="Posts"){
+        this.currentTabComponent="hellocomponent";
+      }else if(componentName==="Archive"){
+        this.currentTabComponent="componentDemo";
+      }
+    },
   },
   components:{
+    subcomponent:SubComponent,
+    hellocomponent:HelloWorld,
+    componentDemo:ComponentDemo,
     blogComponent:BlogComponent,
     propComponent:PropComponent,
     baseinput:Baseinput,
     B:B,
     'text-document':TextDocument,
-  }
+  },
 }
 
   

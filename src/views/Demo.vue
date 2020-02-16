@@ -557,7 +557,7 @@
         }else if(componentName==="Archive"){
           this.currentTabComponent="componentDemo";
         }
-      }
+      },
     },
     computed:{ //计算属性
       now:function(){ return Date.now();},      
