@@ -1,8 +1,9 @@
 <template>
   <div>
     <!-- 单一状态树 State -->
-    <h1>count：{{count}}----{{num}}----{{countAlias}}----{{countPlusLocalState}}</h1>
+    <h1>count：{{count}}----{{num}}----{{countAlias}}----{{countPlusLocalState}}</h1>    
     <!-- Getter 。从 store 中的 state 中派生出一些状态，例如对列表进行过滤并计数-->
+    <h1># Getter</h1>
     <span>从 store 中的 state 中派生出一些状态，对列表进行过滤计数：{{doneTodoCount}}-------{{doneTodoNum}}</span><br>
     <p>通过方法访问：{{myTodo.text}}------{{myDoneCount}}----{{myTodoId(2).text}}</p>
     <!-- # Mutation。
@@ -16,6 +17,10 @@
     <button @click='DECREMENT_MUTATION'>递减状态count</button><br> <!-- 使用常量替代 Mutation 事件类型 -->
     <button @click='decrement'>decrement递减状态count</button><br> <!-- 使用常量替代 Mutation 事件类型,并且使用别名 -->
     <h1># Action</h1>
+    <!-- 1、分发 Action -->
+    <button @click='incrementAsync'>action内部执行异步操作：两秒后触发递增Count</button><br>
+    <button @click='addAsync(50)'>以载荷带类型参数形式分发：两秒后触发递 </button><br>
+    <button @click='addObjAsync(localObje)'>对象参数形式分发：叁秒后触发递</button><br>
     
 
 
@@ -28,6 +33,7 @@
     import { mapState } from 'vuex';    //可以使用 mapState 辅助函数帮助我们生成计算属性，让你少按几次键
     import {mapGetters} from 'vuex';    //mapGetters 辅助函数仅仅是将 store 中的 getter 映射到局部计算属性
     import {mapMutations} from 'vuex';  //使用 mapMutations 辅助函数将组件中的 methods 映射为 store.commit 调用（需要在根节点注入 store）
+    import { mapActions } from 'vuex';  //或者使用 mapActions 辅助函数将组件的 methods 映射为 store.dispatch 调用（需要先在根节点注入 store）
     import { DECREMENT_MUTATION } from '@/other/mutation-types'  //Mutation 常量事件类型导入
 
 
@@ -66,6 +72,7 @@ export default{
             myTodoId:'getTodoById',
             myDoneCount:'doneTodosCount',
         }),
+        
 
     },
     methods:{
@@ -79,6 +86,12 @@ export default{
         ...mapMutations({
             DECREMENT_MUTATION,  //使用常量替代 Mutation 事件类型
             decrement:DECREMENT_MUTATION,  //使用常量替代 Mutation 事件类型,并且使用别名
+        }),
+        //mapActions 辅助函数
+        ...mapActions({
+            incrementAsync:'incrementAsync',
+            addAsync:'addAsync',
+            addObjAsync:'addObjAsync',
         }),
     },
     watch:{},

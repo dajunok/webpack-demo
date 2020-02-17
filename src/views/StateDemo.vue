@@ -14,6 +14,18 @@
     store.commit('increment');
     console.log('计数count：'+store.state.count) // -> 1
 
+    //分发 Action
+    store.dispatch('decrement');    
+    store.dispatch('addAsync', 5 );  // 以载荷带类型参数形式分发   
+    
+    store.dispatch('addObjAsync', { amount: 5 });  // 以载荷带对象参数形式分发 
+    // 以对象形式分发
+    store.dispatch({
+      type: 'addObjAsync',
+      amount: 5
+    });
+
+
 export default{
     name:'example',
     props:{},

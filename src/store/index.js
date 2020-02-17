@@ -40,13 +40,29 @@ export default new Vuex.Store({
         state.count--; 
     },
   },
-  actions: {
+  actions: {  //Action 提交的是 mutation，而不是直接变更状态。
     increment(context){
       context.commit('increment');
     },
-    decrement({commit}){
+    decrement({commit}){  //使用ES2015 的参数解构来简化代码（特别是我们需要调用 commit 很多次的时候）
       commit(DECREMENT_MUTATION);
     },
+    incrementAsync({commit}){
+      setTimeout(()=>{
+        commit('increment');
+      },2000);
+    },
+    addAsync({commit},n){  //Mutation异步触发：add(state,n)
+      setTimeout(()=>{
+        commit('add',n);
+      },2000);
+    },
+    addObjAsync({commit},payload){
+      setTimeout(()=>{
+        commit('addObj',payload);
+      },3000);
+    },
+
   },
   modules: {
   }
