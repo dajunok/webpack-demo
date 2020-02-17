@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>统一状态管理Vuex</h1>
-    <store-counter></store-counter>
+    <store-component></store-component>
   </div>
   
 </template>
@@ -9,7 +9,7 @@
 
 <script type="text/javascript">
     import store from '@/store';
-    import Counter from '@/components/Counter.vue';
+    import VuexComponent from '@/components/VuexComponent.vue';
 
     store.commit('increment');
     console.log('计数count：'+store.state.count) // -> 1
@@ -29,7 +29,7 @@ export default{
     watch:{},
     store,  //将store注入所有子组件
     components:{
-        'store-counter':Counter
+        'store-component':VuexComponent
     },
     // 生命周期钩子
     beforeCreate:function(){},
