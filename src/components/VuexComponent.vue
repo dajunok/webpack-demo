@@ -17,6 +17,9 @@
     <button @click='DECREMENT_MUTATION'>递减状态count</button><br> <!-- 使用常量替代 Mutation 事件类型 -->
     <button @click='decrement'>decrement递减状态count</button><br> <!-- 使用常量替代 Mutation 事件类型,并且使用别名 -->
     <h1># Action</h1>
+    <!-- Action 函数接受一个与 store 实例具有相同方法和属性的 context 对象，因此你可以调用 context.commit 提交一个 mutation，
+        或者通过 context.state 和 context.getters 来获取 state 和 getters。当我们在之后介绍到 Modules 时，
+        你就知道 context 对象为什么不是 store 实例本身了。 -->
     <!-- 1、分发 Action -->
     <button @click='incrementAsync'>action内部执行异步操作：两秒后触发递增Count</button><br>
     <button @click='addAsync(50)'>以载荷带类型参数形式分发：两秒后触发递 </button><br>
