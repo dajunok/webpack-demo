@@ -31,10 +31,13 @@ export default new Vuex.Store({
     }, 
     shop:{  //定义超市对象
         products:[],
-        buyProducts:function(pro,succFun,faiFun){
-          this.products=[...pro];
-          succFun();
-          faiFun();
+        buyProducts:function(pro,succFun,faiFun){          
+          if(pro.length>0){
+            this.products=[...pro];
+            succFun();
+          }else{
+            faiFun();
+          }           
         }
     },
 
@@ -105,7 +108,7 @@ export default new Vuex.Store({
     //模拟电子商城
     checkout ({ commit, state }, products) {
       // 把当前购物车的物品备份起来
-      const savedCartItems = [...state.cart.added];
+      const savedCartItems = [...state.cart.added()];
       // 发出结账请求，然后乐观地清空购物车
       commit(types.CHECKOUT_REQUEST);
       // 购物 API 接受一个成功回调和一个失败回调

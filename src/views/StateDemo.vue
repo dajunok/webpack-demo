@@ -14,25 +14,30 @@
 
     store.commit('increment');
     console.log('计数count：'+store.state.count) // -> 1
-    console.log(`cart：${JSON.stringify(store.state.cart.added())}`);
+/*    console.log(`cart：${JSON.stringify(store.state.cart.added())}`);
     store.commit(types.CHECKOUT_REQUEST);  //常量形式提交
-    console.log(`cart：${JSON.stringify(store.state.cart.added())}`);
-
+    console.log(`cart：${JSON.stringify(store.state.cart.items)}`);
+    store.commit(types.CHECKOUT_SUCCESS,['e','f','g','h']);
+    console.log(`CHECKOUT_SUCCESS order：${JSON.stringify(store.state.order.items)}`);
+    store.commit(types.CHECKOUT_FAILURE,['e','f','g','h']);
+    console.log(`CHECKOUT_FAILURE cart：${JSON.stringify(store.state.cart.items)}`);*/
     //分发 Action
     store.dispatch('decrement');    
     store.dispatch('addAsync', 5 );  // 以载荷带类型参数形式分发 
 
     store.dispatch('addObjAsync', { amount: 5 });  // 以载荷带对象参数形式分发 
+    let proArr=['e','f','g','h'];
+
     // 以对象形式分发
     store.dispatch({
       type: 'addObjAsync',
       amount: 5
     });
     // 以对象形式分发(购物车)
-    store.dispatch({
-      type: 'checkout',
-      products: ['h','i','j','k']
-    });
+    store.dispatch('checkout', proArr);
+    console.log(`CHECKOUT_SUCCESS order：${JSON.stringify(store.state.order.items)}`);
+    console.log(`CHECKOUT_FAILURE cart：${JSON.stringify(store.state.cart.items)}`);
+
 
 
 export default{
