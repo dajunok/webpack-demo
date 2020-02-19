@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import { DECREMENT_MUTATION } from '@/other/mutation-types'  //Mutation 常量事件类型导入
 import * as types from '@/other/mutation-types'  //Mutation 常量事件类型导入
+import School from './school.js'  //导入store状态管理模块School
 
 Vue.use(Vuex)
 
@@ -9,6 +10,21 @@ let time1 = new types.currentDate().Format("yyyy-MM-dd");  //=> 2020-02-18
 let time2 = new types.currentDate().Format("yyyy-MM-dd HH:mm:ss");  //=> 2020-02-18 16:57:28
 console.log(`当前时间：${time1}   ${time2}`);
 
+
+
+const moduleB={  //公司
+  namespaced: true,
+  state:{
+    name:'电力燃料有限公司',
+    address:'基业一路',
+    telephone:'88888888',
+    scale:200,
+  },
+  getters:{},
+  mutations:{},
+  actions:{},
+  modules:{}
+}
 
 
 export default new Vuex.Store({
@@ -40,6 +56,9 @@ export default new Vuex.Store({
           }           
         }
     },
+    //模拟开学流程
+    reportDuty:false,  //报到状态
+    homework:false,   //作业完成状态
 
   },
   getters:{
@@ -51,7 +70,7 @@ export default new Vuex.Store({
     },
     getTodoById:(state)=>(id)=>{  //多个连续的箭头函数与柯里化
       return state.todos.find(todo=>todo.id===id);
-    },    
+    },
   },
   mutations: {
     increment (state) {
@@ -78,6 +97,14 @@ export default new Vuex.Store({
     [types.CHECKOUT_FAILURE](state,savItems){
       state.cart.items=[...savItems];  //提交失败则恢复购物车。
     },
+    //模拟开学流程
+    checkReport(state){
+      state.reportDuty=true;  //学生报到
+    },
+    checkHomework(state){
+      state.homework=true;    //检查作业
+    },
+
   },
   /* # Action 函数接受一个与 store 实例具有相同方法和属性的 context 对象，因此你可以调用 context.commit 提交一个 mutation，
     或者通过 context.state 和 context.getters 来获取 state 和 getters。当我们在之后介绍到 Modules 时，
@@ -120,8 +147,29 @@ export default new Vuex.Store({
         () => commit(types.CHECKOUT_FAILURE, savedCartItems)
       );
     },  
+    //# 组合 Action  模拟开学流程
+    completeReport({commit,state}){
+      return new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+          commit('checkReport');
+          resolve(state.reportDuty);
+        },2000);          
+      });
+    },
+    completeHomework({dispatch,commit}){
+      //store.dispatch 可以处理被触发的 action 的处理函数返回的 Promise，并且 store.dispatch 仍旧返回 Promise
+      return dispatch('completeReport').then((rep)=>{
+        if(rep){
+          commit('checkHomework');
+        }else{
+          console.log("还没有报到！");
+        }         
+      });
+    },
 
   },
   modules: {
+    school:School,  //学校
+    b:moduleB,  //公司
   }
 })
