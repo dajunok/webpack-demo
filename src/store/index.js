@@ -3,6 +3,10 @@ import Vuex from 'vuex'
 import { DECREMENT_MUTATION } from '@/other/mutation-types'  //Mutation 常量事件类型导入
 import * as types from '@/other/mutation-types'  //Mutation 常量事件类型导入
 import School from './school.js'  //导入store状态管理模块School
+import myPlugin from './myPlugin.js'  //导入store插件
+import stateSnapshotPlugin from './stateSnapshotPlugin.js'  //导入store插件
+import webSocketPlugin from './webSocketPlugin.js'  //导入store插件构建函数，该函数的返回值才是一个store插件。
+
 
 Vue.use(Vuex)
 
@@ -26,39 +30,45 @@ const moduleB={  //公司
   modules:{}
 }
 
+var socket="WebSocket简介：\n WebSocket协议在2008年诞生，2011年成为国际标准。\n 它的最大特点就是，服务器可以主动向客户端推送信息，\n 客户端也可以主动向服务器发送信息，是真正的双向平等对话，属于服务器推送技术的一种。";
+const webPlugin=webSocketPlugin(socket);  //函数返回一个store插件
 
 export default new Vuex.Store({
-  state: {
-    count: 0,
-    todos:[
-      {id:1,text:'Web前端学习',done:true},
-      {id:2,text:'Web后端学习',done:false},
-      {id:3,text:'Web移到端学习',done:true},
-    ],
-    cart:{  //购物车
-      items:['a','b','c'],
-      added:function(){
-        return this.items;
+    strict: true,  //开启严格模式。在严格模式下，无论何时发生了状态变更且不是由 mutation 函数引起的，将会抛出错误。这能保证所有的状态变更都能被调试工具跟踪到。
+    plugins:[myPlugin,stateSnapshotPlugin,webPlugin],    //Store 插件，Vuex 的 store 接受 plugins 选项，这个选项暴露出每次 mutation 的钩子。
+    state: {    
+      count: 0,
+      todos:[
+        {id:1,text:'Web前端学习',done:true},
+        {id:2,text:'Web后端学习',done:false},
+        {id:3,text:'Web移到端学习',done:true},
+      ],
+      cart:{  //购物车
+        items:['a','b','c'],
+        added:function(){
+          return this.items;
+        },
       },
-    },
-    order:{ //订单
-      items:[],
-      buyDate:'',
-    }, 
-    shop:{  //定义超市对象
-        products:[],
-        buyProducts:function(pro,succFun,faiFun){          
-          if(pro.length>0){
-            this.products=[...pro];
-            succFun();
-          }else{
-            faiFun();
-          }           
-        }
-    },
-    //模拟开学流程
-    reportDuty:false,  //报到状态
-    homework:false,   //作业完成状态
+      order:{ //订单
+        items:[],
+        buyDate:'',
+      }, 
+      shop:{  //定义超市对象
+          products:[],
+          buyProducts:function(pro,succFun,faiFun){          
+            if(pro.length>0){
+              this.products=[...pro];
+              succFun();
+            }else{
+              faiFun();
+            }           
+          }
+      },
+      //模拟开学流程
+      reportDuty:false,  //报到状态
+      homework:false,   //作业完成状态
+      //websocket
+      websocket:'',
 
   },
   getters:{
@@ -73,6 +83,9 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    modifyWebsocket(state,socket){
+      state.websocket=socket;
+    },
     increment (state) {
       state.count++;
     },

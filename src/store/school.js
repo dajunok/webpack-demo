@@ -1,4 +1,4 @@
-export default {  //学校
+export default {  //学校Module
   namespaced: true,
   state:{
     name:'阳光一小',

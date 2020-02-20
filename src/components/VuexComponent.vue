@@ -39,7 +39,11 @@
     <button v-on:click="complete">完成报到与作业检查</button><br>
     <h1># Module</h1>
     <p>学校名称：{{school}}----------{{getSchool}}----------公司名称：{{corporation}}</p>
-
+    <!-- # 插件 
+        Vuex 的 store 接受 plugins 选项，这个选项暴露出每次 mutation 的钩子。Vuex 插件就是一个函数，它接收 store 作为唯一参数：
+    -->
+    <h1># Store 插件</h1>
+    <p style="white-space: pre-wrap;">{{websocket}}</p>
 
     
 
@@ -87,7 +91,8 @@ export default{
             cart:'cart',
             order:'order',
             reportDuty:'reportDuty',  //报到状态
-            homework:'homework',   //作业完成状态            
+            homework:'homework',   //作业完成状态 
+            websocket:'websocket',             
         }),
         doneTodoCount(){
             return this.$store.state.todos.filter(todo=>todo.done).length;
