@@ -24,6 +24,8 @@ module.exports={
         index:'./main.js',  
         demo:'./demo.js',
         vuex:'./vuexState.js',
+        router:'./vueRouter.js',
+        
     },
     output:{   
       path:path.resolve(__dirname,'./dist'),   //将输出文件都放到dist目录下 
@@ -245,6 +247,18 @@ module.exports={
             filename: 'vuex.html', // 生成的html文件名，该文件将被放置在输出目录
             chunks: ['vuex'],            
             template: path.join(__dirname, './public/stateVuex.ejs'),    // 模板源html或ejs文件路径
+            minify:{  //代码压缩
+                    removeRedundantAttributes:true, // 删除多余的属性
+                    collapseWhitespace:true, // 折叠空白区域
+                    removeAttributeQuotes: true, // 移除属性的引号
+                    removeComments: true, // 移除注释
+                    collapseBooleanAttributes: true // 省略只有 boolean 值的属性值 例如：readonly checked
+            },
+        }),
+        new HtmlWebpackPlugin({            
+            filename: 'router.html', // 生成的html文件名，该文件将被放置在输出目录
+            chunks: ['router'],            
+            template: path.join(__dirname, './public/router.ejs'),    // 模板源html或ejs文件路径
             minify:{  //代码压缩
                     removeRedundantAttributes:true, // 删除多余的属性
                     collapseWhitespace:true, // 折叠空白区域

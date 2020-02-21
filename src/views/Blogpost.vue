@@ -41,7 +41,7 @@
     <!-- 将原生事件绑定到组件：$listeners 属性 -->
     <div>
       <h2>组件A 数据项:{{myData}}</h2>
-      <B @changeMyData="changeMyData" :myData="myData" fullName="涂胜利"></B>
+      <B @changeMyData="changeMyData($event)" :myData="myData" fullName="涂胜利"></B> <!-- 当回调函数只出入$event实参时，在此处可以省略$event不填，系统会自动传入 -->
     </div>
     <!-- .sync 修饰符 
       $emit(update: prop, "newPropVulue")  这个模式，使子组件向父组件传达：更新属性，
@@ -121,7 +121,10 @@
     </keep-alive>
     <!--2、 可复用性 & 组合 -->
     <h1 @click="hello">年龄：{{age}}，电脑：{{computer}}</h1>
-    
+    <!-- ===================过滤器========================== -->
+    <h3># 过滤器</h3>
+    <input type="text" v-model="filterStr">
+    <p>{{filterStr|capitalize}}</p>
     
 
 
@@ -176,6 +179,7 @@ export default{
       fullname:'涂阳',
       dynamicSlotName:'other',
       currentTabComponent:"",
+      filterStr:'',
     }
   },
   methods:{
@@ -193,6 +197,13 @@ export default{
       }else if(componentName==="Archive"){
         this.currentTabComponent="componentDemo";
       }
+    },
+  },
+  filters:{
+    capitalize: function (value) {
+      if (!value) return ''
+      value = value.toString()
+      return value.charAt(0).toUpperCase() + value.slice(1)
     },
   },
   components:{

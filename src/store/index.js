@@ -7,15 +7,11 @@ import myPlugin from './myPlugin.js'  //导入store插件
 import stateSnapshotPlugin from './stateSnapshotPlugin.js'  //导入store插件
 import webSocketPlugin from './webSocketPlugin.js'  //导入store插件构建函数，该函数的返回值才是一个store插件。
 
-
 Vue.use(Vuex)
 
 let time1 = new types.currentDate().Format("yyyy-MM-dd");  //=> 2020-02-18
 let time2 = new types.currentDate().Format("yyyy-MM-dd HH:mm:ss");  //=> 2020-02-18 16:57:28
 console.log(`当前时间：${time1}   ${time2}`);
-
-
-
 const moduleB={  //公司
   namespaced: true,
   state:{
@@ -29,7 +25,6 @@ const moduleB={  //公司
   actions:{},
   modules:{}
 }
-
 var socket="WebSocket简介：\n WebSocket协议在2008年诞生，2011年成为国际标准。\n 它的最大特点就是，服务器可以主动向客户端推送信息，\n 客户端也可以主动向服务器发送信息，是真正的双向平等对话，属于服务器推送技术的一种。";
 const webPlugin=webSocketPlugin(socket);  //函数返回一个store插件
 
