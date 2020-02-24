@@ -20,7 +20,8 @@
   
 </template>
 
-<script type="text/javascript">    
+<script type="text/javascript">   
+
 
 export default{
     name:'example',
@@ -31,6 +32,7 @@ export default{
       return { 
         routeQuery:{},
         routeParams:{},
+        
       }; 
     },
     computed:{
@@ -43,10 +45,10 @@ export default{
     methods:{
         switchRoute:function(){  //切换路由到：http://webpack-demo.com:8080/web/router.html#/mtindex/detail?shopid=123456
             this.$router.push({
-               //path: '/mtindex',      //传参数（ params相对应的是name  query相对应的是path）
-               name:'mtindex',         
-               //query:{shopid: 123456},               
-               params:{shopname: '商品'}
+               //path: '/shop',      //传参数（ params相对应的是name  query相对应的是path）
+               name:'good',         
+               query:{shopid: 123456},               
+               params:{shopname:'商品'},
             });
             //this.$router.push('/location').catch(err => { console.log(err) });  //针对于路由跳转相同的地址报错问题解决方案
         },

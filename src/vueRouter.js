@@ -3,6 +3,10 @@ import router from './router'
 import store from './store'
 import RouterDemo from '@/views/RouterDemo.vue';
 
+const userId = '123'
+router.push({ path: '/computer', query: { userId }}) // -> /user/123
+//router.push({ path: `/user/${userId}` }) // -> /user/123 
+
 
 new Vue({
     router,     //将Vue路由器 router注入所有子组件。
