@@ -9,9 +9,15 @@
     </ul>
     <button @click="switchRoute">切换路由：mtindex/detail</button>
     <button @click="printRouteMessage">打印当前路由信息</button>
+    <button @click="printPathMatch">打印PathMatch</button>
     <div>
-        <router-link to="/home/zhangSan">Home</router-link> |
-        <router-link to="/about/liShi">About</router-link>        
+        <router-link to="/home/zhangSan/post/002">Home</router-link> |
+        <router-link to="/home/wuba/post/003">Home-B</router-link> |
+        <router-link :to="`/about/${guestName}`">About</router-link> |
+        <router-link :to="{name:'table',params:{length:12,name:'bangon'}}">Table</router-link>|
+        <router-link :to="{path:'/Chail',query:{length:12,name:'bangon'}}">Chail</router-link>|
+        <router-link :to="{path:'Room',query:{length:12,name:'fangjian'}}">Room</router-link>|
+        <router-link to="/test/home">Test</router-link>
     </div>
     <router-view/>  <!-- 路由出口。路由匹配到的组件将渲染在这里 -->
     
@@ -32,6 +38,7 @@ export default{
       return { 
         routeQuery:{},
         routeParams:{},
+        guestName:'zhaoLiu'
         
       }; 
     },
@@ -39,6 +46,7 @@ export default{
         username:function(){
             console.log(`当前路由：${JSON.stringify(this.$route.params)}`);
             console.log(`当前路由Name：${JSON.stringify(this.$route.name)}`);
+            console.log(`路由hash值：${this.$route.hash}`);
             return this.$route.params.username;
         },
     },
@@ -48,7 +56,7 @@ export default{
                //path: '/shop',      //传参数（ params相对应的是name  query相对应的是path）
                name:'good',         
                query:{shopid: 123456},               
-               params:{shopname:'商品'},
+               params:{shopname:'商品'},  //如果采用path，则params将被忽略
             });
             //this.$router.push('/location').catch(err => { console.log(err) });  //针对于路由跳转相同的地址报错问题解决方案
         },
@@ -56,8 +64,20 @@ export default{
             this.routeQuery=this.$route.query;  //获取query对象
             this.routeParams=this.$route.params;  //获取params对象
         },
+        printPathMatch(){
+            console.log(`pathMatch：${this.$route.params.pathMatch}`);
+        },
     },
-    watch:{},
+    watch:{
+        '$route'(to,from){ //# 响应路由参数的变化
+            console.log("监控$route对象to：");
+            console.log(to);
+            console.log("监控$route对象from：");
+            console.log(from);
+            //console.log(`监控$route对象to：${JSON.stringify(to)}`);  //to: Route: 即将要进入的目标路由对象
+            //console.log(`监控$route对象from：${JSON.stringify(from)}`); //from: Route: 当前导航正要离开的路由
+        },
+    },
     components:{},
     // 生命周期钩子
     beforeCreate:function(){},
