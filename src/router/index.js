@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import User from '../components/User.vue'
+import UserPosts from '../components/UserPosts.vue'
+import UserProfile from '../components/UserProfile.vue'
 
 Vue.use(VueRouter)
 
@@ -23,6 +26,23 @@ const routes = [
     path:'/Table/:name/:length',
     name:'table',
   },  
+  { //嵌套路由
+    path: '/user/:id', component: User,
+    children: [  //子路由
+      {
+        // 当 /user/:id/profile 匹配成功，
+        // UserProfile 会被渲染在 User 的 <router-view> 中
+        path: 'profile',
+        component: UserProfile
+      },
+      {
+        // 当 /user/:id/posts 匹配成功
+        // UserPosts 会被渲染在 User 的 <router-view> 中
+        path: 'posts',
+        component: UserPosts
+      }
+    ]
+  },
   {
     path:'/user-*',   // 会匹配以 `/user-` 开头的任意路径
   },
