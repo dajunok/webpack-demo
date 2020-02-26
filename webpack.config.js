@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin'); //将css单独�
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');  //用于优化、压缩CSS文件的webpack插件。
 const TerserPlugin = require('terser-webpack-plugin');  //这个插件使用terser压缩JavaScript。
 const CopyWebpackPlugin = require('copy-webpack-plugin'); //将单个文件或整个目录复制到生成目录（dist）。
+const PreloadWebpackPlugin = require('preload-webpack-plugin');  //预加载资源（在HTML文件的head标签下生成<link>标签）。//注意：webpack4之后，请使用最新版本 npm install --save-dev preload-webpack-plugin@next，
 const webpack =require('webpack');
 
 
@@ -32,6 +33,7 @@ module.exports={
       filename:"js/[name].bundle.js",   //将所有依赖的模块合并输出到一个bundle.js文件     'js/index.js' 
       library:'myLibrary',    //library规定了组件库返回值的名字，也就是对外暴露的模块名称
       libraryTarget: 'umd',   //libraryTarget就是配置webpack打包内容的模块方式的参数：umd: 将你的library暴露为所有的模块定义下都可运行的方式。
+      publicPath:'/web/',
     },
     module:{
         rules:[
@@ -66,7 +68,15 @@ module.exports={
               use: {
                 loader: 'babel-loader',
                 options: {  
-                    presets: ['@babel/preset-env'],
+                    presets: [['@babel/preset-env',{
+                      targets:{
+                          edge:"17",
+                          firefox:"60",
+                          safari:"11.1",
+                          ie:"11"
+                      },
+                      useBuiltIns:'usage'
+                    }]],
                     cacheDirectory:true,   //可以通过使用 cacheDirectory 选项，将 babel-loader 提速至少两倍。 这会将转译的结果缓存到文件系统中。
                     plugins: ['@babel/plugin-transform-runtime'],  //babel引入 babel runtime 作为一个独立模块，来避免重复引入。
                 }
@@ -199,6 +209,11 @@ module.exports={
                 }),
                 new OptimizeCssAssetsPlugin(), //用于优化、压缩CSS文件的webpack插件。
         ],
+    },   
+    //统计信息(stats)----------------
+    stats: {   //解决webpack打包报错：“Entrypoint undefined =xxx ...”
+      entrypoints: false,
+      children: false,
     },
     //配置插件---------------
     plugins: [
@@ -266,6 +281,10 @@ module.exports={
                     removeComments: true, // 移除注释
                     collapseBooleanAttributes: true // 省略只有 boolean 值的属性值 例如：readonly checked
             },
+        }),
+        new PreloadWebpackPlugin({
+          rel: 'preload',
+          include: 'allChunks', // or 'initial', or 'allAssets'
         }),
         new webpack.DefinePlugin({       //用于定义全局变量，它可以对HtmlWebpackPlugin插件中的模板参数进行赋值（即模板参数可以使用全局变量）。
             PRODUCTION: JSON.stringify(true),

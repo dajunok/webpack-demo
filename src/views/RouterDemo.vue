@@ -19,7 +19,8 @@
         <router-link :to="{path:'Room',query:{length:12,name:'fangjian'}}">Room</router-link>|
         <router-link to="/test/home">Test</router-link>|
         <router-link to="/user/foo/profile">UserProfile</router-link>|
-        <router-link to="/user/bar/posts">UserPosts</router-link>
+        <router-link to="/user/bar/posts">UserPosts</router-link>|
+        <router-link to="/user/foo">匹配空子路由</router-link>
     </div>
     <router-view/>  <!-- 路由出口。路由匹配到的组件将渲染在这里 -->
     
