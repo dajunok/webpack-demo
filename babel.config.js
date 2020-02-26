@@ -14,7 +14,7 @@ module.exports = function (api) {
             "debug": false,         //是否进行debug操作，会在控制台打印出所有插件中的log，已经插件的版本
             "include": [],          //强制开启某些模块，默认为[]
             "exclude": [],           //禁用某些模块，默认为[]
-            "useBuiltIns": false    //babel / preset-env处理polyfill的方式。参数：usage | entry | false，默认为false.
+            "useBuiltIns": 'usage'    //babel / preset-env处理polyfill的方式。参数：usage | entry | false，默认为false.
      }]
  ];
  

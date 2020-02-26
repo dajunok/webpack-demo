@@ -1,4 +1,4 @@
-import 'babel-polyfill'   //解决360浏览器、IE浏览器不兼容问题
+//import 'babel-polyfill'   //解决360浏览器、IE浏览器不兼容问题
 import Vue from 'vue';
 import router from './router'
 import store from './store'
