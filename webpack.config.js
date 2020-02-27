@@ -69,7 +69,7 @@ module.exports={
                 loader: 'babel-loader',
                 options: {  
                     presets: [['@babel/preset-env',{
-                      useBuiltIns:'usage'  //解决360浏览器、IE浏览器不兼容问题
+                      useBuiltIns:'usage',  //解决360浏览器、IE浏览器不兼容问题（需安装"babel-polyfill"插件,）
                     }]],
                     cacheDirectory:true,   //可以通过使用 cacheDirectory 选项，将 babel-loader 提速至少两倍。 这会将转译的结果缓存到文件系统中。
                     plugins: ['@babel/plugin-transform-runtime'],  //babel引入 babel runtime 作为一个独立模块，来避免重复引入。

@@ -16,13 +16,29 @@
         <router-link :to="`/about/${guestName}`">About</router-link> |
         <router-link :to="{name:'table',params:{length:12,name:'bangon'}}">Table</router-link>|
         <router-link :to="{path:'/Chail',query:{length:12,name:'bangon'}}">Chail</router-link>|
-        <router-link :to="{path:'Room',query:{length:12,name:'fangjian'}}">Room</router-link>|
+        <router-link :to="routeObj">Room</router-link>|
         <router-link to="/test/home">Test</router-link>|
         <router-link to="/user/foo/profile">UserProfile</router-link>|
         <router-link to="/user/bar/posts">UserPosts</router-link>|
-        <router-link to="/user/foo">匹配空子路由</router-link>
-    </div>
-    <router-view/>  <!-- 路由出口。路由匹配到的组件将渲染在这里 -->
+        <router-link to="/user/foo">匹配空子路由</router-link><br><br>
+        <h2># router.replace(...)</h2>
+        <!-- # router.replace(location, onComplete?, onAbort?) 
+            跟 router.push 很像，唯一的不同就是，它不会向 history 添加新记录，而是跟它的方法名一样 —— 
+            替换掉当前的 history 记录。-->
+        <router-link to="/about/etong" replace>替换当前路由（声明式）</router-link>|  <!-- 设置 replace 属性的话，当点击时，会调用 router.replace() 而不是 router.push()，于是导航后不会留下 history 记录。 -->
+        <button @click="replaceRoute('/replace/route')">替换当前路由（编程式）--字符串参数</button>|
+        <button @click="replaceRoute(routeObj)">替换当前路由（编程式）--对象参数</button>
+        <h2># router.go(n)</h2>
+        <button @click="hisGo(1)">》前进一步</button>| <!-- 在浏览器记录中前进一步，等同于 history.forward() -->
+        <button @click="hisGo(-1)">》后退一步</button>| <!-- 在浏览器记录中后退一步，等同于 history.back() -->
+        <button @click="hisGo(3)">前进三步</button>| <!-- 前进 3 步记录 -->
+        <button @click="hisGo(-100)">后退100步</button><!--  如果 history 记录不够用，那就默默地失败呗 -->
+        <h2># 命名视图</h2>
+        <router-link to="/">命名视图</router-link><br>
+    </div>   
+    <router-view class="view one" ></router-view>
+    <router-view class="view two" name="a"></router-view>
+    <router-view class="view three" name="b"></router-view>
     
 
   </div>
@@ -41,8 +57,8 @@ export default{
       return { 
         routeQuery:{},
         routeParams:{},
-        guestName:'zhaoLiu'
-        
+        guestName:'zhaoLiu',
+        routeObj:{path:'Room',query:{length:12,name:'fangjian'}},        
       }; 
     },
     computed:{
@@ -69,6 +85,12 @@ export default{
         },
         printPathMatch(){
             console.log(`pathMatch：${this.$route.params.pathMatch}`);
+        },
+        replaceRoute(path){
+            this.$router.replace(path);
+        },
+        hisGo(n){
+            this.$router.go(n);  //这个方法的参数是一个整数，意思是在 history 记录中向前或者后退多少步，类似 window.history.go(n)。
         },
     },
     watch:{

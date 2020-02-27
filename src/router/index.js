@@ -50,7 +50,10 @@ const routes = [
         // 当 /user/:id/posts 匹配成功
         // UserPosts 会被渲染在 User 的 <router-view> 中
         path: 'posts',
-        component: UserPosts
+        components: {  //嵌套命名视图
+          default:UserPosts,
+          helper:() => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+        }
       },      
       { 
         // 当 /user/:id 匹配成功，(匹配空子路由)
@@ -59,6 +62,14 @@ const routes = [
         component: UserHome,
       },
     ]
+  },
+  {
+    path: '/',
+    components: {
+      default: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+      a: UserPosts,
+      b: UserProfile
+    }
   },
   //模糊匹配
   {
