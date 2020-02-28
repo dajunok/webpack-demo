@@ -35,10 +35,25 @@
         <button @click="hisGo(-100)">后退100步</button><!--  如果 history 记录不够用，那就默默地失败呗 -->
         <h2># 命名视图</h2>
         <router-link to="/">命名视图</router-link><br>
+        <h2># 重定向和别名</h2>
+        <!--1、重定向redirect  -->
+        <router-link to="/a">重定向a=>b</router-link>|
+        <router-link to="/c">重定向c=>good</router-link>|
+        <router-link to="/d">重定向d=>toTarget</router-link>|
+        <h2>路由组件传参</h2>
+        <router-link to="/school/ChangHongSchool">路由组件传参</router-link>|
+        <router-link to="/schoolfull/LiXiangSchool">路由组件传参--命名视图</router-link>|
+        <router-link to="/searchSchool">路由组件对象传参</router-link>|
+        <router-link to="/dynamic/WangMeiChun">动态函数传参</router-link>|
+        <router-link to="/teacher?name=DuanXinLan">动态函数传参--查询参数</router-link>|
+        <router-link to="/login">登录</router-link>|
+
+
     </div>   
     <router-view class="view one" ></router-view>
     <router-view class="view two" name="a"></router-view>
     <router-view class="view three" name="b"></router-view>
+    <router-view class="view three" name="tec"></router-view>
     
 
   </div>
