@@ -30,7 +30,8 @@ module.exports={
     },
     output:{   
       path:path.resolve(__dirname,'./dist'),   //将输出文件都放到dist目录下 
-      filename:"js/[name].bundle.js",   //将所有依赖的模块合并输出到一个bundle.js文件     'js/index.js' 
+      filename:"js/[name].js",   //决定了每个入口(entry) 输出 bundle 的名称。
+      chunkFilename: 'js/[name].[chunkhash:8].js', //决定了非入口(non-entry) chunk 文件的名称。
       library:'myLibrary',    //library规定了组件库返回值的名字，也就是对外暴露的模块名称
       libraryTarget: 'umd',   //libraryTarget就是配置webpack打包内容的模块方式的参数：umd: 将你的library暴露为所有的模块定义下都可运行的方式。
       publicPath:'/web/',
@@ -144,25 +145,35 @@ module.exports={
             chunks: "async",        //chunks属性用来选择分割哪些代码块，可选值有：'all'（所有代码块），'async'（按需加载的代码块），'initial'（初始化代码块）。
             minSize:30000,         // 模块的最小体积30kb
             minChunks: 1,           // 模块的最小被引用次数
-            maxAsyncRequests: 5,    // 按需加载的最大并行请求数
-            maxInitialRequests: 3,       // 一个入口最大并行请求数
+            maxAsyncRequests: 10,    // 按需加载的最大并行请求数
+            maxInitialRequests: 5,       // 一个入口最大并行请求数
             automaticNameDelimiter: '~', // 文件名的连接符
             name: true,                 //使用name选项设置要控制分割块的块名称
             cacheGroups: { // 缓存组
                 //缓存组名称vendors，可以自定义。
                 vendors: {  // split `node_modules`目录下被打包的代码到 `js/vendor.js`没找到可打包文件的话，则没有。
                     test: /[\\/]node_modules[\\/]/,  //控制此缓存组选择的模块。忽略它将选择所有模块。它可以是正则表达式（RegExp）、字符串或函数。
-                    name:'js/chunk-vendors',  //打包后的路径与名称
+                    name:'chunk-vendors',  //打包后的路径与名称
                     priority: -10,     //设置优先级别
+                    chunks: 'initial'
+                },
+                common: {
+                  name: 'chunk-common',
+                  minChunks: 2,
+                  priority: -20,
+                  chunks: 'initial',
+                  reuseExistingChunk: true
                 },
                 //默认缓存组
                 default: {
-                    minChunks: 2,
-                    priority: -20,            //设置优先级别
-                    reuseExistingChunk: true  //允许在模块匹配准确的时候创建一个新的模块。
-                }
+                  minChunks: 2,
+                  priority: -30,
+                  reuseExistingChunk: true
+                },                
             }
-        },
+
+        },        
+        runtimeChunk:{ name: 'runtime' },  // 为每个入口提取出webpack runtime模块
         //minimizer: [],
         minimize: true,    //生产环境默认压缩，不需要进行配（开发环境需要配置）
         minimizer: [       //生产环境默认压缩，不需要进行配 （开发环境需要配置）
@@ -230,7 +241,7 @@ module.exports={
             //favicon:'../public/favicon.ico',
             title: 'webpack-ok',            
             filename: 'index.html', // 生成的html文件名，该文件将被放置在输出目录 
-            chunks: ['index'],        
+            chunks: ['index','chunk-vendors','chunk-common','runtime'],        
             template: path.join(__dirname, './public/index.ejs'),   // 模板源html或ejs文件路径
             minify:{  //代码压缩
                     removeRedundantAttributes:true, // 删除多余的属性
@@ -242,7 +253,7 @@ module.exports={
         }),
         new HtmlWebpackPlugin({            
             filename: 'demo.html', // 生成的html文件名，该文件将被放置在输出目录
-            chunks: ['demo'],            
+            chunks: ['demo','chunk-vendors','chunk-common','runtime'],            
             template: path.join(__dirname, './public/demo.ejs'),    // 模板源html或ejs文件路径
             minify:{  //代码压缩
                     removeRedundantAttributes:true, // 删除多余的属性
@@ -254,7 +265,7 @@ module.exports={
         }),
         new HtmlWebpackPlugin({            
             filename: 'vuex.html', // 生成的html文件名，该文件将被放置在输出目录
-            chunks: ['vuex'],            
+            chunks: ['vuex','chunk-vendors','chunk-common','runtime'],            
             template: path.join(__dirname, './public/stateVuex.ejs'),    // 模板源html或ejs文件路径
             minify:{  //代码压缩
                     removeRedundantAttributes:true, // 删除多余的属性
@@ -266,7 +277,7 @@ module.exports={
         }),
         new HtmlWebpackPlugin({            
             filename: 'router.html', // 生成的html文件名，该文件将被放置在输出目录
-            chunks: ['router'],            
+            chunks: ['router','chunk-vendors','chunk-common','runtime'],            
             template: path.join(__dirname, './public/router.ejs'),    // 模板源html或ejs文件路径
             minify:{  //代码压缩
                     removeRedundantAttributes:true, // 删除多余的属性

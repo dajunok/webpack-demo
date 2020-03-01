@@ -44,18 +44,21 @@
         <router-link to="/school/ChangHongSchool">路由组件传参</router-link>|
         <router-link to="/schoolfull/LiXiangSchool">路由组件传参--命名视图</router-link>|
         <router-link to="/searchSchool">路由组件对象传参</router-link>|
-        <router-link to="/dynamic/WangMeiChun">动态函数传参</router-link>|
+        <router-link to="/dynamic/WangMeiChun">动态函数传参</router-link>|        
         <router-link to="/teacher?name=DuanXinLan">动态函数传参--查询参数</router-link>|
         <router-link to="/login">登录</router-link>|
+        <router-link to="/asyncComponent">异步按需加载</router-link>|
+        <button @click="$fn">字符串命名函数</button>|
 
 
-    </div>   
-    <router-view class="view one" ></router-view>
-    <router-view class="view two" name="a"></router-view>
-    <router-view class="view three" name="b"></router-view>
-    <router-view class="view three" name="tec"></router-view>
-    
-
+    </div> 
+    <transition mode="out-in">  
+        <router-view class="view one" ></router-view>
+    </transition> 
+        <router-view class="view two" name="a"></router-view>
+        <router-view class="view three" name="b"></router-view>
+        <router-view class="view three" name="tec"></router-view>
+    <br><br><br>  
   </div>
   
 </template>
@@ -107,6 +110,9 @@ export default{
         hisGo(n){
             this.$router.go(n);  //这个方法的参数是一个整数，意思是在 history 记录中向前或者后退多少步，类似 window.history.go(n)。
         },
+        '$fn'(){
+            console.log('我是$fn函数');
+        },
     },
     watch:{
         '$route'(to,from){ //# 响应路由参数的变化
@@ -136,3 +142,26 @@ export default{
 
 
 </script>
+
+
+
+<style>
+    .v-enter{
+      opacity:0;
+    }
+      .v-enter-to{
+        opacity:1;
+      }
+      .v-enter-active{
+        transition:1s;
+      }
+    .v-leave{
+      opacity:1;
+    }
+    .v-leave-to{
+      opacity:0;
+    }
+    .v-leave-active{
+      transition:2s;
+    }
+</style>

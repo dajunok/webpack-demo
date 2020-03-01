@@ -10,33 +10,41 @@ import Teacher from '../components/Teacher.vue'
 
 Vue.use(VueRouter)
 
-function dynamicPropsFn(route){
+function dynamicPropsFn(route){  
   return {
     teacherName:route.params.name,
   };
 }
 
+
 const routes = [
+  {
+    path:'/asyncComponent',
+    name:'asyncLoad',
+    component: r=>require.ensure([],()=>r(require('../components/asyncComponent.vue')),'myChunk'),
+    //component: () => import ( /* webpackChunkName: "group" */ '../components/asyncComponent.vue'),
+  },
   {
     path:'/home',
     name:'indexHome',
     component: Home,
   },
   {
+    path: '/about/:userName',
+    name: 'asyncComA',
+    component: r=>require.ensure([],()=>r(require('../components/asyncComA.vue')),'myChunk'),
+    //component: () => import(/* webpackChunkName: "group" */ '../components/asyncComA.vue')
+  },
+  {
     path:'/about',
     name:'indexAbout',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: () => import(/* webpackChunkName: "About" */ '../views/About.vue')
   },
   {
     path: '/home/:userName/post/:userId',  //使用路由参数（params）：userName和:userId。提醒一下，当使用路由参数时，例如从 /user/foo 导航到 /user/bar，原来的组件实例会被复用。因为两个路由都渲染同个组件，比起销毁再创建，复用则显得更加高效。不过，这也意味着组件的生命周期钩子不会再被调用。
     name: 'home',  //path的别名
     component: Home,
-  },
-  {
-    path: '/about/:userName',
-    name: 'about',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  },
+  },  
   {    
     path: '/shop',
     name: 'good',
@@ -60,7 +68,7 @@ const routes = [
         path: 'posts',
         components: {  //嵌套命名视图
           default:UserPosts,
-          helper:() => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+          helper:() => import(/* webpackChunkName: "About" */ '../views/About.vue'),
         }
       },      
       { 
@@ -74,7 +82,7 @@ const routes = [
   {
     path: '/',
     components: {  //命名视图
-      default: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+      default: () => import(/* webpackChunkName: "About" */ '../views/About.vue'),
       a: UserPosts,
       b: UserProfile
     }
@@ -125,7 +133,15 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  //返回 savedPosition，在按下 后退/前进 按钮时，就会像浏览器的原生表现那样：
+  scrollBehavior (to, from, savedPosition) { //滚动行为
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return { x: 0, y: 0 };  //让页面滚动到顶部
+    }
+  },
 })
 
 export default router
