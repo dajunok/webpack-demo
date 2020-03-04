@@ -311,6 +311,8 @@ module.exports={
             "typeof window": JSON.stringify("object"),
             host: JSON.stringify(process.env.DB_HOST),          //使用Node.js模块：process.env 属性返回包含用户环境的对象。
             'BASE_URL': JSON.stringify('/web/img/'),
+            'STATIC_URL': JSON.stringify('/web/resources/'),
+
         }),
         //配置MiniCssExtractPlugin插件：提取与压缩.css文件。
         new MiniCssExtractPlugin({
@@ -320,10 +322,20 @@ module.exports={
         //配置CopyWebpackPlugin插件：将单个文件或整个目录复制到生成目录（dist）。
         new CopyWebpackPlugin([
             {
-                from:__dirname+'/src/assets',
-                to:__dirname+'/dist/img',
+                from:__dirname+'/src/staticresources',
+                to:__dirname+'/dist/resources',
                 toType: 'dir',
-                ignore: ['*.html','*.jpg','*.ejs']      //忽略.html和.jpj后缀的文件，注意构建生成所用文件不需要拷贝。
+                ignore: ['*.js','*.ejs']      //忽略.js和.ejs后缀的文件，注意构建生成所用文件不需要拷贝。
+            },
+            {
+                from:__dirname+'/src/assets/favicon.ico',
+                to:__dirname+'/dist/img/favicon.ico', 
+                toType: 'file',           
+            },
+            {
+                from:__dirname+'/src/assets/monkey.ico',
+                to:__dirname+'/dist/img/monkey.ico', 
+                toType: 'file',           
             },
         ]),
         //new InlineManifestWebpackPlugin('vendor01'),   // 将运行代码直接插入html文件中，因为这段代码非常少且时常改动，这样做可以避免一次请求的开销

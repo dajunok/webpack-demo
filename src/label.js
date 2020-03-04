@@ -9,7 +9,7 @@ new Vue({
     store,      //将统一管理状态store注入所有子组件
     render: h => h(LabelPage,{
       props:{   //赋值组件定义的props
-        url:BASE_URL,
+        url:STATIC_URL,  //DefinePlugin插件定义的全局变量
       },
     }),
 }).$mount('#app');
