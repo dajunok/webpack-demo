@@ -5,25 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">  <!-- 解决360浏览器、IE浏览器兼容问题 -->
     <meta name="renderer" content="webkit">  <!-- 解决360浏览器、IE浏览器兼容问题 -->
     <meta name="viewport" content="width=device-width,initial-scale=1.0"> <!-- 解决360浏览器、IE浏览器兼容问题 -->
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico"><!-- HtmlWebpackPlugin插件支持使用ejs模板引擎语法<%= BASE_URL %> -->
+    <link rel="icon" href="<%= BASE_URL %>monkey.ico"><!-- HtmlWebpackPlugin插件支持使用ejs模板引擎语法<%= BASE_URL %> -->
     <title>vue-webpack</title>
   </head>
   <body>
-    <div id="first" style="position: absolute;top:38px;left:10px;width:60px;height:32px;background: blue;box-shadow: 2px 2px 5px 1px #c5c4c4;"></div>
-    <h2 style="background: red"><%=author %></h2>   <!-- 使用HtmlWebpackPlugin插件的templateParameters函数定义的author属性值替换 -->
-    <h2><%=VERSION %></h2>  <!-- 使用webpack.DefinePlugin插件定义全局变量VERSION的属性值替换 -->
-    <h2><%=host %></h2>     <!-- 使用webpack.DefinePlugin插件提取本地环境变量值替换host -->
+    <template> <!-- <template>标签不会渲染到页面 -->
+        <div id="first" style="position: absolute;top:38px;left:10px;width:60px;height:32px;background: blue;box-shadow: 2px 2px 5px 1px #c5c4c4;"></div>
+        <h2 style="background: red"><%=author %></h2>   <!-- 使用HtmlWebpackPlugin插件的templateParameters函数定义的author属性值替换 -->
+        <h2><%=VERSION %></h2>  <!-- 使用webpack.DefinePlugin插件定义全局变量VERSION的属性值替换 -->
+        <h2><%=host %></h2>     <!-- 使用webpack.DefinePlugin插件提取本地环境变量值替换host -->  
+        <div>
+            <img alt="XC-2.jpg" src="<%= require('../src/assets/xc-2.jpg') %>" />
+            <%=require("../src/file.html") %>  <!-- 利用全局html-loader加载器以字符串导入HTML文件标签内容，再以ejs语法注入-->
+        </div>      
+    </template>
+
     <noscript>
       <strong>We're sorry but vue-webpack doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
-    <div>
-        <img alt="XC-2.jpg" src="<%= require('./xc-2.jpg') %>" />
-        <%=require("../src/file.html") %>  <!-- 利用全局html-loader加载器以字符串导入HTML文件标签内容，再以ejs语法注入-->
-    </div>
+    
     <a href="http://webpack-demo.com:8080/web/demo.html" target="_blank" rel="noopener">[demo]</a>
     <a href="http://webpack-demo.com:8080/web/vuex.html" target="_blank" rel="noopener">[Vuex统一状态管理]</a>
     <a href="http://webpack-demo.com:8080/web/router.html" target="_blank" rel="noopener">[路由器Router]</a>
+    <a href="http://webpack-demo.com:8080/web/label.html" target="_blank" rel="noopener">HTML标签</a>
   </body>
 </html>

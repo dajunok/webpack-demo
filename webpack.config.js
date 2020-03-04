@@ -26,6 +26,7 @@ module.exports={
         demo:'./demo.js',
         vuex:'./vuexState.js',
         router:'./vueRouter.js',
+        label:'./label.js'
         
     },
     output:{   
@@ -45,7 +46,7 @@ module.exports={
                   { 
                     loader: MiniCssExtractPlugin.loader,  //提取.css文件
                     options:{
-                        publicPath:'../',  //给提取后的目标.css文件中的url路径最前面添加../（解决css文件构建后图片路径url引用错误问题。url路径由加载器url-loader设置决定）
+                        publicPath:'/web/',  //给提取后的目标.css文件中的url路径最前面添加../（解决css文件构建后图片路径url引用错误问题。url路径由加载器url-loader设置决定）
                     },
                   },
                   { loader: "css-loader" },     // translates CSS into CommonJS
@@ -234,8 +235,7 @@ module.exports={
                     files: assets,
                     options
                   },
-                  'BASE_URL': './',  //覆盖模板中使用的对应参数（即对模板中使用的BASE_URL参数进行赋值）
-                  'author':"vue-webpack",
+                  'author':"vue-webpack",  //定义页面变量并赋值，可以通过ejs模板语法引用该变量。
                 };
             },
             //favicon:'../public/favicon.ico',
@@ -287,6 +287,18 @@ module.exports={
                     collapseBooleanAttributes: true // 省略只有 boolean 值的属性值 例如：readonly checked
             },
         }),
+        new HtmlWebpackPlugin({            
+            filename: 'label.html', // 生成的html文件名，该文件将被放置在输出目录
+            chunks: ['label','chunk-vendors','chunk-common','runtime'],            
+            template: path.join(__dirname, './public/label.ejs'),    // 模板源html或ejs文件路径
+            minify:{  //代码压缩
+                    removeRedundantAttributes:true, // 删除多余的属性
+                    collapseWhitespace:true, // 折叠空白区域
+                    removeAttributeQuotes: true, // 移除属性的引号
+                    removeComments: true, // 移除注释
+                    collapseBooleanAttributes: true // 省略只有 boolean 值的属性值 例如：readonly checked
+            },
+        }),
         new PreloadWebpackPlugin({
           rel: 'preload',
           include: 'allChunks', // or 'initial', or 'allAssets'
@@ -298,6 +310,7 @@ module.exports={
             TWO: "1+1",
             "typeof window": JSON.stringify("object"),
             host: JSON.stringify(process.env.DB_HOST),          //使用Node.js模块：process.env 属性返回包含用户环境的对象。
+            'BASE_URL': JSON.stringify('/web/img/'),
         }),
         //配置MiniCssExtractPlugin插件：提取与压缩.css文件。
         new MiniCssExtractPlugin({
@@ -307,8 +320,8 @@ module.exports={
         //配置CopyWebpackPlugin插件：将单个文件或整个目录复制到生成目录（dist）。
         new CopyWebpackPlugin([
             {
-                from:__dirname+'/public',
-                to:__dirname+'/dist',
+                from:__dirname+'/src/assets',
+                to:__dirname+'/dist/img',
                 toType: 'dir',
                 ignore: ['*.html','*.jpg','*.ejs']      //忽略.html和.jpj后缀的文件，注意构建生成所用文件不需要拷贝。
             },
