@@ -378,6 +378,7 @@
     <componentDemo v-model="isBoole" :item="{id:'001',username:'zhYi',isActive:true}" :index="'3'"></componentDemo> <!-- 这里的 isBoole 的值将会传入这个名为 checked 的 prop。同时当 <base-checkbox> 触发一个 change 事件并附带一个新的值的时候，这个 isBoole 的属性将会被更新。 -->
     <!-- ============================组件基础=============================== -->
     <!-- 动态组件 -->
+    <h1 id="maodian">定位锚点</h1>
     <button @click="chComponent('Home')">Home</button>
     <button @click="chComponent('Posts')">Posts</button>
     <button @click="chComponent('Archive')">Archive</button>
@@ -390,6 +391,7 @@
     <!-- 非 Prop 的 Attribute 一个非 prop 的 attribute 是指传向一个组件，但是该组件并没有相应 prop 定义的 attribute。
          因为显式定义的 prop 适用于向一个子组件传入信息，然而组件库的作者并不总能预见组件会被用于怎样的场景。
          这也是为什么组件可以接受任意的 attribute，而这些 attribute 会被添加到这个组件的根元素上。-->
+    <br><a href="#top">锚 URL----指向页面顶部的锚</a>
     
 
 

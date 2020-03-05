@@ -48,7 +48,8 @@
         <router-link to="/teacher?name=DuanXinLan">动态函数传参--查询参数</router-link>|
         <router-link to="/login">登录</router-link>|
         <router-link to="/asyncComponent">异步按需加载</router-link>|
-        <button @click="$fn">字符串命名函数</button>|
+        <button @click="$fn">字符串命名函数</button>
+
 
 
     </div> 
