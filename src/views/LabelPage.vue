@@ -8,6 +8,22 @@
     <p>2、contenteditable 属性：指定元素内容是否可编辑的。注意： 当元素中没有设置 contenteditable 属性时，元素将从父元素继承。
         <br><div class='italic' contenteditable="true">点击内容可编辑。</div>
     </p>
+    <p>3、contextmenu 属性：当用户右击元素时将显示上下文菜单，注意：目前只有 Firefox 浏览器支持 contextmenu 属性。
+        <div class='italic' contextmenu="supermenu">右键弹出菜单  
+            <menu type="context" id="supermenu">
+              <menuitem label="Refresh" @click="doSomething()"></menuitem>
+              <menuitem label="Twitter" @click="doSomethingElse()"></menuitem>
+            </menu>
+        </div>
+    </p>
+    <p>4、data-* 属性：用于存储私有页面后应用的自定义数据。自定义的数据可以让页面拥有更好的交互体验（不需要使用 Ajax 或去服务端查询数据）。
+        <ul>
+          <li onclick="showDetails(this)" id="owl" data-animal-type="bird">Owl</li>
+          <li onclick="showDetails(this)" id="salmon" data-animal-type="fish">Salmon</li>  
+          <li onclick="showDetails(this)" id="tarantula" data-animal-type="spider">Tarantula</li>  
+        </ul>
+    </p>
+
     <h1 id='maodian'># &lt;a&gt;标签</h1>  
     <p class='important'>1、download属性与href属性配合实现静态资源下载功能：    
         <a :href="url+'xc-4.jpg'" download="清凉夏天">点击下载图片</a>
@@ -71,6 +87,8 @@
   
 </template>
 
+
+
 <script type="text/javascript">
 
 export default{
@@ -86,7 +104,14 @@ export default{
       }; 
     },
     computed:{},
-    methods:{},
+    methods:{
+        doSomething:function(){
+            console.log('Step 1: Write Tutorial');
+        },
+        doSomethingElse:function(){
+            console.log('Step 2: Edit Tutorial');
+        },
+    },
     watch:{},
     components:{},
     // 生命周期钩子

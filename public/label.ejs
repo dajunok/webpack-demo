@@ -12,6 +12,12 @@
   <div id="app">
     <!-- 挂载组件LabelPage.vue -->
   </div>
-  
+  <script type="text/javascript">
+
+    function showDetails(animal) { //LabelPage.vue组件Template模板原生态事件回调函数
+      var animalType = animal.getAttribute("data-animal-type");
+      alert("The " + animal.innerHTML + " is a " + animalType + ".");
+    }
+  </script>
 </body>
 </html>
