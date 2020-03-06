@@ -23,6 +23,19 @@
           <li onclick="showDetails(this)" id="tarantula" data-animal-type="spider">Tarantula</li>  
         </ul>
     </p>
+    <p>5、dir 属性：规定元素内容的文本方向。
+            <p dir="rtl">rtl----文本方向从右到左!</p>
+            <p dir="ltr">ltr----正常从左到右!</p>
+    </p>
+    <p>6、属性规定元素是否可拖动。提示： 链接和图像默认是可拖动的。提示： draggable 属性经常用于拖放操作。
+        <div id="div2" ondrop="other(event)" ondragover="other1(event)">凑热闹</div>
+        <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <br />
+        <p id="drag1" draggable="true" ondragstart="drag(event)" ondragleave="other2(event)">这是一段可移动的段落。请把该段落拖入上面的矩形。</p>
+    </p>
+    <p>7、hidden 属性：规定对元素进行隐藏。所有主流浏览器都支持 hidden 属性，除了 Internet Explorer。
+        <div hidden>我是隐藏的，您看不到我！</div>
+    </p>
 
     <h1 id='maodian'># &lt;a&gt;标签</h1>  
     <p class='important'>1、download属性与href属性配合实现静态资源下载功能：    
@@ -134,27 +147,31 @@ export default{
 
 
 <style>
-p{ 
-    font: 16px/1.5 "Microsoft yahei", arial, Simsun, sans-serif;    
-}
-a{
-    font: italic 12px/1.5 "Microsoft yahei", arial, Simsun, sans-serif;
-}
-.important{
-    font-weight:bold;   
-    color:red;
-}
-span{
-    font-weight:bold; 
-    color:red;
-}
-abbr{
-    font-style:italic;
-    color:green;
-}
-.italic{
-    font-style:italic;
-    color:green;
-}
-
+    p{ 
+        font: 16px/1.5 "Microsoft yahei", arial, Simsun, sans-serif;    
+    }
+    a{
+        font: italic 12px/1.5 "Microsoft yahei", arial, Simsun, sans-serif;
+    }
+    .important{
+        font-weight:bold;   
+        color:red;
+    }
+    span{
+        font-weight:bold; 
+        color:red;
+    }
+    abbr{
+        font-style:italic;
+        color:green;
+    }
+    .italic{
+        font-style:italic;
+        color:green;
+    }
+    p>p{
+        font: 16px/1.5 "Microsoft yahei", arial, Simsun, sans-serif;
+        color:green;
+    }
+    #div1,#div2 {width:350px;height:70px;padding:10px;border:1px solid #aaaaaa;}
 </style>

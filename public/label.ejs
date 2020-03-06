@@ -18,6 +18,37 @@
       var animalType = animal.getAttribute("data-animal-type");
       alert("The " + animal.innerHTML + " is a " + animalType + ".");
     }
+    //元素拖拽函数
+    function allowDrop(ev)   //ondragover事件回调函数。
+    {
+      ev.preventDefault();
+    }
+
+    function drag(ev)  //ondragstart事件回调函数。dragstart:拖拽开始时在被拖拽元素上触发此事件,监听器需要设置拖拽所需数据,从操作系统拖拽文件到浏览器时不触发此事件.
+    {
+      ev.dataTransfer.setData("Text",ev.target.id);  //设置被拖数据的数据类型和值
+    }
+
+    function drop(ev)  //ondrop事件回调函数
+    {
+      var data=ev.dataTransfer.getData("Text");
+      ev.target.appendChild(document.getElementById(data));
+      ev.preventDefault();
+    }
+
+    function other(ev){
+      console.log("我被意外触发了！！！"+ev.type);
+      ev.preventDefault();
+      
+    }
+    function other1(ev){
+      console.log("拖到我上面了！！！");
+      ev.preventDefault();
+    }
+    function other2(ev){
+      console.log("拖动操作开始了！！");
+    }
+
   </script>
 </body>
 </html>
