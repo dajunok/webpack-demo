@@ -1,0 +1,30 @@
+CACHE MANIFEST
+# HTML5 manifest离线缓存 
+# 注释：需要缓存的文件，无论在线与否，均从缓存里读取
+# 2020-03-07 v1.0.0     
+
+#要缓存的文件。需要相对路径
+CACHE:           
+
+#html
+/web/label.html
+#img
+/web/img/monkey.ico
+
+#css
+/web/css/label.css
+#js
+/web/js/label.f6c901a2.js
+/web/js/chunk-vendors.d723fcc0.js
+/web/js/chunk-common.dd4decf2.js
+/web/js/runtime.js
+  
+
+#不缓存的文件。需要与服务器连接时才读取 如果 NETWORK 下面使用 *,表示所有其他文件需要连接服务器读取，不缓存  
+NETWORK:          
+
+  
+
+#无法访问时的回退页面,
+FALLBACK:         
+
