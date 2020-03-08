@@ -278,6 +278,166 @@
         <var>&lt;var&gt;----变量</var>
     </p>
     <hr>
+    <!-- HTML <del> 标签 -->
+    <h2 style="text-align:center;"># &lt;del&gt;标签</h2>
+    <p>简介：
+        <br>所有主流浏览器都支持 &lt;del&gt; 标签。
+        <br><span>标签定义及使用说明：</span>
+        &lt;del&gt; 标签定义文档中已删除的文本。
+        <br><span>提示和注释：</span>
+        <br>提示：您也可以看看 &lt;ins&gt; 标签如何标记先插入的文本。
+        <br>提示：&lt;del&gt; 和 &lt;ins&gt; 一起使用，描述文档中的更新和修正。浏览器通常会在已删除文本上添加一条删除线，在新插入文本下添加一条下划线。
+        <br><span>属性：</span>
+        <br>1、cite 属性：将指向一个URL，该URL会解释为什么文本被删除，请参考下述示例。
+        <br><span>实例：</span>
+        <p>My favorite color is <del>blue</del> <ins>red</ins>!</p>
+        <p><del cite="del_demo_cite.htm">这是一个被删除了的文本</del></p>
+        <br><span>实例：</span>
+        <br>2、datetime 属性：规定文本被删除的日期和时间。当HTML页面中有使用 &lt;del&gt; 标签删除的文本的时候，可以使用 datetime 属性设置文本删除的日期与时间。
+        <p><del datetime="2011-11-15T22:55:03Z">这是一个被删除了的文本</del></p>        
+    </p>
+    <hr>
+    <!-- HTML <dfn> 标签 -->
+    <h2 style="text-align:center;"># &lt;dfn&gt;标签</h2>
+    <p>简介：
+        <br>&lt;dfn&gt; 标签可标记那些对特殊术语或短语的定义。
+        <br>&lt;dfn&gt; 元素是一个内嵌元素。
+        <br>所有主流浏览器都支持 &lt;dfn&gt; 标签。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;dfn&gt; 标签是一个短语标签，用来定义特殊术语或短语。
+        <br>提示：我们并不反对使用这个标签，但是如果您只是为了达到某种视觉效果而使用这个标签的话，我们建议您使用 CSS ，这样可能会取得更丰富的效果。      
+        <br><span>实例：</span>
+        <br>常见短语标签：<br>
+        <em>&lt;em&gt;----强调文本</em><br>
+        <strong>&lt;strong&gt;----加粗文本</strong><br>
+        <dfn>&lt;dfn&gt;----定义项目</dfn><br>
+        <code>&lt;code&gt;----一段电脑代码</code><br>
+        <samp>&lt;samp&gt;----计算机样本</samp><br>
+        <kbd>&lt;kbd&gt;----键盘输入</kbd><br>
+        <var>&lt;var&gt;----变量</var>
+    </p>
+    <hr>
+    <!-- HTML <em> 标签 -->
+    <h2 style="text-align:center;"># &lt;em&gt;标签</h2>
+    <p>简介：
+        <br>&lt;em&gt; 标签用于标记重点强调的文本，您可以对该标签进行嵌套，每个嵌套级别表示更大程度的强调。
+        <br>所有主流浏览器都支持 &lt;em&gt; 标签。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;em&gt; 标签是一个短语标签，用来呈现为被强调的文本。
+        <br>&lt;em&gt; 标签中的文本以斜体显示，但最后不要仅仅为了斜体效果而使用 &lt;em&gt; 标签。
+        <br>提示：我们并不反对使用这个标签，但是如果您只是为了达到某种视觉效果而使用这个标签的话，我们建议您使用 CSS ，这样可能会取得更丰富的效果。
+        <br><span>实例：</span>
+        <br>常见短语标签：<br>
+        <em>&lt;em&gt;----强调文本</em><br>
+        <strong>&lt;strong&gt;----加粗文本</strong><br>
+        <dfn>&lt;dfn&gt;----定义项目</dfn><br>
+        <code>&lt;code&gt;----一段电脑代码</code><br>
+        <samp>&lt;samp&gt;----计算机样本</samp><br>
+        <kbd>&lt;kbd&gt;----键盘输入</kbd><br>
+        <var>&lt;var&gt;----变量</var>
+    </p>
+    <hr>
+    <!-- HTML <i> 标签 -->
+    <h2 style="text-align:center;"># &lt;i&gt;标签</h2>
+    <p>简介：
+        <br>&lt;i&gt; 标签中的文本显示为斜体，代表一定范围的文本具有特别的语义。
+        <br>所有主流浏览器都支持 &lt;i&gt; 标签。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;i&gt; 定义与文本中其余部分不同的部分，并把这部分文本呈现为斜体文本。
+        <br>&lt;i&gt; 标签被用来表示科技术语、其他语种的成语俗语、想法、宇宙飞船的名字等等。
+        <br>在没有其他适当语义的元素可以使用时，请使用 &lt;i&gt; 元素。其他语义的元素如下：
+        <br>&lt;em&gt; （被强调的文本）
+        <br>&lt;strong&gt; （重要的文本）
+        <br>&lt;mark&gt;（被标记的/高亮显示的文本）
+        <br>&lt;cite&gt; （作品的标题）
+        <br>&lt;dfn&gt; （一个定义项目）
+        <br>提示：&lt;i&gt; 标签一定要和结束标签 &lt;/i&gt; 一起使用。
+        <br><span>实例：</span>
+        <p>He named his car <i>The lightning</i>, because it was very fast.</p>
+    </p>
+    <hr>
+    <!-- HTML <ins> 标签 -->
+    <h2 style="text-align:center;"># &lt;ins&gt;标签</h2>
+    <p>简介：
+        <br>&lt;ins&gt; 标签表示范围内的文本已经被添加到文档中（通常是文档中更新和修正的部分）。
+        <br>所有主流浏览器都支持 &lt;ins&gt; 标签。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;ins&gt; 标签定义已经被插入文档中的文本。
+        <br><span>提示和注释：</span>
+        <br>提示：您也可以看看标记已删除文本的 &lt;del&gt; 标签。
+        <br>提示：&lt;del&gt; 和 &lt;ins&gt; 一起使用，描述文档中的更新和修正。浏览器通常会在已删除文本上添加一条删除线，在新插入文本下添加一条下划线。
+        <br>提示：&lt;del&gt; 和 &lt;ins&gt; 不能同时既是块级元素又是内联元素。
+        <br><span>属性：</span>
+        <br>1、cite 属性：规定指向一个文档的 URL，该文档解释了文本被插入或修改的原因。cite 属性在普通的 Web 浏览器中没有视觉效果，但可以通过屏幕阅读器使用。
+        <br><span>实例：</span>
+        <p>这是一个文本。<ins cite="why_inserted.htm">cite-----这是一段插入文本。</ins></p>
+        2、datetime 属性：规定文本被插入或修改的日期和时间。datetime 属性在普通的 Web 浏览器中没有视觉效果，但可以通过屏幕阅读器使用。
+        <br><span>实例：</span>
+        <p>这是一个文本。<ins datetime="2012-09-15T22:55:03Z">datetime-----这是一段插入文本。</ins></p>
+    </p>
+    <hr>
+    <!-- HTML <kbd> 标签 -->
+    <h2 style="text-align:center;"># &lt;kbd&gt;标签</h2>
+    <p>简介：
+        <br>&lt;kbd&gt; 标签表示用户从键盘上输入的文本，可以通过下面的这个例子认识 &lt;kbd&gt; 标签：
+        <br>目前大多数浏览器支持 &lt;kbd&gt; 标签。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;kbd&gt; 标签定义键盘文本。
+        <br>&lt;kbd&gt; 标签为内嵌元素。
+        <br>提示: &lt;kbd&gt; 标签已废弃，不推荐使用，但是可以通过CSS实现丰富的效果。
+        <br><span>实例：</span>
+        <br>常见短语标签：<br>
+        <em>&lt;em&gt;----强调文本</em><br>
+        <strong>&lt;strong&gt;----加粗文本</strong><br>
+        <dfn>&lt;dfn&gt;----定义项目</dfn><br>
+        <code>&lt;code&gt;----一段电脑代码</code><br>
+        <samp>&lt;samp&gt;----计算机样本</samp><br>
+        <kbd>&lt;kbd&gt;----键盘输入</kbd><br>
+        <var>&lt;var&gt;----变量</var>
+    </p>
+    <hr>
+    <!-- HTML <mark> 标签 -->
+    <h2 style="text-align:center;"># &lt;mark&gt;标签</h2>
+    <p>简介：
+        <br>Internet Explorer 9+、Firefox、Opera、Chrome 和 Safari 支持 &lt;mark&gt; 标签。
+        <br>注意：Internet Explorer 8 及更早版本不支持 &lt;mark&gt; 标签。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;mark&gt; 标签定义带有记号的文本。
+        <br>请在需要突出显示文本时使用 &lt;mark&gt; 标签。
+        <br>提示： 虽然使用 &lt;strong&gt; 标签、&lt;em&gt; 标签同样能达到这样的效果，但是它们的作用是强调文本，并非仅仅是高亮显示文本，因此我们不推荐使用。
+        <br><span>实例：</span>
+        <p>今天别忘了买<mark>牛奶</mark>。</p>
+    </p>
+    <hr>
+    <!-- HTML <meter> 标签 -->
+    <h2 style="text-align:center;"># &lt;meter&gt;标签</h2>
+    <p>简介：
+        <br>在 HTML 中给定一个具体的范围（包括最大值与最小值），然后使用 &lt;meter&gt; 标签来显示该给定范围内的数据。
+        <br>Firefox、Opera、Chrome 和 Safari 6 支持 &lt;meter&gt; 标签。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;meter&gt; 标签定义度量衡。仅用于已知最大和最小值的度量。
+        <br>比如：磁盘使用情况，查询结果的相关性等。
+        <br>注意： &lt;meter&gt; 不能作为一个进度条来使用， 进度条 &lt;progress&gt; 标签。
+        <br><span>实例：</span><br>
+        <meter value="2" min="0" max="10">2 out of 10</meter><br>
+        <meter value="0.8">60%</meter><br>
+        <br>1、form 属性：规定 &lt;meter&gt; 元素所属的一个或多个表单。几乎没有主流浏览器支持 &lt;meter&gt; 标签的 form 属性。
+        <br>2、high 属性：规定被界定为高的值的范围。high 属性的值必须小于 max 属性的值，且必须大于 low 和 min 属性的值。浏览器会用不同的颜色区分偏高、中等和偏低的值得颜色。
+        <br>3、low 属性：规定被界定为低的值的范围。low 属性的值必须大于 min 属性的值，且必须小于 high 和 max 属性的值。浏览器会用不同的颜色区分偏高、中等和偏低的值得颜色。
+        <br>4、max 属性：规定范围的最大值。max 属性的值必须大于 min 属性的值。如果没有规定 max 属性的值，则默认值是 1。提示：max 属性与 min 属性一起规定了度量的完整范围。
+        <br>5、min 属性：规定范围的最小值。min 属性的值必须小于 max 属性的值。如果没有规定 min 属性的值，则默认值是 0。提示：min 属性与 max 属性一起规定了度量的完整范围。
+        <br>6、optimum 属性：规定度量值被界定为最优值的范围。
+        <br>7、value 属性：是必需的，规定度量的当前值。value 属性的值必须介于 min 和 max 属性的值中间。
+        <br><span>实例：</span><br>
+        <p>Anna's score: <meter min="0" low="40" high="90" max="100" value="95"></meter></p>
+        <p>Peter's score: <meter min="0" low="40" high="90" max="100" value="65"></meter></p>
+        <p>Linda's score: <meter min="0" low="40" high="90" max="100" value="35"></meter></p>
+        <p><meter value="0.6" high="0.9" low="0.1" optimum="0.5"></meter></p>
+
+    </p>
+    <hr>
+
+
 
 
     <!-- ----------------------------HTML 格式标签(end) ---------------------------->
