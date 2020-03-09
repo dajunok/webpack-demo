@@ -155,6 +155,8 @@
         <br>元素被用来分隔HTML页面中的内容（或者定义一个变化）。
     </p>
     <hr><!-- ----------------------------HTML基础标签(end) ---------------------------->
+
+
     <!-- ----------------------------HTML 格式标签(start) ---------------------------->
     <h1 style="text-align:center;">HTML 格式标签</h1>
     <!-- HTML <abbr> 标签 -->
@@ -433,15 +435,333 @@
         <p>Peter's score: <meter min="0" low="40" high="90" max="100" value="65"></meter></p>
         <p>Linda's score: <meter min="0" low="40" high="90" max="100" value="35"></meter></p>
         <p><meter value="0.6" high="0.9" low="0.1" optimum="0.5"></meter></p>
+    </p>
+    <hr>
+    <!-- HTML <pre> 标签 -->
+    <h2 style="text-align:center;"># &lt;pre&gt;标签</h2>
+    <p>简介：
+        <br>&lt;pre&gt; 标签可以保留您需要的文本格式，比如不会取消换行和空格，并且所示文本是等宽的。
+        <br>目前大多数浏览器支持 &lt;pre&gt; 标签。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;pre&gt; 标签可定义预格式化的文本。
+        <br>被包围在 &lt;pre&gt; 标签 元素中的文本通常会保留空格和换行符。而文本也会呈现为等宽字体。
+        <br>注意：&lt;pre&gt; 元素是块级元素，但是只能包含文本或行内元素，任何块级元素（常见为可以导致段落断开的标签：例如&lt;title&gt;、&lt;p&gt; 和&lt;address&gt; 标签）都不能位于 &lt;pre&gt; 元素中。
+        <br><span>提示和注释：</span>
+        <br>提示: &lt;pre&gt; 标签的一个常见应用就是用来表示计算机的源代码。
+        <br>提示：&lt;pre&gt; 标签与 &lt;code&gt; 标签结合起来使用，可以获得更加精确的语义。
+        <br><span>实例：</span><br>
+        <pre>
+                此例演示如何使用 pre 标签
+                对空行和    空格
+                进行控制
+        </pre>
+    </p>
+    <hr>
+    <!-- HTML <progress> 标签 -->
+    <h2 style="text-align:center;"># &lt;progress&gt;标签</h2>
+    <p>简介：
+        <br>&lt;progress&gt; 标签定义运行中的任务进度（进程）。
+        <br>IE 10、Firefox、Opera、Chrome 和 Safari 6 支持 &lt;progress&gt; 标签。
+        <br>注释：IE 9 或者更早版本的 IE 浏览器不支持 &lt;progress&gt; 标签。
+        <br><span>标签定义及使用说明：</span>      
+        <br>&lt;progress&gt; 标签定义运行中的任务进度（进程）。
+        <br><span>提示和注释：</span> 
+        <br>提示：请将 &lt;progress&gt; 标签与 JavaScript 一起使用来显示任务的进度。
+        <br>注释：&lt;progress&gt; 标签不适合用来表示度量衡（例如，磁盘空间使用情况或相关的查询结果）。表示度量衡，请使用 &lt;meter&gt; 标签代替。
+        <br><span>属性：</span>
+        <br>1、max 属性：规定任务总共需要多少工作。注意：Internet Explorer 9 及之前的版本不支持 &lt;progress&gt; 标签的 max 属性。
+        <br>2、value 属性：规定已经完成多少任务。
+        <br><span>实例：</span>
+        <br>下载进度:
+        <progress value="22" max="100"></progress>
+    </p>
+    <hr>
+    <!-- HTML <q> 标签 -->
+    <h2 style="text-align:center;"># &lt;q&gt;标签</h2>
+    <p>简介：
+        <br>&lt;q&gt; 标签用来表示包含的文本是一个短的引用，它是一个行内元素，在浏览器中显示为使用引号包含的内容。
+        <br>所有主流浏览器都支持 &lt;q&gt; 标签。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;q&gt; 标签定义一个短的引用。
+        <br>浏览器经常会在这种引用的周围插入引号。
+        <br><span>提示和注释：</span>
+        <br>提示：&lt;q&gt; 标签表示短的引用，而 &lt;blockquote&gt; 标签表示引用一段长文本。
+        <br>提示：请使用 &lt;blockquote&gt; 标签来标记摘自另一个源的块引用。
+        <br><span>属性：</span>
+        <br>1、cite 属性规定引用的来源 URL。cite 属性在普通的 Web 浏览器中没有视觉效果，但可以通过屏幕阅读器使用。提示：该属性的值是一个包含在引号中并指向联机文档的 URL，以及（如果有可能的话）引用在该文档中的确切位置。
+        <br><span>实例：</span>
+        <p>WWF's goal is to:
+        <q cite="http://www.wwf.org">Build a future where people live in harmony with nature.</q>
+        We hope they succeed.
+        </p>       
+    </p>
+    <hr>
+    <!-- HTML <rp> 标签 -->
+    <h2 style="text-align:center;"># &lt;rp&gt;标签</h2>
+    <p>简介：
+        <br>&lt;rp&gt; 标签需要在 &lt;ruby&gt; 标签中使用，用于防止那些不支持 &lt;ruby&gt; 标签的浏览器，主要用来放置括弧。
+        <br>IE 9+、Firefox、Opera、Chrome 和 Safari 支持 &lt;rp&gt; 标签。
+        <br>注释：IE 8 或更早版本的 IE 浏览器不支持 &lt;rp&gt; 标签。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;rp&gt; 标签在 ruby 注释中使用，以定义不支持 ruby 元素的浏览器所显示的内容。
+        <br>ruby 注释是中文注音或字符。在东亚使用，显示的是东亚字符的发音。
+        <br>将 &lt;rp&gt; 标签与 &lt;ruby&gt; 和 &lt;rt&gt; 标签一起使用： 
+        <br>&lt;ruby&gt; 元素由一个或多个需要解释/发音的字符和一个提供该信息的 &lt;rt&gt; 元素组成，还包括可选的 &lt;rp&gt; 元素，定义当浏览器不支持 "ruby" 元素时显示的内容。
+        <br>提示：支持 "ruby" 元素的浏览器不会显示 "rp" 元素的内容。
+        <br><span>实例：</span><br>
+        <ruby>
+          汉 <rp>(</rp><rt>Han</rt><rp>)</rp>
+          字 <rp>(</rp><rt>Zi</rt><rp>)</rp>
+        </ruby>
+    </p>
+    <hr>
+    <!-- HTML <rt> 标签 -->
+    <h2 style="text-align:center;"># &lt;rt&gt;标签</h2>
+    <p>简介：
+        <br>如果在 &lt;ruby&gt; 元素中需要多某些字符作出解释或者标记其发音，那么请使用 &lt;rt&gt; 标签来提供相关的信息。
+        <br>&lt;rt&gt; 元素必须始终包含在 &lt;ruby&gt; 元素中。
+        <br>IE 9+、Firefox、Opera、Chrome 和 Safari 支持 &lt;rt&gt; 标签。
+        <br>注释：IE 8 或更早版本的 IE 浏览器不支持 &lt;rt&gt; 标签。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;rt&gt; 标签定义字符（中文注音或字符）的解释或发音。
+        <br>将 &lt;rt&gt; 标签与 &lt;ruby&gt; 和 &lt;rp&gt; 标签一起使用： 
+        <br>&lt;ruby&gt; 元素由一个或多个需要解释/发音的字符和一个提供该信息的 &lt;rt&gt; 元素组成，还包括可选的 &lt;rp&gt; 元素，定义当浏览器不支持 "ruby" 元素时显示的内容。
+        <br><span>实例：</span><br>
+        <ruby>
+          汉 <rp>(</rp><rt>Han</rt><rp>)</rp>
+          字 <rp>(</rp><rt>Zi</rt><rp>)</rp>
+        </ruby>
+    </p>
+    <hr>
+    <!-- HTML <ruby> 标签 -->
+    <h2 style="text-align:center;"># &lt;ruby&gt;标签</h2>
+    <p>简介：
+        <br>&lt;ruby&gt; 标签是当作注释标签使用的，可以对文本进行注音或者字符。
+        <br>IE 9+、Firefox、Opera、Chrome 和 Safari 支持 &lt;ruby&gt; 标签。
+        <br>注释：IE 8 或更早版本的 IE 浏览器不支持 &lt;ruby&gt; 标签。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;ruby&gt; 标签定义 ruby 注释（中文注音或字符）。
+        <br>在东亚使用，显示的是东亚字符的发音。
+        <br>将 &lt;ruby&gt; 标签与 &lt;rt&gt; 和 &lt;rp&gt; 标签一起使用： 
+        <br>&lt;ruby&gt; 元素由一个或多个需要解释/发音的字符和一个提供该信息的 &lt;rt&gt; 元素组成，还包括可选的 &lt;rp&gt; 元素，定义当浏览器不支持 "ruby" 元素时显示的内容。      
+        <br><span>实例：</span><br>
+        <ruby>
+          汉 <rp>(</rp><rt>Han</rt><rp>)</rp>
+          字 <rp>(</rp><rt>Zi</rt><rp>)</rp>
+        </ruby>
+    </p>
+    <hr>
+    <!-- HTML <s> 标签 -->
+    <h2 style="text-align:center;"># &lt;s&gt;标签</h2>
+    <p>简介：
+        <br>&lt;s&gt; 标签中的文本会以贯穿一条线呈现给用户，表示该处的内容是不相关或不准确的，即，可以用作删除线。
+        <br>所有主流浏览器都支持 &lt;s&gt; 标签。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;s&gt; 标签对那些不正确、不准确或者没有用的文本进行标识。
+        <br>&lt;s&gt; 标签不应该用来定义替换的或者删除的文本。如果要定义替换的或者删除的文本，请使用 &lt;del&gt;标签。
+        <br><span>实例：</span>
+        <p><s>我的车是蓝色的。</s></p>
+    </p>
+    <hr>
+    <!-- HTML <samp> 标签 -->
+    <h2 style="text-align:center;"># &lt;samp&gt;标签</h2>
+    <p>简介：
+        <br>&lt;samp&gt; 标签用于标识计算机程序输出，使用该标签定义的文本会以特殊的样式显示，通常使用浏览器默认的 monotype 字体。
+        <br>所有主流浏览器都支持 &lt;samp&gt; 标签。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;samp&gt; 标签是一个短语标签，用来定义计算机程序的样本文本。
+        <br>提示：我们并不反对使用这个标签，但是如果您只是为了达到某种视觉效果而使用这个标签的话，我们建议您使用 CSS ，这样可能会取得更丰富的效果。
+        <br><span>实例：</span>
+        <br>常见短语标签：<br>
+        <em>&lt;em&gt;----强调文本</em><br>
+        <strong>&lt;strong&gt;----加粗文本</strong><br>
+        <dfn>&lt;dfn&gt;----定义项目</dfn><br>
+        <code>&lt;code&gt;----一段电脑代码</code><br>
+        <samp>&lt;samp&gt;----计算机样本</samp><br>
+        <kbd>&lt;kbd&gt;----键盘输入</kbd><br>
+        <var>&lt;var&gt;----变量</var>
+    </p>
+    <hr>
+    <!-- HTML <strong> 标签 -->
+    <h2 style="text-align:center;"># &lt;strong&gt;标签</h2>
+    <p>简介：
+        <br>&lt;strong&gt; 标签用来强调某些文本的重要性，这意味着这些文本会以加粗的形式呈现在浏览器中。
+        <br>所有主流浏览器都支持 &lt;strong&gt; 标签。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;strong&gt; 标签是一个短语标签，用来定义计算机程序的样本重要的文本。
+        <br>提示：我们并不反对使用这个标签，但是如果您只是为了达到某种视觉效果而使用这个标签的话，我们建议您使用 CSS ，这样可能会取得更丰富的效果。
+        <br><span>实例：</span>
+        <br>常见短语标签：<br>
+        <em>&lt;em&gt;----强调文本</em><br>
+        <strong>&lt;strong&gt;----加粗文本</strong><br>
+        <dfn>&lt;dfn&gt;----定义项目</dfn><br>
+        <code>&lt;code&gt;----一段电脑代码</code><br>
+        <samp>&lt;samp&gt;----计算机样本</samp><br>
+        <kbd>&lt;kbd&gt;----键盘输入</kbd><br>
+        <var>&lt;var&gt;----变量</var>
+    </p>
+    <hr>
+    <!-- HTML <sub> 标签 -->
+    <h2 style="text-align:center;"># &lt;sub&gt;标签</h2>
+    <p>简介：
+        <br>包含在 &lt;sub&gt; 标签和其结束标签 &lt;sub&gt; 中的内容会以正常内容的一半的高度显示在下方，而且通常较小。
+        <br>所有主流浏览器都支持 &lt;sub&gt; 标签。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;sub&gt; 标签定义下标文本。下标文本将会显示在当前文本流中字符高度的一半为基准线的下方，但是与当前文本流中文字的字体和字号都是一样的。下标文本能用来表示化学公式，比如 H2O。
+        <br>提示：请使用 &lt;sub&gt; 标签定义上标文本。
+        <br><span>实例：</span>
+        <p>这个文本包含 <sub>下标</sub>文本。</p>
+        <p>这个文本包含 <sup>上标</sup> 文本。</p>
+    </p>
+    <hr>
+    <!-- HTML <sup> 标签 -->
+    <h2 style="text-align:center;"># &lt;sup&gt;标签</h2>
+    <p>简介：
+        <br>&lt;sup&gt; 标签与 &lt;sub&gt; 标签显示的大小相同，不同的是它显示在正常字符一半基准线的上方。
+        <br>所有主流浏览器都支持 &lt;sup&gt; 标签。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;sup&gt; 标签定义上标文本。上标文本将会显示在当前文本流中字符高度的一半为基准线的上方，但是与当前文本流中文字的字体和字号都是一样的。上标文本能用来添加脚注，比如 WWW[1]。
+        <br>提示：请使用 &lt;sub&gt; 标签定义下标文本。
+        <br>提示：这个标签在向文档添加脚注以及表示方程式中的指数值时非常有用。
+        <br><span>实例：</span>
+        <p>这个文本包含 <sub>下标</sub>文本。</p>
+        <p>这个文本包含 <sup>上标</sup> 文本。</p>
+    </p>
+    <hr>
+    <!-- HTML <time> 标签 -->
+    <h2 style="text-align:center;"># &lt;time&gt;标签</h2>
+    <p>简介：
+        <br>&lt;time&gt; 标签用来表示HTML网页中出现的日期和时间，目的是让搜索引擎等其它程序更容易的提取这些信息。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;time&gt; 标签定义公历的时间（24 小时制）或日期，时间和时区偏移是可选的。
+        <br>该元素能够以机器可读的方式对日期和时间进行编码，这样，举例说，用户代理能够把生日提醒或排定的事件添加到用户日程表中，搜索引擎也能够生成更智能的搜索结果。
+        <br>提示：&lt;time&gt; 标签不会在任何浏览器中呈现任何特殊效果，只是用来给机器识别的。
+        <br><span>属性：</span>
+        <br>1、datetime 属性规定日期或时间。在该元素的内容中未指定日期或时间时，使用该属性。datetime 属性在所有浏览器中不会渲染任何特殊的效果。
+        <br><span>实例：</span>
+        <p>我们在每天早上<time>9:00</time>开始营业。</p>
+        <p>我在<time datetime="2017-02-14">情人节</time>有个约会。</p>
+    </p>
+    <hr>
+    <!-- HTML <u> 标签 -->
+    <h2 style="text-align:center;"># &lt;u&gt;标签</h2>
+    <p>简介：
+        <br>&lt;u&gt; 标签可以用来对标签内的文本实现下划线样式，请参考下述示例。
+        <br>所有主流浏览器都支持 &lt;u&gt; 标签。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;u&gt; 标签定义与常规文本风格不同的文本，像拼写错误的单词或者汉语中的专有名词。
+        <br><span>提示和注释：</span>
+        <br>提示：请尽量避免使用 &lt;u&gt; 为文本加下划线，用户会把它混淆为一个超链接。
+        <br>注释：HTML5 规范建议开发者尽量使用其他元素替代 &lt;u&gt; 元素。
+        <br><span>实例：</span>
+        <p>This is a <u>parragraph</u>.</p>
+    </p>
+    <hr>
+    <!-- HTML <var> 标签 -->
+    <h2 style="text-align:center;"># &lt;var&gt;标签</h2>
+    <p>简介：
+        <br>&lt;var&gt; 标签表示数学表达式或编程上下文中的变量，&lt;var&gt; 标签定义的内容会呈现为斜体。
+        <br>所有主流浏览器都支持 &lt;var&gt; 标签
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;var&gt; 标签是一个短语标签，用来定义变量。
+        <br>提示：我们并不反对使用这个标签，但是如果您只是为了达到某种视觉效果而使用这个标签的话，我们建议您使用 CSS ，这样可能会取得更丰富的效果。
+        <br><span>实例：</span>
+        <br>常见短语标签：<br>
+        <em>&lt;em&gt;----强调文本</em><br>
+        <strong>&lt;strong&gt;----加粗文本</strong><br>
+        <dfn>&lt;dfn&gt;----定义项目</dfn><br>
+        <code>&lt;code&gt;----一段电脑代码</code><br>
+        <samp>&lt;samp&gt;----计算机样本</samp><br>
+        <kbd>&lt;kbd&gt;----键盘输入</kbd><br>
+        <var>&lt;var&gt;----变量</var>
+    </p>
+    <hr>
+    <!-- HTML <wbr> 标签 -->
+    <h2 style="text-align:center;"># &lt;wbr&gt;标签</h2>
+    <p>简介：
+        <br>&lt;wbr&gt; 标签可以用来定义HTML文档中需要进行换行的位置，与&lt;br&gt;标签不同，如果浏览器窗口的宽度足够，则不换行；反之，则在添加了 &lt;wbr&gt; 标签的位置进行换行
+        <br>所有主流浏览器都支持 &lt;wbr&gt; 标签，除了 Internet Explorer。
+        <br><span>标签定义及使用说明：</span> 
+        <br>&lt;wbr&gt; (Word Break Opportunity) 标签规定在文本中的何处适合添加换行符。
+        <br>提示：如果单词太长，或者您担心浏览器会在错误的位置换行，那么您可以使用 &lt;wbr&gt; 元素来添加 Word Break Opportunity（单词换行时机）。 
+        <br><span>实例：</span>  
+        <p contenteditable="true">学习 AJAX ,您必须熟悉 <wbr>Http<wbr>Request 对象。</p> 
+    </p>
+    <hr><!-- ----------------------------HTML 格式标签(end) ---------------------------->
+
+
+    <!-- ----------------------------HTML 表单标签(start) ---------------------------->
+    <h1 style="text-align:center;">HTML表单标签</h1>
+    <!-- HTML <form> 标签 -->
+    <h2 style="text-align:center;"># &lt;form&gt;标签</h2>
+    <p>简介：
+        <br>使用 &lt;form&gt; 标签可以向服务器传输数据。
+        <br>所有主流浏览器都支持 &lt;form&gt; 标签。
+        <br><span>标签定义及使用说明：</span>  
+        <br>&lt;form&gt; 标签用于创建供用户输入的 HTML 表单。
+        <br>&lt;form&gt; 元素包含一个或多个如下的表单元素：
+        <br>&lt;input&gt;
+        <br>&lt;textarea&gt;
+        <br>&lt;button&gt;
+        <br>&lt;select&gt;
+        <br>&lt;option&gt;
+        <br>&lt;optgroup&gt;
+        <br>&lt;fieldset&gt;
+        <br>&lt;label&gt;
+        <br><span>实例：</span>
+        <form action="/statics/demosource/demo-form.php" method="post">
+        First name: <input type="text" name="FirstName" value="Mickey"><br>
+        Last name: <input type="text" name="LastName" value="Mouse"><br>
+        <input type="submit" value="提交">
+        <br><span>属性：</span>
+        <br>1、<mark>accept-charset</mark> 属性：规定表单提交时使用的字符编码。默认值是保留字符串 "UNKNOWN"（表示编码为包含 &lt;form&gt; 元素的文档的编码）。
+        <br><span>实例：</span>
+        <form action="/web/index.html" accept-charset="utf-8">
+          First name: <input type="text" name="fname"><br>
+          Last name: <input type="text" name="lname"><br>
+          <input type="submit" value="提交">
+        </form>
+        <br>2、<mark>action</mark> 属性：规定当提交表单时，向何处发送表单数据。
+        <br>3、<mark>autocomplete</mark> 属性：规定表单是否应该启用自动完成功能。自动完成允许浏览器预测对字段的输入。当用户在字段开始键入时，浏览器基于之前键入过的值，应该显示出在字段中填写的选项。提示：autocomplete "on" 默认。规定启用自动完成功能。浏览器会基于用户之前键入的值自动完成值。，"off" 规定禁用自动完成功能。用户必须在每次使用时输入值到每个字段中，浏览器不会自动完成输入。
+        <br>4、<mark>enctype</mark> 属性：规定在将表单数据发送到服务器之前如何对其进行编码。注意：只有 method="post" 时才使用 enctype 属性。
+        <br>enctype="application/x-www-form-urlencoded"----------默认。在发送前对所有字符进行编码（将空格转换为 "+" 符号，特殊字符转换为 ASCII HEX 值）。     
+        <br>enctype="multipart/form-data"----------不对字符编码。当使用有文件上传控件的表单时，该值是必需的。
+        <br>enctype="text/plain"----------将空格转换为 "+" 符号，但不编码特殊字符。
+        <br><span>实例：</span>
+        <form action="/web/demo.html" method="post" enctype="multipart/form-data">
+          First name: <input type="text" name="fname"><br>
+          Last name: <input type="text" name="lname"><br>
+          <input type="submit" value="提交">
+        </form>
+        <br>5、<mark>method</mark> 方法：规定如何发送表单数据（form-data）（表单数据会被发送到在 action 属性中规定的页面中）。表单数据可被作为 URL 变量的形式来发送（method="get"）或者作为 HTTP post 事务的形式来发送（method="post"）。
+        <br>6、<mark>name</mark> 属性：规定表单的名称。name 属性用于在 JavaScript 中引用元素，或者在表单提交之后引用表单数据。
+        <br><span>实例：</span>
+        <form name="myForm" action="/web/index.html" method="get">
+        First name: <input type="text" name="fname"><br>
+        Last name: <input type="text" name="lname"><br><br>
+        <input type="button" onclick="formSubmit()" value="发送表单数据！">
+        </form>
+        <br>7、<mark>novalidate</mark> 属性：规定当提交表单时不对表单数据（输入）进行验证。novalidate 属性是一个布尔属性。
+        <br><span>实例：</span>
+        <form action="/web/index.html" novalidate>
+        E-mail: <input type="email" name="user_email">
+        <input type="submit">
+        </form>
+        <br>8、<mark>target</mark> 属性：规定一个名称或一个关键词，指示在何处打开 action URL，即在何处显示提交表单后接收到的响应。语法：&lt;form target="_blank|_self|_parent|_top|framename"&gt;
+        <br><span>实例：</span>
+        <form action="/statics/demosource/demo-form.php" method="get" target="_blank">  <!-- "_blank"在新窗口/选项卡中打开。 -->
+          First name: <input type="text" name="fname"><br>
+          Last name: <input type="text" name="lname"><br>
+          <input type="submit" value="提交">
+        </form>
+
+
+
+</form>
 
     </p>
     <hr>
 
-
-
-
-    <!-- ----------------------------HTML 格式标签(end) ---------------------------->
-    
 
     <!--==== a 标签 ===-->
     <h2 id='maodian' style="text-align:center;"># &lt;a&gt;标签 </h2>  
