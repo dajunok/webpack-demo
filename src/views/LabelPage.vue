@@ -713,6 +713,7 @@
         First name: <input type="text" name="FirstName" value="Mickey"><br>
         Last name: <input type="text" name="LastName" value="Mouse"><br>
         <input type="submit" value="提交">
+        </form>
         <br><span>属性：</span>
         <br>1、<mark>accept-charset</mark> 属性：规定表单提交时使用的字符编码。默认值是保留字符串 "UNKNOWN"（表示编码为包含 &lt;form&gt; 元素的文档的编码）。
         <br><span>实例：</span>
@@ -754,11 +755,27 @@
           Last name: <input type="text" name="lname"><br>
           <input type="submit" value="提交">
         </form>
-
-
-
-</form>
-
+    </p>
+    <hr>
+    <!-- HTML <input> 标签 -->
+    <h2 style="text-align:center;"># &lt;input&gt;标签</h2>
+    <p>简介：
+        <br>&lt;input&gt; 标签用于创建交互式控件，这类控件是基于 web 表单的，它可以接收用户的数据、信息。
+        <br>目前大多数浏览器支持 &lt;input&gt;标签。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;input&gt; 标签规定了用户可以在其中输入数据的输入字段。
+        <br>&lt;input&gt; 元素在 &lt;form&gt; 元素中使用，用来声明允许用户输入数据的 input 控件。
+        <br>输入字段可通过多种方式改变，取决于 type 属性。它可以是文本字段、复选框、掩码后的文本控件、单选按钮、按钮等等。
+        <br><span>提示和注释：</span>
+        <br>注意: &lt;input&gt; 元素是空的,它只包含标签属性。
+        <br>提示: 你可以使用 &lt;label&gt; 元素来定义 &lt;input&gt; 元素的标注。
+        <br><span>属性：</span>
+        <br>1、accept 属性：规定了可通过文件上传提交的服务器接受的文件类型。注意：accept 属性仅适用于 &lt;input type="file"&gt;。提示：请不要将该属性作为您的验证工具。应该在服务器上对文件上传进行验证。
+        <br><span>实例：</span>
+        <form action="/web/index.html">
+          <input type="file" name="pic" accept="image/*">
+          <input type="submit">
+        </form>
     </p>
     <hr>
 
