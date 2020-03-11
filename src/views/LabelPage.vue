@@ -750,7 +750,7 @@
         </form>
         <br>8、<mark>target</mark> 属性：规定一个名称或一个关键词，指示在何处打开 action URL，即在何处显示提交表单后接收到的响应。语法：&lt;form target="_blank|_self|_parent|_top|framename"&gt;
         <br><span>实例：</span>
-        <form action="/statics/demosource/demo-form.php" method="get" target="_blank">  <!-- "_blank"在新窗口/选项卡中打开。 -->
+        <form action="/web/index.html" method="get" target="_blank">  <!-- "_blank"在新窗口/选项卡中打开。 -->
           First name: <input type="text" name="fname"><br>
           Last name: <input type="text" name="lname"><br>
           <input type="submit" value="提交">
@@ -773,8 +773,66 @@
         <br>1、accept 属性：规定了可通过文件上传提交的服务器接受的文件类型。注意：accept 属性仅适用于 &lt;input type="file"&gt;。提示：请不要将该属性作为您的验证工具。应该在服务器上对文件上传进行验证。
         <br><span>实例：</span>
         <form action="/web/index.html">
-          <input type="file" name="pic" accept="image/*">
+          <input type="file" name="pic" accept="image/*" multiple>
           <input type="submit">
+        </form>
+        <br>2、alt 属性：为用户由于某些原因（比如网速太慢、src 属性中的错误、浏览器禁用图像、用户使用的是屏幕阅读器）无法查看图像时提供了替代文本。注意：alt 属性只能与 <input type="image"> 配合使用。
+        <br><span>实例：</span>
+        <form action="/web/index.html">
+          First name: <input type="text" name="fname"><br>
+          <input type="image" src="/statics/images/submit.gif" alt="Submit" width="48" height="48">
+        </form>
+        <br>3、autocomplete 属性：规定输入字段是否应该启用自动完成功能。自动完成允许浏览器预测对字段的输入。当用户在字段开始键入时，浏览器基于之前键入过的值，应该显示出在字段中填写的选项。注意：autocomplete 属性适用于下面的 &lt;input&gt; 类型：text、search、url、tel、email、password、datepickers、range 和 color。
+        <br><span>实例：</span>
+        <form action="/web/index.html" autocomplete="on">
+          First name:<input type="text" name="fname" value="你好"><br>
+          Last name: <input type="text" name="lname"><br>
+          E-mail: <input type="email" name="email" autocomplete="off" placehder="nihao"><br>
+          <input type="submit">
+        </form>
+        <br>4、autofocus 属性：规定当页面加载时 &lt;input&gt; 元素应该自动获得焦点。autofocus 属性是一个布尔属性。
+        <br><span>实例：</span>
+        <form action="/web/index.html">
+          First name: <input type="text" name="fname" autofocus><br>
+          Last name: <input type="text" name="lname"><br>
+          <input type="submit">
+        </form>
+        <br>5、checked 属性：规定在页面加载时应该被预先选定的 &lt;input&gt; 元素。checked 属性是一个布尔属性。checked 属性适用于 &lt;input type="checkbox"&gt; 和 &lt;input type="radio"&gt;。checked 属性也可以在页面加载后，通过 JavaScript 代码进行设置。
+        <br><span>实例：</span>
+        <form action="/web/index.html" method="get">
+          <input type="checkbox" name="vehicle" value="Bike"> I have a bike<br>
+          <input type="checkbox" name="vehicle" value="Car" checked> I have a car<br>
+          <input type="submit" value="提交">
+        </form>  
+        <br>6、disabled 属性：规定应该禁用的 &lt;input&gt; 元素。disabled 属性是一个布尔属性。被禁用的 input 元素是无法使用和无法点击的。disabled 属性进行设置，使用户在满足某些条件时（比如选中复选框，等等）才能使用 &lt;input&gt; 元素。然后，可使用 JavaScript 来删除 disabled 值，使该&lt;input&gt; 元素变为可用的状态。提示：表单中被禁用的 &lt;input&gt; 元素不会被提交。注意：disabled 属性不适用于 &lt;input type="hidden"&gt;。
+        <br><span>实例：</span>
+        <form action="/web/index.html">
+          First name: <input type="text" name="fname"><br>
+          Last name: <input type="text" name="lname" disabled><br>
+          <input type="submit" value="提交">
+        </form>   
+        <br> 7、form 属性：规定 &lt;input&gt; 元素所属的一个或多个表单。
+        <br><span>实例：</span>
+        <form action="/web/index.html" id="form1">
+        First name: <input type="text" name="fname"><br>
+        <input type="submit" value="提交">
+        </form>   
+        <p> "Last name" 字段没有在form表单之内，但它也是form表单的一部分。</p>
+        Last name: <input type="text" name="lname" form="form1">
+        <br>8、formaction 属性：规定当表单提交时处理输入控件的文件的 URL。formaction 属性覆盖 &lt;form&gt; 元素的 action 属性。注释：formaction 属性适用于 type="submit" 和 type="image"。
+        <br><span>实例：</span>
+        <form action="/web/index.html">
+          First name: <input type="text" name="fname"><br>
+          Last name: <input type="text" name="lname"><br>
+          <input type="submit" value="提交"><br>
+          <input type="submit" formaction="/web/vuex.html" value="以管理员提交">
+        </form>
+        <br>9、formenctype 属性：规定当表单数据提交到服务器时如何编码（仅适用于 method="post" 的表单）。formenctype 属性覆盖 &lt;form&gt; 元素的 enctype 属性。注释：formenctype 属性与 type="submit" 和 type="image" 配合使用。
+        <br><span>实例：</span>
+        <form action="/web/index.html" method="post">
+          First name: <input type="text" name="fname"><br>
+          <input type="submit" value="提交">
+          <input type="submit" formenctype="multipart/form-data" value="以Multipart/form-data提交">
         </form>
     </p>
     <hr>
