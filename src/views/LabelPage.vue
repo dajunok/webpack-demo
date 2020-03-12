@@ -949,7 +949,43 @@
         <form action="/web/index.html">
           First name: <input type="text" name="fname"><br>
           <input type="image" src="/web/img/favicon.ico" alt="Submit" width="48" height="48">
-        </form>    
+        </form> 
+        <br>25、step 属性：规定 &lt;input&gt; 元素的合法数字间隔。实例：如果 step="3"，则合法数字应该是 -3、0、3、6，以此类推。提示：step 属性可以与 max 和 min 属性配合使用，以创建合法值的范围。注意：step 属性适用于下面的 input 类型：number、range、date、datetime、datetime-local、month、time 和 week。
+        <br><span>实例：</span>
+        <form action="/web/index.html">
+          <input type="number" name="points" step="3">
+          <input type="submit">
+        </form>  
+        <br>26、type 属性：规定要显示的 &lt;input&gt; 元素的类型。默认类型是：text。提示：该属性不是必需的，但是我们认为您应该始终使用它。
+        <br><span>属性值：</span>
+        <pre style="color:green;">
+            ● button              定义可点击的按钮（通常与 JavaScript 一起使用来启动脚本）。
+            ● checkbox            定义复选框。
+            ● colorNew            定义拾色器。
+            ● dateNew             定义 date 控件（包括年、月、日，不包括时间）。
+            ● datetimeNew         定义 date 和 time 控件（包括年、月、日、时、分、秒、几分之一秒，基于 UTC 时区）。
+            ● datetime-localNew   定义 date 和 time 控件（包括年、月、日、时、分、秒、几分之一秒，不带时区）。
+            ● emailNew            定义用于 e-mail 地址的字段。
+            ● file                定义文件选择字段和 "浏览..." 按钮，供文件上传。
+            ● hidden              定义隐藏输入字段。
+            ● image               定义图像作为提交按钮。
+            ● monthNew            定义 month 和 year 控件（不带时区）。
+            ● numberNew           定义用于输入数字的字段。
+            ● password            定义密码字段（字段中的字符会被遮蔽）。
+            ● radio               定义单选按钮。
+            ● rangeNew            定义用于精确值不重要的输入数字的控件（比如 slider 控件）。
+            ● reset               定义重置按钮（重置所有的表单值为默认值）。
+            ● searchNew           定义用于输入搜索字符串的文本字段。
+            ● submit              定义提交按钮。
+            ● telNew              定义用于输入电话号码的字段。
+            ● text                默认。定义一个单行的文本字段（默认宽度为 20 个字符）。
+            ● timeNew             定义用于输入时间的控件（不带时区）。
+            ● urlNew              定义用于输入 URL 的字段。
+            ● weekNew             定义 week 和 year 控件（不带时区）。            
+        </pre>
+        <br><span>实例：</span>
+
+
     </p>
     <hr>
 
