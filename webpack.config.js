@@ -81,7 +81,7 @@ module.exports={
             //配置文件加载器url-loader
             {
                 //url-loader加载器处理图片文件
-                test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
+                test: /\.(gif|jpg|png|woff|svg|eot|ttf|ico)\??.*$/,
                 loader: 'url-loader',
                 options: {
                     esModule: false,    //esModule指你的模块是否采用ES modules。如果你的JS采用的是CommonJS模块语法，则此处应该设置为false，否则图片不能正常显示。

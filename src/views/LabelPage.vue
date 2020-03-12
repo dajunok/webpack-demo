@@ -834,6 +834,122 @@
           <input type="submit" value="提交">
           <input type="submit" formenctype="multipart/form-data" value="以Multipart/form-data提交">
         </form>
+        <br>10、formmethod 属性：定义发送表单数据到 action URL 的 HTTP 方法。formmethod 属性覆盖 &lt;form&gt; 元素的 method 属性。注意：formmethod 属性与 type="submit" 和 type="image" 配合使用。表单数据可被作为 URL 变量的形式来发送（method="get"）或者作为 HTTP post 事务的形式来发送（method="post"）。表单数据可被作为 URL 变量的形式来发送（method="get"）或者作为 HTTP post 事务的形式来发送（method="post"）。     
+        <br><span>实例：</span>
+        <form action="/web/vuex.html" method="get">
+          First name: <input type="text" name="fname"><br>
+          Last name: <input type="text" name="lname"><br>
+          <input type="submit" value="提交">
+          <input type="submit" formmethod="post" formaction="/web/index.html" value="使用 POST 提交">
+        </form>
+        <br>11、novalidate 属性：规定当表单提交时 &lt;input&gt; 元素不进行验证。novalidate 属性是一个布尔属性。formnovalidate 属性覆盖 &lt;form&gt; 元素的 novalidate 属性。注意：formnovalidate 属性可与 type="submit" 配合使用。  
+        <br><span>实例：</span>
+        <form action="/web/index.html">
+          E-mail: <input type="email" name="userid"><br>
+          <input type="submit" value="提交"><br>
+          <input type="submit" formnovalidate="formnovalidate" value="不验证提交">
+        </form>
+        <br>12、formtarget 属性：规定表示提交表单后在哪里显示接收到响应的名称或关键词。formtarget 属性覆盖 &lt;form&gt; 元素的 target 属性。注意：formtarget 属性可以与 type="submit" 和 type="image" 配合使用。
+        <br><span>实例：</span>
+        <form action="/web/index.html">
+          First name: <input type="text" name="fname"><br>
+          Last name: <input type="text" name="lname"><br>
+          <input type="submit" value="正常提交">
+          <input type="submit" formtarget="_blank" value="提交到一个新的页面上">
+        </form> 
+        <br>13、height 属性规定 &lt;input&gt; 元素的高度。注意：height 属性只适用于 &lt;input type="image"&gt;。提示：为图片指定 height 和 width 属性是一个好习惯。如果设置了这些属性，当页面加载时会为图片预留需要的空间。而如果没有这些属性，则浏览器就无法了解图像的尺寸，也就无法为其预留合适的空间。情况是当页面和图片加载时，页面布局会发生变化。
+        <br><span>实例：</span>
+        <form action="/web/index.html">
+          First name: <input type="text" name="fname"><br>
+          Last name: <input type="text" name="lname"><br>
+          <input type="image" src="/web/resources/168-monkey.png"  alt="Submit" width="48" height="48">
+        </form>
+        <br>14、list 属性：引用 &lt;datalist&gt; 元素，其中包含 &lt;input&gt; 元素的预定义选项。注意：Safari 或者 Internet Explorer 9 及之前的版本不支持 &lt;input&gt; 标签的 list 属性。
+        <br><span>实例：</span>
+        <form action="/web/index.html" method="get">
+        <input list="browsers" name="browser">
+        <datalist id="browsers">
+          <option value="Internet Explorer"/>
+          <option value="Firefox"/>
+          <option value="Chrome"/>
+          <option value="Opera"/>
+          <option value="Safari"/>
+        </datalist>
+        <input type="submit">
+        </form>  
+        <br>15、max 属性：规定 &lt;input&gt; 元素的最大值。 提示：max 属性与 min 属性配合使用，可创建合法值范围。注意：max 和 min 属性适用于以下 input 类型：number、range、date、datetime、datetime-local、month、time 和 week。
+        <br><span>实例：</span>
+        <form action="/web/index.html">
+         输入 1980-01-01 之前的日期:
+          <input type="date" name="bday" max="1979-12-31" value="1979-12-31"><br>
+         输入 2000-01-01 之后的日期:
+          <input type="date" name="lday" min="2000-01-02" value="2001-01-01"><br>
+          数量 (在1和5之间):
+          <input type="number" name="quantity" min="1" max="5"><br>
+          <input type="submit">
+        </form> 
+        <br>16、maxlength 属性：规定 &lt;input&gt; 元素中允许的最大字符数。
+        <br><span>实例：</span>
+        <form action="/web/index.html">
+          Username: <input type="text" name="usrname" maxlength="10"><br>
+          <input type="submit" value="提交">
+        </form>
+        <br>17、min 属性规定 &lt;input&gt; 元素的最小值。提示：min 属性与 max 属性配合使用，可创建合法值范围。注意：max 和 min 属性适用于以下 input 类型：number、range、date、datetime、datetime-local、month、time 和 week。
+        <br><span>实例：</span>
+        <form action="/web/index.html">
+         输入 1980-01-01 之前的日期:
+          <input type="date" name="bday" max="1979-12-31" value="1979-12-31"><br>
+         输入 2000-01-01 之后的日期:
+          <input type="date" name="lday" min="2000-01-02" value="2001-01-01"><br>
+          数量 (在1和5之间):
+          <input type="number" name="quantity" min="1" max="5"><br>
+          <input type="submit">
+        </form>
+        <br>18、multiple 属性：规定允许用户输入到 &lt;input&gt; 元素的多个值。multiple 属性是一个布尔属性。注意：multiple 属性适用于以下 input 类型：email 和 file。
+        <br><span>实例：</span>
+        <form action="/web/index.html">
+          选择图片: <input type="file" name="img" multiple>
+          <input type="submit">
+        </form>
+        <br>19、name 属性：规定 &lt;input&gt; 元素的名称。name 属性用于在 JavaScript 中引用元素，或者在表单提交后引用表单数据。注意：只有设置了 name 属性的表单元素才能在提交表单时传递它们的值。
+        <br><span>实例：</span>
+        <form action="/web/index.html">
+          Name: <input type="text" name="fullname"><br>
+          Email: <input type="text" name="email"><br>
+          <input type="submit" value="提交">
+        </form>
+        <br>20、pattern 属性：规定用于验证 &lt;input&gt; 元素的值的正则表达式。注意：pattern 属性适用于下面的 input 类型：text、search、url、tel、email 和 password。提示：请使用全局的 title 属性来描述模式以帮助用户。
+        <br><span>实例：</span>
+        <form action="/web/index.html">
+          Country code: <input type="text" name="country_code" pattern="[A-Za-z]{3}" title="3个字母表示的国家代码">
+          <input type="submit">
+        </form>
+        <br>21、readonly 属性：规定输入字段是只读的。readonly 属性是一个布尔属性。只读字段是不能修改的。不过，用户仍然可以使用 tab 键切换到该字段，还可以选中或拷贝其文本。readonly 属性可以防止用户对值进行修改，直到满足某些条件为止（比如选中了一个复选框）。然后，需要使用 JavaScript 消除 readonly 值，将输入字段切换到可编辑状态。
+        <br><span>实例：</span>
+        <form action="/statics/demosource/demo-form.php">
+          Email: <input type="text" name="email"><br>
+          Country: <input type="text" name="country" value="中国" readonly><br>
+          <input type="submit" value="提交">
+        </form>
+        <br>22、required 属性：规定必需在提交表单之前填写输入字段。required 属性是一个布尔属性。注意：required 属性适用于下面的 input 类型：text、search、url、tel、email、password、date pickers、number、checkbox、radio 和 file。
+        <br><span>实例：</span>
+        <form action="/web/index.html">
+          Username: <input type="text" name="usrname" required>
+          <input type="submit">
+        </form>
+        <br>23、size 属性：规定以字符数计的 &lt;input&gt; 元素的<mark>可见</mark>宽度（类似CSS的width）。注意：size 属性适用于下面的 input 类型：text、search、tel、url、email 和 password。提示：如需规定 &lt;input&gt; 元素中允许的最大字符数，请使用 maxlength 属性。
+        <br><span>实例：</span>
+        <form action="/statics/demosource/demo-form.php">
+          Email: <input type="text" name="email" size="35"><br>
+          PIN: <input type="text" name="pin" maxlength="10" size="8"><br>
+          <input type="submit" value="提交">
+        </form> 
+        <br>24、src 属性：规定显示为提交按钮的图像的 URL。注意：src 属性对于 &lt;input type="image"&gt; 是必需的属性，且只能与 &lt;input type="image"&gt; 配合使用。     
+        <br><span>实例：</span>
+        <form action="/web/index.html">
+          First name: <input type="text" name="fname"><br>
+          <input type="image" src="/web/img/favicon.ico" alt="Submit" width="48" height="48">
+        </form>    
     </p>
     <hr>
 
@@ -969,4 +1085,15 @@ export default{
         color:green;
     }
     #div1,#div2 {width:350px;height:70px;padding:10px;border:1px solid #aaaaaa;}
+    
+    //改变input标签data控件样式
+    input[type=date]::-webkit-inner-spin-button { visibility: hidden; }
+    input[type="date"]::-webkit-datetime-edit-fields-wrapper { 
+        font: 12px/1.5 "Microsoft yahei", arial, Simsun, sans-serif;        
+        background-color: #eee;
+        color: green; 
+    }  
+    input[type="date"]::-webkit-datetime-edit-text { color: red; padding: 0.3em; }
+
+
 </style>
