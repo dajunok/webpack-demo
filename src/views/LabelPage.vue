@@ -793,7 +793,7 @@
         <br>4、autofocus 属性：规定当页面加载时 &lt;input&gt; 元素应该自动获得焦点。autofocus 属性是一个布尔属性。
         <br><span>实例：</span>
         <form action="/web/index.html">
-          First name: <input type="text" name="fname" autofocus><br>
+          First name: <input type="text" name="fname"><br>
           Last name: <input type="text" name="lname"><br>
           <input type="submit">
         </form>
@@ -961,33 +961,507 @@
         <pre style="color:green;">
             ● button              定义可点击的按钮（通常与 JavaScript 一起使用来启动脚本）。
             ● checkbox            定义复选框。
-            ● colorNew            定义拾色器。
-            ● dateNew             定义 date 控件（包括年、月、日，不包括时间）。
-            ● datetimeNew         定义 date 和 time 控件（包括年、月、日、时、分、秒、几分之一秒，基于 UTC 时区）。
-            ● datetime-localNew   定义 date 和 time 控件（包括年、月、日、时、分、秒、几分之一秒，不带时区）。
-            ● emailNew            定义用于 e-mail 地址的字段。
+            ● color               定义拾色器。
+            ● date                定义 date 控件（包括年、月、日，不包括时间）。
+            ● datetime            定义 date 和 time 控件（包括年、月、日、时、分、秒、几分之一秒，基于 UTC 时区）。
+            ● datetime-local      定义 date 和 time 控件（包括年、月、日、时、分、秒、几分之一秒，不带时区）。
+            ● email               定义用于 e-mail 地址的字段。
             ● file                定义文件选择字段和 "浏览..." 按钮，供文件上传。
             ● hidden              定义隐藏输入字段。
             ● image               定义图像作为提交按钮。
-            ● monthNew            定义 month 和 year 控件（不带时区）。
-            ● numberNew           定义用于输入数字的字段。
+            ● month               定义 month 和 year 控件（不带时区）。
+            ● number              定义用于输入数字的字段。
             ● password            定义密码字段（字段中的字符会被遮蔽）。
             ● radio               定义单选按钮。
-            ● rangeNew            定义用于精确值不重要的输入数字的控件（比如 slider 控件）。
+            ● range               定义用于精确值不重要的输入数字的控件（比如 slider 控件）。
             ● reset               定义重置按钮（重置所有的表单值为默认值）。
-            ● searchNew           定义用于输入搜索字符串的文本字段。
+            ● search              定义用于输入搜索字符串的文本字段。
             ● submit              定义提交按钮。
-            ● telNew              定义用于输入电话号码的字段。
+            ● tel                 定义用于输入电话号码的字段。
             ● text                默认。定义一个单行的文本字段（默认宽度为 20 个字符）。
-            ● timeNew             定义用于输入时间的控件（不带时区）。
-            ● urlNew              定义用于输入 URL 的字段。
-            ● weekNew             定义 week 和 year 控件（不带时区）。            
+            ● time                定义用于输入时间的控件（不带时区）。
+            ● url                 定义用于输入 URL 的字段。
+            ● week                定义 week 和 year 控件（不带时区）。            
         </pre>
-        <br><span>实例：</span>
-
+        <br><span>实例：</span>定义可点击的按钮（通常与 JavaScript 一起使用来启动脚本）。<br>
+        <form>
+        <input type="button" value="点我" @click="msg()">
+        </form>
+        <br><span>实例：</span>定义复选框。<br>
+        <form action="/web/index.html">
+          <input type="checkbox" name="vehicle[]" value="Bike"> 我有一辆自行车<br>
+          <input type="checkbox" name="vehicle[]" value="Car"> 我有一辆小轿车<br>
+          <input type="checkbox" name="vehicle[]" value="Boat"> 我有一艘船<br>
+          <input type="submit" value="提交">
+        </form>
+        <br><span>实例：</span>定义拾色器。<br>
+        <form action="/web/index.html">
+          选择你喜欢的颜色: <input type="color" name="favcolor"><br>
+          <input type="submit">
+        </form>
+        <br><span>实例：</span>定义 date 控件（包括年、月、日，不包括时间）。<br>
+        <form action="/web/index.html">
+          生日: <input type="date" name="bday">
+          <input type="submit">
+        </form>
+        <br><span>实例：</span>定义 date 和 time 控件（包括年、月、日、时、分、秒、几分之一秒，基于 UTC 时区）。<br>
+        <form action="/web/index.html">
+          生日 (日期和时间): <input type="datetime" name="bdaytime">
+          <input type="submit">
+        </form>
+        <br><span>实例：</span>定义 date 和 time 控件（包括年、月、日、时、分、秒、几分之一秒，不带时区）。<br>
+        <form action="/web/index.html">
+          生日 (日期和时间): <input type="datetime-local" name="bdaytime">
+          <input type="submit">
+        </form>
+        <br><span>实例：</span>定义用于 e-mail 地址的字段。<br>
+        <form action="/web/index.html">
+          E-mail: <input type="email" name="usremail">
+          <input type="submit">
+        </form>
+        <br><span>实例：</span>定义文件选择字段和 "浏览..." 按钮，供文件上传。<br>
+        <form action="/web/index.html">
+          选择一个文件: <input type="file" name="img">
+          <input type="submit">
+        </form>
+        <br><span>实例：</span>定义隐藏输入字段。<br>
+        <form action="/web/index.html">
+          First name: <input type="text" name="fname"><br>
+          <input type="hidden" name="country" value="中国">
+          <input type="submit" value="提交">
+        </form>
+        <p>注意隐藏字段用户是看不到的。</p>
+        <br><span>实例：</span>定义图像作为提交按钮。<br>
+        <form action="/web/index.html">
+          First name: <input type="text" name="fname"><br>
+          Last name: <input type="text" name="lname"><br>
+          <input type="image" src="/web/img/monkey.ico" alt="Submit" width="48" height="48">
+        </form>
+        <p><b>注意:</b> 点击激活图片按钮 input type="image" 会发送  X 和 Y 坐标到服务端。</p>
+        <br><span>实例：</span>定义 month 和 year 控件（不带时区）。<br>
+        <form action="/web/index.html">
+          生日 ( 月和年 ): <input type="month" name="bdaymonth">
+          <input type="submit">
+        </form>
+        <br><span>实例：</span>定义用于输入数字的字段。<br>
+        <form action="/web/index.html">
+          数量 ( 1 到 5 之间): <input type="number" name="quantity" min="1" max="5">
+          <input type="submit">
+        </form>
+        <br><span>实例：</span>定义密码字段（字段中的字符会被遮蔽）。<br>
+        <form action="/web/index.html">
+          Email: <input type="text" name="email"><br>
+          Password: <input type="password" name="pwd" maxlength="8"><br>
+          <input type="submit">
+        </form>
+        <br><span>实例：</span>定义单选按钮。<br>
+        <form action="/web/index.html">
+          <input type="radio" name="gender" value="男">男 
+          <input type="radio" name="gender" value="女">女<br>
+          <input type="submit" value="提交">
+        </form>
+        <br><span>实例：</span>定义用于精确值不重要的输入数字的控件（比如 slider 控件）。<br>
+        <form action="/web/index.html" method="get">
+        Points: <input type="range" name="points" min="1" max="10">
+        <input type="submit">
+        </form>
+        <br><span>实例：</span>定义重置按钮（重置所有的表单值为默认值）。<br>
+        <form action="/web/index.html">
+          Email: <input type="text" name="email"><br>
+          Pin: <input type="text" name="pin" maxlength="4"><br>
+          <input type="reset" value="重置">
+          <input type="submit" value="提交">
+        </form>
+        <br><span>实例：</span>定义用于输入搜索字符串的文本字段。<br>
+        <form action="/web/index.html">
+          Search Google: <input type="search" name="googlesearch"><br>
+          <input type="submit">
+        </form>
+        <br><span>实例：</span>定义用于输入时间的控件（不带时区）。<br>
+        <form action="/web/index.html">
+          选择时间: <input type="time" name="usr_time">
+          <input type="submit">
+        </form>
+        <br><span>实例：</span>定义用于输入 URL 的字段。<br>
+        <form action="/web/index.html">
+          添加你的主页: <input type="url" name="homepage"><br>
+          <input type="submit">
+        </form>
+        <br><span>实例：</span>定义 week 和 year 控件（不带时区）。<br>
+        <form action="/web/index.html">
+          选择周: <input type="week" name="year_week">
+          <input type="submit">
+        </form>
 
     </p>
     <hr>
+    <!-- HTML <textarea> 标签 -->
+    <h2 style="text-align:center;"># &lt;textarea&gt;标签</h2>
+    <p>简介：
+        <br>&lt;textarea&gt; 标签表示多行纯文本编辑控件，用户可在其文本区域中写入文本。 
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;textarea&gt; 标签定义一个多行的文本输入控件。
+        <br>文本区域中可容纳无限数量的文本，其中的文本的默认字体是等宽字体（通常是 Courier）。
+        <br>可以通过 cols 和 rows 属性来规定 textarea 的尺寸大小，不过更好的办法是使用 CSS 的 height 和 width 属性。
+        <br>提示：可以通过 &lt;textarea&gt; 标签的 wrap 属性设置文本输入区内的换行模式。  
+        <br><span>实例：</span><br>
+        <textarea rows="10" cols="30">
+        我是一个文本框。
+        </textarea>
+        <br><span>属性：</span>
+        <br>1、autofocus 属性：规定文本区域应该在页面加载时自动获得焦点。autofocus 属性是一个布尔属性。
+        <br><span>实例：</span><br>
+        <textarea rows="4" cols="50">
+        在 w3cschool.cn 你将学会如何制作网站。我们提供了最全的web技术教程。
+        </textarea>
+        <br>2、cols 属性：规定文本区域的可见宽度。注意： textarea 的尺寸大小也可以通过 CSS 的 height 和 width 属性设置。
+        <br><span>实例：</span><br>
+        <textarea rows="4" cols="50">
+        在w3cschool.cn您将学习如何制作一个网站。我们提供了所有Web开发免费教程。
+        </textarea>
+        <br>3、disabled 属性：规定文本区域应该被禁用。disabled 属性是一个布尔属性。被禁用的文本区域既不可用，文本也不可选择（不能被复制）。可以设置 disabled 属性，直到满足某些条件（比如选择一个复选框），才恢复用户对该文本区域的使用。然后，可以使用 JavaScript 来移除 disabled 属性的值，以使文本区域变为可用状态。
+        <br><span>实例：</span><br>
+        <textarea disabled>
+        在 w3cschool.cn 你将学会如何制作网站。我们提供了最全的web技术教程。
+        </textarea>
+        <br>4、form 属性：规定文本区域所属的一个或多个表单。
+        <br><span>实例：</span><br>
+        <form action="/web/index.html" id="usrform">
+          Name: <input type="text" name="usrname">
+          <input type="submit">
+        </form>
+        <br>
+        <textarea rows="4" cols="50" name="comment" form="usrform">
+        输入内容...
+        </textarea>
+        <p>以上的表单在文本框之外，但是它仍是表单中的一部分。</p>
+        <br>5、maxlength 属性规定文本区域的最大长度（以字符计）。
+        <br><span>实例：</span><br>
+        <textarea rows="4" cols="50" maxlength="50">
+        输入内容...
+        </textarea>
+        <br>6、name 属性为文本区域规定名称。name 属性用于在 JavaScript 中对元素进行引用，或者在表单提交之后，对表单数据进行引用。
+        <br><span>实例：</span><br>
+        <form action="demo-form.php">
+        <textarea rows="4" cols="50" name="comment">
+        输入内容...</textarea>
+        <input type="submit">
+        </form>
+        <br>7、placeholder 属性（占位符）：规定一个简短的提示，它描述了文本区域的期望值。当文本区域为空，且当字段获得焦点后又失去焦点时，文本区域中显示该提示。
+        <br><span>实例：</span><br>
+        <textarea rows="4" cols="50" placeholder="描述信息..."></textarea>
+        <br>8、readonly 属性规定文本区域为只读。readonly 属性是一个布尔属性。在只读的文本区域中，无法对内容进行修改，但用户可以通过 tab 键切换到该控件，选取或复制其中的内容。可以设置 readonly 属性，直到满足某些条件（比如选择一个复选框），才恢复用户对该文本区域的使用。然后，可以使用 JavaScript 来移除 readonly 属性的值，以使文本区域变为可编辑状态。
+        <br><span>实例：</span><br>
+        <textarea rows="4" cols="50" readonly>
+        在 w3cschool.cn 你将学会如何制作网站。我们提供了最全的web技术教程。
+        </textarea>
+        <br>9、required 属性规定一个文本区域是必需的/必须填写（以提交表单）。required 属性是一个布尔属性。
+        <br><span>实例：</span><br>
+        <form action="/web/index.html">
+        <textarea rows="4" cols="50" name="comment" required='required'  :autofocus='isFocus'></textarea>
+        <input type="submit">
+        </form>
+        <br>10、rows 属性规定文本区域的可见高度，以行数计。注意： textarea 的尺寸大小也可以通过 CSS 的 height 和 width 属性设置。
+        <br><span>实例：</span><br>
+        <textarea rows="4" cols="50">
+        在w3cschool.cn您将学习如何制作一个网站。我们提供了所有Web开发免费教程。
+        </textarea>
+        <br>11、wrap 属性规定在表单提交时文本区域中的文本是如何换行的。带有 wrap="hard" 的文本区域将在表单提交时包含换行符（如果有换行符）。wrap="soft" 在表单提交时，textarea 中的文本不换行。默认。
+        <br><span>实例：</span><br>
+        <form action="/web/index.html">
+        <textarea rows="2" cols="20" name="usrtxt" wrap="hard">
+        w3cschoolW3Cschool教程提供了最全的web技术教程。
+        </textarea>
+        <input type="submit">
+        </form>
+    </p>
+    <hr>
+    <!-- HTML <button> 标签 -->
+    <h2 style="text-align:center;"># &lt;button&gt;标签</h2>
+    <p>简介：
+        <br><&lt;button&gt; 标签用来设置 HTML 中的按钮。
+        <br><span>标签定义及使用说明：</span>
+        <br><&lt;button&gt; 标签定义一个按钮。
+        <br><在 &lt;button&gt; 元素内部，您可以放置内容，比如文本或图像。这是该元素与使用 &lt;input&gt; 元素创建的按钮之间的不同之处。
+        <br><提示：请始终为 &lt;button&gt; 元素规定 type 属性。不同的浏览器对 &lt;button&gt; 元素的 type 属性使用不同的默认值。
+        <br><span>提示和注释：</span>
+        <br>提示：与 &lt;input type="button"&gt; 相比，&lt;button&gt; 标签提供了更为强大的功能和更丰富的内容。
+        <br>注释：如果在 HTML 表单中使用 &lt;button&gt; 元素，不同的浏览器可能会提交不同的按钮值。IE 浏览器将提交 &lt;button&gt; 标签之间的文本，而其他浏览器将提交 value 属性的内容。请使用 &lt;input&gt; 在 HTML 表单中创建按钮。
+        <br><span>属性：</span>
+        <br>1、autofocus 属性：规定当页面加载时按钮应当自动地获得焦点。autofocus 属性是一个 boolean(布尔) 属性。 
+        <br><span>实例：</span><br>
+        <button type="button"  onclick="alert('Hello world!')">点我</button> 
+        <br>2、disabled 属性：用来控制HTML文档中的按钮是否可交互，它是boolean类型的值如果使用该属性，则会禁用按钮。disabled 属性是一个 boolean(布尔) 属性。被禁用的按钮是无法使用和无法点击的。可以对 disabled 属性进行设置，使用户在满足某些条件时（比如选中复选框，等等）才能点击按钮。然后，可使用 JavaScript 来删除 disabled 属性，使该按钮变为可用的状态。
+        <br><span>实例：</span><br>
+        <button type="button" disabled>点我</button>
+        <br>3、form 属性：规定按钮属于一个或多个表单。提示：form 属性的值必须是按钮所属表单&lt;form&gt;的 id。提示：如需引用一个以上的表单，请使用空格分隔的列表。
+        <br><span>实例：</span><br>
+        <form action="/web/index.html" method="get" id="nameform">
+        First name: <input type="text" name="fname" /><br>
+        Last name: <input type="text" name="lname" /><br>
+        </form>
+        <p>下面的按钮是在表单元素外,但仍是表单的一部分。</p>
+        <button type="submit" form="nameform" value="提交">提交</button>
+        <br>4、formaction 属性：覆盖 form 元素的 action 属性。该属性与 type="submit" 配合使用。
+        <br><span>实例：</span><br>
+        <form action="/web/index.html" method="get">
+        First name: <input type="text" name="fname" /><br>
+        Last name: <input type="text" name="lname" /><br>
+        <button type="submit">提交</button><br>
+        <button type="submit" formaction="/statics/demosource/demo-admin.php" method="get">提交</button>
+        </form>
+        <br>5、formenctype 属性：覆盖 form 元素的 enctype 属性。该属性与 type="submit" 配合使用。
+        <br><span>实例：</span><br>
+        <form action="/web/index.html" method="post">
+        Name: <input type="text" name="fname" value="Ståle Refsnes" /><br>
+        <button type="submit" >使用默认编码提交</button>
+        <button type="submit" formenctype="multipart/form-data">使用multipart/form-data编码提交</button>
+        </form>
+        <br>6、formmethod 属性制定发送表单数据使用的 HTTP 方法。formmethod 属性覆盖 form 元素的 method 属性。formmethod 属性需与 type="submit" 配合使用。
+        <br><span>实例：</span><br>
+        <form action="/web/index.html" method="get">
+        First name: <input type="text" name="fname" /><br>
+        Last name: <input type="text" name="lname" /><br>
+        <button type="submit" >提交</button>
+        <button type="submit" formmethod="post" formaction="/web/demo.html">使用 POST 提交</button>
+        </form>
+        <br>7、formnovalidate 属性是一个 boolean（布尔） 属性。如果使用该属性，则提交表单时按钮不会执行验证过程。formnovalidate 属性覆盖表单的 novalidate 属性。该属性与 type="submit" 配合使用。
+        <br><span>实例：</span><br>
+        <form action="/web/index.html" method="get">
+        E-mail: <input type="email" name="userid" /><br>
+        <button type="submit" >提交</button><br>
+        <button type="submit" formnovalidate>不验证提交</button>
+        </form>
+        <br>8、formtarget 属性：指定在提交表单后在哪里显示响应。formtarget 属性覆盖表单元素的 target 属性。该属性与 type="submit" 配合使用。
+        <br><span>实例：</span><br>
+        <form action="/web/index.html" method="get">
+          First name: <input type="text" name="fname" /><br>
+          Last name: <input type="text" name="lname" /><br>
+        <button type="submit" >提交</button>
+        <button type="submit" formtarget="_blank">提交到一个新窗口或选项卡</button>
+        </form>
+        <br>9、name 属性为按钮规定名称。name 属性用于在 JavaScript 中对元素进行引用，或者在表单提交之后，对表单数据进行引用。提示： 不同的 button 元素可以共享相同的名称。这就允许您标记带有相同名称的若干按钮，以便在表单中使用时能够提交不同的值。
+        <br><span>实例：</span><br>
+        <form action="/web/index.html" method="get">
+        Choose your favorite subject:
+        <button name="subject" type="submit" value="HTML">HTML</button>
+        <button name="subject" type="submit" value="CSS">CSS</button>
+        </form>
+        <br>10、type 属性规定按钮的类型。提示： 请始终为按钮规定 type 属性。Internet Explorer 的默认类型是 "button"，而其他浏览器中（包括 W3C 规范）的默认值是 "submit"。
+        <br><span>实例：</span><br>
+        <form action="/web/index.html" method="get">
+        First name: <input type="text" name="fname"><br>
+        Last name: <input type="text" name="lname"><br>
+        <button type="submit" value="提交">提交</button>
+        <button type="reset" value="重置">重置</button>
+        </form>
+        <br>11、value 属性规定了 &lt;form&gt; 中 &lt;button&gt; 的初始值。注意： 在表单中，如果按钮作为表单数据提交，只有表单的value值会被提交。
+        <br><span>实例：</span><br>
+        <form action="/web/index.html" method="get">
+        Choose your favorite subject:
+        <button name="subject" type="submit" value="fav_HTML">HTML</button>
+        <button name="subject" type="submit" value="fav_CSS">CSS</button>
+        </form>
+    </p>
+    <hr>
+    <!-- HTML <select> 标签 -->
+    <h2 style="text-align:center;"># &lt;select&gt;标签</h2>
+    <p>简介：
+        <br>&lt;select&gt; 元素用来创建下拉列表。
+        <br>&lt;select&gt; 元素中的 &lt;option&gt; 标签定义了列表中的可用选项。
+        <br>select 元素可创建单选或多选菜单。当提交表单时，浏览器会提交选定的项目，或者收集用逗号分隔的多个选项，将其合成一个单独的参数列表，并且在将 &lt;select&gt; 表单数据提交给服务器时包括 name 属性。
+        <br><span>提示和注释：</span>
+        <br>提示：&lt;select&gt; 元素是一种表单控件，可用于在表单中接受用户输入。
+        <br><span>属性：</span>
+        <br>1、autofocus 属性规定下拉列表在页面加载时自动获得焦点。autofocus 属性是一个布尔属性。
+        <br><span>实例：</span><br>
+        <select>
+        <option value="volvo" style="display:none">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="opel">Opel</option>
+        <option value="audi">Audi</option>
+        </select>
+        <br>2、disabled 属性规定下拉列表应该被禁用。disabled 属性是一个布尔属性。被禁用的下拉列表既不可用，也不可点击。可以设置 disabled 属性，直到满足某些条件（比如选择一个复选框），才恢复用户对该下拉列表的使用。然后，可以使用 JavaScript 来移除 disabled 属性的值，以使下拉列表变为可用状态。
+        <br><span>实例：</span><br>
+        <select disabled>
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+        </select>
+        <br>3、form 属性规定下拉列表所属的一个或多个表单。
+        <br><span>实例：</span><br>
+        <form action="/web/index.html" id="carform">
+          Firstname:<input type="text" name="fname">
+          <input type="submit">
+        </form>
+        <br>
+        <select name="carlist" form="carform">
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="opel">Opel</option>
+          <option value="audi">Audi</option>
+        </select>
+        <br>4、multiple 属性规定可同时选择多个选项。multiple 属性是一个布尔属性。在不同操作系统和浏览器中，选择多个选项的差异：对于 windows：按住 Ctrl 按钮来选择多个选项；对于 Mac：按住 command 按钮来选择多个选项
+        <br><span>实例：</span><br>
+        <form action="/web/index.html">
+        <select name="cars[]" multiple>
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="opel">Opel</option>
+          <option value="audi">Audi</option>
+        </select>
+        <input type="submit">
+        </form>
+        <p>按住 Ctrl (windows) / Command (Mac) 按钮来选择多个选项。</p>
+        <br>5、name 属性规定下拉列表的名称。name 属性用于在 JavaScript 中引用元素，或者在表单提交后引用表单数据。
+        <br><span>实例：</span><br>
+        <form action="/web/index.html">
+        <select name="cars">
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="opel">Opel</option>
+          <option value="audi">Audi</option>
+        </select>
+        <input type="submit">
+        </form>
+        <br>6、required 属性规定用户在提交表单前必须选择一个值。required 属性是一个布尔属性。
+        <br><span>实例：</span><br>
+        <form action="/web/index.html">
+        <select required>
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+        </select>
+        <input type="submit">
+        </form>
+        <br>7、size 属性规定下拉列表中可见选项的数目。如果 size 属性的值大于 1，但是小于列表中选项的总数目，浏览器会显示出滚动条，表示可以查看更多选项。
+        <br><span>实例：</span><br>
+        <select size="3">
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="opel">Opel</option>
+          <option value="audi">Audi</option>
+        </select>
+    </p>
+    <hr>
+    <!-- HTML <optgroup> 标签 -->
+    <h2 style="text-align:center;"># &lt;optgroup&gt;标签</h2>
+    <p>简介：
+        <br>&lt;optgroup&gt; 标签用于对 &lt;select&gt; 元素所提供的选项进行分组。当您使用一个较长的选项列表时，对相关的选项进行组合会使处理更加容易。 
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;optgroup&gt; 标签经常用于把相关的选项组合在一起。
+        <br>如果你有很多的选项组合, 你可以使用&lt;optgroup&gt; 标签能够很简单的将相关选项组合在一起。
+        <br><span>实例：</span><br>
+        <select>
+          <optgroup label="Swedish Cars">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+          </optgroup>
+          <optgroup label="German Cars">
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+          </optgroup>
+        </select>
+        <br><span>属性：</span>
+        <br>1、disabled 属性规定选项组应该被禁用。disabled 属性是一个布尔属性。被禁用的选项组既不可用，也不可点击。可以设置 disabled 属性，直到满足某些条件（比如选择一个复选框），才恢复用户对该选项组的使用。然后，可以使用 JavaScript 来移除 disabled 属性的值，以使选项组变为可用状态。
+        <br><span>实例：</span><br>
+        <select>
+          <optgroup label="Swedish Cars">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+          </optgroup>
+          <optgroup label="German Cars" disabled>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+          </optgroup>
+        </select>
+        <br>2、label 属性为选项组规定描述标签。
+        <br><span>实例：</span><br>
+        <select>
+          <optgroup label="Swedish Cars">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+          </optgroup>
+          <optgroup label="German Cars">
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+          </optgroup>
+        </select>
+    </p>
+    <hr> 
+    <!-- HTML <option> 标签 -->
+    <h2 style="text-align:center;"># &lt;option&gt;标签</h2>
+    <p>简介：
+        <br>&lt;option&gt; 标签用于定义包含在&lt;select&gt;、&lt;optgroup&gt; 或 &lt;datalist&gt; 元素中的项。
+        <br>&lt;option&gt; 标签可以表示 HTML 文档中弹出窗口中的菜单项和其他项目列表。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;option&gt; 标签定义下拉列表中的一个选项（一个条目）。
+        <br>&lt;option&gt; 标签中的内容作为 &lt;select&gt; 或者&lt;datalist&gt; 一个元素使用。
+        <br><span>提示和注释：</span>
+        <br>注释：&lt;option&gt; 标签可以在不带有任何属性的情况下使用，但是您通常需要使用 value 属性，此属性会指示出被送往服务器的内容。
+        <br>注释：请与 select 元素配合使用此标签，否则这个标签是没有意义的。
+        <br>提示：如果列表选项很多，可以使用 &lt;optgroup&gt; 标签对相关选项进行组合。
+        <br><span>实例：</span><br>
+        <select>
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="opel">Opel</option>
+          <option value="audi">Audi</option>
+        </select>
+        <br><span>属性：</span>
+        <br>1、disabled 属性规定某个选项应该被禁用。disabled 属性是一个布尔属性。被禁用的选项既不可用，也不可点击。可以设置 disabled 属性，直到满足某些条件（比如选择一个复选框），才恢复用户对该选项的使用。然后，可以使用 JavaScript 来清除 disabled 属性，以使选项变为可用状态。
+        <br><span>实例：</span><br>
+        <select>
+          <option value="volvo" disabled>Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="vw">VW</option>
+          <option value="audi">Audi</option>
+        </select>
+        <br>2、label 属性规定更短版本的选项。下拉列表中会显示出所规定的更短版本。
+        <br><span>实例：</span><br>
+        <select>
+          <option label="Volvo">Volvo (Latin for "I roll")</option>
+          <option label="Saab">Saab (Swedish Aeroplane AB)</option>
+          <option label="Mercedes">Mercedes (Mercedes-Benz)</option>
+          <option label="Audi">Audi (Auto Union Deutschland Ingolstadt)</option>
+        </select>
+        <br>3、selected 属性规定在页面加载时预先选定该选项。selected 属性是一个布尔属性。被预选的选项会显示在下拉列表最前面的位置。提示：也可以在页面加载后通过 JavaScript 设置 selected 属性。
+        <br><span>实例：</span><br>
+        <select>
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="vw">VW</option>
+          <option value="audi" selected>Audi</option>
+        </select>
+        <br>4、value 属性规定在表单被提交时被发送到服务器的值。开始标签 &lt;option&gt; 与结束标签 &lt;/option&gt; 之间的内容是浏览器显示在下拉列表中的内容，而 value 属性中的值是表单提交时被发送到服务器的值。注意：如果没有规定 value 属性，选项的值将设置为 &lt;option&gt; 标签中的内容。
+        <br><span>实例：</span><br>
+        <form action="/web/index.html">
+        <select name="cars" autofocus>
+          <option value="volvo">Volvo XC90</option>
+          <option value="saab">Saab 95</option>
+          <option value="mercedes">Mercedes SLK</option>
+          <option value="audi">Audi TT</option>
+        </select>
+        <input type="submit" value="提交">
+        </form>
+    </p>
+    <hr>
+    <!-- HTML <label> 标签 -->
+    <h2 style="text-align:center;"># &lt;label&gt;标签</h2>
+    <p>简介：
+        <br>&lt;label&gt; 标签是一种常见的表单控件，触发对应表单控件功能，让用户在使用表单的时候能够有更好的体验。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;label&gt; 标签为 input 元素定义标注（标记）。
+        <br>label 元素不会向用户呈现任何特殊效果。不过，它为鼠标用户改进了可用性。如果您在 label 元素内点击文本，就会触发此控件。就是说，当用户选择该标签时，浏览器就会自动将焦点转到和标签相关的表单控件上。
+        <br>&lt;label&gt; 标签的 for 属性应当与相关元素的 id 属性相同。
+        <br><span>提示和注释：</span><br>
+        <br>提示:"for" 属性可把 label 绑定到另外一个元素。请把 "for" 属性的值设置为相关元素的 id 属性的值。
+        <br><span>属性：</span>
+        <br><span>实例：</span><br>
+    </p>
+  
 
 
     <!--==== a 标签 ===-->
@@ -1060,7 +1534,7 @@ export default{
     mixins:[],   //data数据合并混入
     data:function(){
       return { 
-        
+        isFocus:false,
       }; 
     },
     computed:{},
@@ -1070,6 +1544,9 @@ export default{
         },
         doSomethingElse:function(){
             console.log('Step 2: Edit Tutorial');
+        },
+        msg(){
+            alert("Hello world!");
         },
     },
     watch:{},
@@ -1122,7 +1599,7 @@ export default{
     }
     #div1,#div2 {width:350px;height:70px;padding:10px;border:1px solid #aaaaaa;}
     
-    //改变input标签data控件样式
+    /*改变input标签data控件样式*/
     input[type=date]::-webkit-inner-spin-button { visibility: hidden; }
     input[type="date"]::-webkit-datetime-edit-fields-wrapper { 
         font: 12px/1.5 "Microsoft yahei", arial, Simsun, sans-serif;        
@@ -1130,6 +1607,13 @@ export default{
         color: green; 
     }  
     input[type="date"]::-webkit-datetime-edit-text { color: red; padding: 0.3em; }
+
+    input[type=range] {
+    -webkit-appearance: none;
+    width: 300px;
+    border-radius: 10px;
+}
+    /* H5中input中range类型的美化及其 */
 
 
 </style>
