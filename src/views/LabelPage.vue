@@ -694,7 +694,7 @@
     <h1 style="text-align:center;">HTML表单标签</h1>
     <!-- HTML <form> 标签 -->
     <h2 style="text-align:center;"># &lt;form&gt;标签</h2>
-    <p>简介：
+    <p id="form">简介：
         <br>使用 &lt;form&gt; 标签可以向服务器传输数据。
         <br>所有主流浏览器都支持 &lt;form&gt; 标签。
         <br><span>标签定义及使用说明：</span>  
@@ -759,7 +759,7 @@
     <hr>
     <!-- HTML <input> 标签 -->
     <h2 style="text-align:center;"># &lt;input&gt;标签</h2>
-    <p>简介：
+    <p id="input">简介：
         <br>&lt;input&gt; 标签用于创建交互式控件，这类控件是基于 web 表单的，它可以接收用户的数据、信息。
         <br>目前大多数浏览器支持 &lt;input&gt;标签。
         <br><span>标签定义及使用说明：</span>
@@ -1097,7 +1097,7 @@
     <hr>
     <!-- HTML <textarea> 标签 -->
     <h2 style="text-align:center;"># &lt;textarea&gt;标签</h2>
-    <p>简介：
+    <p id="textarea">简介：
         <br>&lt;textarea&gt; 标签表示多行纯文本编辑控件，用户可在其文本区域中写入文本。 
         <br><span>标签定义及使用说明：</span>
         <br>&lt;textarea&gt; 标签定义一个多行的文本输入控件。
@@ -1178,7 +1178,7 @@
     <hr>
     <!-- HTML <button> 标签 -->
     <h2 style="text-align:center;"># &lt;button&gt;标签</h2>
-    <p>简介：
+    <p id="button">简介：
         <br><&lt;button&gt; 标签用来设置 HTML 中的按钮。
         <br><span>标签定义及使用说明：</span>
         <br><&lt;button&gt; 标签定义一个按钮。
@@ -1266,7 +1266,7 @@
     <hr>
     <!-- HTML <select> 标签 -->
     <h2 style="text-align:center;"># &lt;select&gt;标签</h2>
-    <p>简介：
+    <p id="select">简介：
         <br>&lt;select&gt; 元素用来创建下拉列表。
         <br>&lt;select&gt; 元素中的 &lt;option&gt; 标签定义了列表中的可用选项。
         <br>select 元素可创建单选或多选菜单。当提交表单时，浏览器会提交选定的项目，或者收集用逗号分隔的多个选项，将其合成一个单独的参数列表，并且在将 &lt;select&gt; 表单数据提交给服务器时包括 name 属性。
@@ -1348,7 +1348,7 @@
     <hr>
     <!-- HTML <optgroup> 标签 -->
     <h2 style="text-align:center;"># &lt;optgroup&gt;标签</h2>
-    <p>简介：
+    <p id="optgroup">简介：
         <br>&lt;optgroup&gt; 标签用于对 &lt;select&gt; 元素所提供的选项进行分组。当您使用一个较长的选项列表时，对相关的选项进行组合会使处理更加容易。 
         <br><span>标签定义及使用说明：</span>
         <br>&lt;optgroup&gt; 标签经常用于把相关的选项组合在一起。
@@ -1393,7 +1393,7 @@
     <hr> 
     <!-- HTML <option> 标签 -->
     <h2 style="text-align:center;"># &lt;option&gt;标签</h2>
-    <p>简介：
+    <p id="option">简介：
         <br>&lt;option&gt; 标签用于定义包含在&lt;select&gt;、&lt;optgroup&gt; 或 &lt;datalist&gt; 元素中的项。
         <br>&lt;option&gt; 标签可以表示 HTML 文档中弹出窗口中的菜单项和其他项目列表。
         <br><span>标签定义及使用说明：</span>
@@ -1438,7 +1438,7 @@
         <br>4、value 属性规定在表单被提交时被发送到服务器的值。开始标签 &lt;option&gt; 与结束标签 &lt;/option&gt; 之间的内容是浏览器显示在下拉列表中的内容，而 value 属性中的值是表单提交时被发送到服务器的值。注意：如果没有规定 value 属性，选项的值将设置为 &lt;option&gt; 标签中的内容。
         <br><span>实例：</span><br>
         <form action="/web/index.html">
-        <select name="cars" autofocus>
+        <select name="cars">
           <option value="volvo">Volvo XC90</option>
           <option value="saab">Saab 95</option>
           <option value="mercedes">Mercedes SLK</option>
@@ -1450,19 +1450,488 @@
     <hr>
     <!-- HTML <label> 标签 -->
     <h2 style="text-align:center;"># &lt;label&gt;标签</h2>
-    <p>简介：
+    <p id="label">简介：
         <br>&lt;label&gt; 标签是一种常见的表单控件，触发对应表单控件功能，让用户在使用表单的时候能够有更好的体验。
         <br><span>标签定义及使用说明：</span>
         <br>&lt;label&gt; 标签为 input 元素定义标注（标记）。
         <br>label 元素不会向用户呈现任何特殊效果。不过，它为鼠标用户改进了可用性。如果您在 label 元素内点击文本，就会触发此控件。就是说，当用户选择该标签时，浏览器就会自动将焦点转到和标签相关的表单控件上。
         <br>&lt;label&gt; 标签的 for 属性应当与相关元素的 id 属性相同。
-        <br><span>提示和注释：</span><br>
+        <br><span>提示和注释：</span>
         <br>提示:"for" 属性可把 label 绑定到另外一个元素。请把 "for" 属性的值设置为相关元素的 id 属性的值。
-        <br><span>属性：</span>
         <br><span>实例：</span><br>
+        <form action="#">
+          <label for="male">Male</label>
+          <input type="radio" name="sex" id="male" value="male"><br>
+          <label for="female">Female</label>
+          <input type="radio" name="sex" id="female" value="female"><br><br>
+          <input type="submit" value="提交" autofocus>
+        </form>
+        <br><span>属性：</span>
+        <br>1、for 属性：规定 label 绑定的表单元素。        
+        <br><span>实例：</span><br>
+        <form action="#">
+          <label for="male">Male</label>
+          <input type="radio" name="sex" id="male" value="male"><br>
+          <label for="female">Female</label>
+          <input type="radio" name="sex" id="female" value="female"><br><br>
+          <input type="submit" value="提交">
+        </form>
+        <br>2、form 属性：规定 &lt;label&gt; 元素所属的一个或多个表单。
+        <br><span>实例：</span>
+        <p>第一个单选按钮在表单之外,但它仍属于该表单的一部分。尝试点击文本标签切换单选按钮。</p>
+        <form action="#" id="form1">
+          <input type="radio" name="sex" id="male" value="male">
+          <label for="male" form="form1">Male</label><br>
+          <input type="radio" name="sex" id="female" value="female">
+          <label for="female">Female</label><br>
+          <input type="submit" value="提交">
+        </form>
     </p>
+    <hr>
+    <!-- HTML <fieldset> 标签 -->
+    <h2 style="text-align:center;"># &lt;fieldset&gt;标签</h2>
+    <p id="fieldset">简介：
+        <br>&lt;fieldset&gt; 标签内的一组表单元素会在 WEB 浏览器中以特殊的方式显示，比如不同样式的边界、3D效果等。
+        <br>&lt;fieldset&gt; 标签可以将表单内的相关元素分组。
+        <br>&lt;fieldset&gt; 标签会在相关表单元素周围绘制边框。
+        <br><span>提示和注释：</span>
+        <br>提示：&lt;legend&gt; 标签为 &lt;fieldset&gt; 元素定义标题。
+        <br>提示：&lt;legend&gt; 必须是 &lt;fieldset&gt; 元素的一个子元素
+        <br><span>实例：</span><br>
+        <form>
+         <fieldset>
+          <legend>个人信息:</legend>
+          姓名: <input type="text"><br>
+          邮箱: <input type="text"><br>
+          生日: <input type="text">
+         </fieldset>
+        </form>
+        <br><span>属性：</span>
+        <br>1、disabled 属性：规定应该禁用一组表单元素（一个 fieldset）。disabled 属性是一个布尔属性。被禁用的 fieldset 不可用，也不可点击。可以对 disabled 属性进行设置，使用户在满足某些条件时（比如选中复选框，等等）才能使用输入字段。然后，可使用 JavaScript 来删除 disabled 值，使该 fieldset 变为可用的状态。
+        <br><span>实例：</span><br>
+        <form>
+          <fieldset disabled>
+            <legend>个人信息:</legend>
+            姓名: <input type="text"><br>
+            邮箱: <input type="text"><br>
+            生日: <input type="text">
+          </fieldset>
+        </form>
+        <br>2、form 属性规定 fieldset 所属的一个或多个表单。提示：form 属性的值必须是所属表单的 id。提示：如需引用一个以上的表单，请使用空格分隔的列表。
+        <br><span>实例：</span><br>
+        <form action="#" method="get" id="form1">
+        你喜欢的颜色是什么？<input type="text" name="fav_color"><br>
+        <input type="submit">
+        </form>
+        <p>下面的自定义字段在表单外,但仍是表单的一部分。</p>
+        <fieldset form="form1">
+          <legend>个人信息:</legend>
+          姓名: <input type="text" name="username"><br>
+          邮箱: <input type="text" name="usermail"><br>
+        </fieldset>
+        <p><b>注意：</b>目前，只有 Opera 支持 form 属性。</p>
+        <br>3、name 属性规定 fieldset 的名称。name 属性用于在 JavaScript 中引用元素，或者在表单提交之后引用表单数据。
+        <br><span>实例：</span><br>
+        <form action="#" method="get">
+        <fieldset name="personalia">
+          姓名: <input type="text" name="username"><br>
+          邮箱: <input type="text" name="usermail"><br>
+        </fieldset>
+        <button type="button" onclick="form.personalia.style.backgroundColor='yellow'">改变控件的背景颜色</button>
+        <input type="submit">
+        </form>
+    </p>
+    <hr>
+    <!-- HTML <legend> 标签 -->
+    <h2 style="text-align:center;"># &lt;legend&gt;标签</h2>
+    <p id="legend">简介：
+        在 HTML 中我们可以对表单的信息进行分组归类，而&lt;legend&gt; 标签就可以用来组合表单的相关元素，表示了其父级 &lt;fieldset&gt; 内容的标题。
+        <br><span>标签定义及使用说明：</span>
+        <br>The &lt;legend&gt; 元素为 &lt;fieldset&gt;元素定义标题。
+        <br><span>实例：</span><br>
+        <form>
+         <fieldset>
+          <legend>个人信息:</legend>
+          姓名: <input type="text"><br>
+          邮箱: <input type="text"><br>
+          生日: <input type="text">
+         </fieldset>
+        </form>
+    </p>
+    <hr>   
+    <!-- HTML <datalist> 标签 -->
+    <h2 style="text-align:center;"># &lt;datalist&gt;标签</h2>
+    <p id="datalist">简介：
+        <br>&lt;datalist&gt; 标签需要与 &lt;input&gt; 标签配合使用，用来表示可选的列表。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;datalist&gt; 标签规定了 &lt;input&gt; 元素可能的选项列表。
+        <br>&lt;datalist&gt; 标签被用来在为 &lt;input&gt; 元素提供"自动完成"的特性。用户能看到一个下拉列表，里边的选项是预先定义好的，将作为用户的输入数据。
+        <br>请使用 &lt;input&gt; 元素的 list 属性来绑定 <&lt;datalist&gt; 元素。
+        <br>提示：不能控制 datalist 的位置，并且不能将其与服务器的数据进行绑定。
+        <br><span>实例：</span><br>
+        <form action="#" method="get">
+        <input list="browsers" name="browser">
+        <datalist id="browsers">
+          <option value="Internet Explorer"/>
+          <option value="Firefox"/>
+          <option value="Chrome"/>
+          <option value="Opera"/>
+          <option value="Safari"/>
+        </datalist>
+        <input type="submit">
+        </form>
+    </p>
+    <hr>  
+    <!-- HTML <keygen> 标签 -->
+    <h2 style="text-align:center;"># &lt;keygen&gt;标签</h2>
+    <p id="keygen">简介：
+        <br>&lt;keygen&gt; 标签已经从 Web 标准中删除。您可以通过下述的实例来大致了解该标签的使用。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;keygen&gt; 标签规定用于表单的密钥对生成器字段。
+        <br>当提交表单时，私钥存储在本地，公钥发送到服务器。
+        <br><span>实例：</span><br>
+        <form action="#" method="get">
+          用户名: <input type="text" name="usr_name">
+          加密: <keygen name="security">
+          <input type="submit">
+        </form>
+        <br><span>属性：</span>
+        <br>1、autofocus 属性规定当页面加载时，&lt;keygen&gt; 元素会自动获得焦点。autofocus 属性是一个布尔属性。
+        <br><span>实例：</span><br>
+        <form action="/web/index.html" method="get">
+        用户名: <input type="text" name="usr_name">
+        加密: <keygen name="security">
+        <input type="submit">
+        </form>
+        <p><strong>注意:</strong> IE 浏览器不支持 keygen 标签。</p>
+        <p><strong>注意:</strong>火狐浏览器不支持 keygen 标签的 autofocus 属性。</p>
+        <br>2、challenge 属性：如果使用，则将 keygen 的值设置为在提交时询问。
+        <br>3、disabled 属性规定应该禁用 &lt;keygen&gt; 元素。被禁用的字段不可用，也不可编辑。disabled 属性是一个布尔属性。可以对 disabled 属性进行设置，使用户在满足某些条件时（比如选中复选框，等等）才能使用字段。然后，可使用 JavaScript 来删除 disabled 值，使该字段变为可用的状态。
+        <br><span>实例：</span><br>
+        <form action="/web/index.html" method="get">
+          用户名: <input type="text" name="usr_name">
+          加密: <keygen name="security" disabled>
+          <input type="submit">
+        </form>
+        <br>4、form 属性规定 &lt;keygen&gt; 元素所属的一个或多个表单。
+        <form action="/web/index.html" method="get" id="secureform">
+          用户名: <input type="text" name="usr_name">
+          <input type="submit">
+        </form>
+        <p>下面的注册机领域在表单之外,但它仍属于该表单的一部分。</p>
+        加密: <keygen name="security" form="secureform">
+        <br>5、keytype 属性规定应该使用哪种密钥生成算法。不同的浏览器对密钥生成算法的支持会有所变化。"rsa"(默认)规定 RSA 安全算法。RSA 密钥强度可由用户选择。"dsa"规定 DSA 安全算法。DSA 密钥长度可由用户选择。"ec"规定 EC 安全算法。EC 密钥强度可由用户选择。
+        <br><span>实例：</span><br>
+        <form action="/web/index.html" method="get">
+          用户名: <input type="text" name="usr_name">
+          加密: <keygen name="security" keytype="rsa">
+          <input type="submit">
+        </form>
+        <br>6、name 属性规定 &lt;keygen&gt; 元素的名称。&lt;keygen&gt; 元素的 name 属性用于在提交表单后引用表单数据。
+        <br><span>实例：</span><br>
+        <form action="/web/index.html" method="get">
+          用户名: <input type="text" name="usr_name">
+          加密: <keygen name="security">
+          <input type="submit" autofocus>
+        </form>
+    </p>
+    <hr>
+    <!-- HTML <output> 标签 -->
+    <h2 style="text-align:center;"># &lt;output&gt;标签</h2>
+    <p id="output">简介：
+        <br>&lt;output&gt; 标签显示计算或用户操作的结果，该标签是 HTML5 中的新标签。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;output&gt; 标签作为计算结果输出显示(比如执行脚本的输出)。
+        <br><span>实例：</span><br>
+        <form oninput="x.value=parseInt(a.value)+parseInt(b.value)">0
+        <input type="range" id="a" value="50">100
+        +<input type="number" id="b" value="50">
+        =<output name="x" for="a b"></output>
+        </form>
+        <br><span>属性：</span>
+        <br>1、for 属性：规定计算中使用的元素与计算结果之间的关系。
+        <br><span>实例：</span><br>
+        <form oninput="x.value=parseInt(a.value)+parseInt(b.value)">0
+        <input type="range" id="a" value="50">100
+        +<input type="number" id="b" value="50">
+        =<output name="x" for="a b"></output>
+        </form>
+        <br>2、form 属性规定 &lt;output&gt; 元素所属的一个或多个表单。几乎所有的主流浏览器都不支持 form 属性。formmethod
+        <br>3、name 属性规定 &lt;output&gt; 元素的名称。name 属性用于在表单提交后引用表单数据，或者用于在 JavaScript 中引用元素。
+        <br><span>实例：</span><br>
+        <form oninput="x.value=parseInt(a.value)+parseInt(b.value)">0
+        <input type="range" id="a" value="50">100
+        +<input type="number" id="b" value="50">
+        =<output name="x" for="a b"></output>
+        </form>
+    </p>
+    <hr><!-- ----------------------------HTML 表单标签(end) ---------------------------->
+
+
+    <!-- ----------------------------HTML 框架标签(start) ---------------------------->
+    <h1 style="text-align:center;">HTML 框架标签</h1>
+    <!-- HTML <abbr> 标签 -->
+    <h2 style='text-align:center;'># &lt;iframe&gt;标签</h2>
+    <p id="iframe">简介：
+        <br>&lt;iframe&gt; 标签会创建包含另外一个文档的内联框架，有效地将另一个 HTML 页面嵌入到当前页中。
+        <br>&lt;iframe&gt; 标签规定一个内联框架。一个内联框架被用来在当前 HTML 文档中嵌入另一个文档。
+        <br><span>提示和注释：</span>
+        <br>提示：您可以把需要的文本放置在 &lt;iframe&gt; 和 &lt;iframe&gt; 之间，这样就可以应对不支持 &lt;iframe&gt; 的浏览器。
+        <br>提示：使用 CSS 为 &lt;iframe&gt; （包括滚动条）定义样式。
+        <br>提示：&lt;iframe&gt; 标签主要用于那些多个网页的共有部分，如导航栏、广告栏等。
+        <br><span>实例：</span><br>
+        <iframe src="/web/index.html">
+          <p>您的浏览器不支持  iframe 标签。</p>
+        </iframe>
+        <br><span>属性：</span>
+        <br>1、height 属性规定 &lt;iframe&gt; 的高度，以像素计。
+        <br><span>实例：</span><br>
+        <iframe src="/web" width="200" height="200">
+        <p>您的浏览器不支持  iframe 标签。</p>
+        </iframe>
+        <br>2、name 属性规定 &lt;iframe&gt; 的名称。name 元素的 name 属性用于在 JavaScript 中引用元素，或者作为 &lt;a&gt; 或 &lt;form&gt; 元素的 target 属性的值，或者作为 &lt;input&gt; 或 &lt;button&gt; 的 formtarget 属性的值。
+        <br><span>实例：</span><br>
+        <iframe src="/web/index.html" name="iframe_a">
+         <p>您的浏览器不支持  iframe 标签。</p>
+        </iframe>
+        <a href="http://www.w3cschool.cn" target="iframe_a">W3Cschool.cn</a>
+        <p><b>注意：</b> 因为连接的 target 属性匹配了 ifrme 的name属性，所以链接点击后将显示在 ifram 中。</p>
+        <br>3、sandbox 属性：如果指定了空字符串（sandbox=""），该属性对呈现在iframe框架中的内容启用一些额外的限制条件。sandbox 属性的值既可以是一个空字符串（将会启用所有的限制），也可以是用空格分隔的一系列指定的字符串。
+        <br><span>实例：</span>sandbox=""---------启用所有限制条件<br>
+        <iframe src="/web/index.html" sandbox="">
+          <p>您的浏览器不支持 iframes.</p>
+        </iframe>
+        <br><span>实例：</span>sandbox="allow-same-origin"---------允许将内容作为普通来源对待。如果未使用该关键字，嵌入的内容将被视为一个独立的源。<br>
+        <iframe src="/web/index.html" sandbox="allow-same-origin">
+          <p>您的浏览器不支持 iframes.</p>
+        </iframe>
+        <br><span>实例：</span>sandbox="allow-top-navigation"---------嵌入的页面的上下文可以导航（加载）内容到顶级的浏览上下文环境（browsing context）。如果未使用该关键字，这个操作将不可用。<br>
+        <iframe src="/web/index.html" sandbox="allow-top-navigation">
+          <p>您的浏览器不支持 iframes.</p>
+        </iframe>
+        <br><span>实例：</span>sandbox="allow-forms"---------允许表单提交。<br>
+        <iframe src="/web/index.html" sandbox="allow-forms">
+          <p>您的浏览器不支持 iframes.</p>
+        </iframe>
+        <br><span>实例：</span>sandbox="allow-scripts"---------允许脚本执行。<br>
+        <iframe src="/web/index.html" sandbox="allow-scripts">
+          <p>您的浏览器不支持 iframes.</p>
+        </iframe>
+        <br>4、seamless 属性规定 &lt;iframe&gt; 看起来像是包含的文档的一部分（没有边框和滚动条）。seamless 属性是一个布尔属性。注意：只有 Chrome 和 Safari 6 支持 &lt;iframe&gt; 标签的 seamless 属性。
+        <br><span>实例：</span><br>
+        <p>这是一个段落。</p>
+        <iframe src="/web/index.html" seamless></iframe>
+        <br>5、src 属性规定嵌入在 &lt;iframe&gt; 中的文档的地址。
+        <br><span>实例：</span><br>
+        <iframe src="//www.w3cschool.cn">
+          <p>您的浏览器不支持  iframe 标签。</p>
+        </iframe>
+        <br>6、srcdoc 属性规定要显示在内联框架中的页面的 HTML 内容。提示：该属性应该与 sandbox 和 seamless 属性一起使用。如果浏览器支持 srcdoc 属性，且指定了 srcdoc 属性，它将覆盖在 src 属性中规定的内容。如果浏览器不支持 srcdoc 属性，且指定了 srcdoc 属性，它将显示在 src 属性中规定的文件。注意：只有 Chrome 和 Safari 6 支持 &lt;iframe&gt; 标签的 srcdoc 属性。
+        <br><span>实例：</span><br>
+        <iframe srcdoc="<p>Hello world!</p>" src="/web/index.html">
+          <p>您的浏览器不支持  iframe 标签。</p>
+        </iframe>
+        <br>7、width 属性规定 &lt;iframe&gt; 的宽度，以像素计。
+        <br><span>实例：</span><br>
+        <iframe src="/web/index.html" width="200" height="200">
+        <p>您的浏览器不支持  iframe 标签。</p>
+        </iframe>
+    </p>
+    <hr><!-- ----------------------------HTML 框架标签(end) ---------------------------->
   
 
+    <!-- ----------------------------HTML 图像标签(start) ---------------------------->
+    <h1 style="text-align:center;">HTML 图像标签</h1>
+    <!-- HTML <img> 标签 -->
+    <h2 style='text-align:center;'># &lt;img&gt;标签</h2>
+    <p id="img">简介：
+        <br>&lt;img&gt; 标签用于展示 HTML 页面中的图像，使得页面能够“图文并茂”。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;img&gt; 标签定义 HTML 页面中的图像。
+        <br>&lt;img&gt; 标签有两个必需的属性：src 和 alt。
+        <br>注释：从技术上讲，图像并不会插入 HTML 页面中，而是链接到 HTML 页面上。&lt;img&gt; 标签的作用是为被引用的图像创建占位符。
+        <br>提示：通过在 &lt;a&gt; 标签中嵌套 &lt;img&gt; 标签，给图像添加到另一个文档的链接。
+        <br><span>实例：</span><br>
+        <img src="../assets/huanxiong.jpg" alt="Smiley face" width="100" height="100">
+        <br><span>属性：</span>
+        <br>1、alt 属性是一个必需的属性，它规定在图像无法显示时的替代文本。假设由于一些原因（比如网速太慢、src 属性中的错误、浏览器禁用图像、用户使用的是屏幕阅读器）用户无法查看图像，alt 属性可以为图像提供替代的信息。注意：当用户把鼠标移动到 img 元素上时，Internet Explorer （9 之前的版本）把 alt 属性的值显示为工具提示。根据 HTML 规范，这种行为并不正确。提示：如果需要为图像创建工具提示，请使用 title 属性！
+        <br><span>实例：</span><br>
+        <img src="../assets/mlh.jpg" alt="Smiley face" width="150" height="150">
+        <br>2、height 属性：规定图像的高度，以像素计。提示：为图像指定 height 和 width 属性是一个好习惯。如果设置了这些属性，就可以在页面加载时为图像预留空间。如果没有这些属性，浏览器就无法了解图像的尺寸，也就无法为图像保留合适的空间，因此当图像加载时，页面的布局就会发生变化。提示：请不要通过 height 和 width 属性来缩放图像。如果通过 height 和 width 属性来缩小图像，那么用户就必须下载大容量的图像（即使图像在页面上看上去很小）。正确的做法是，在网页上使用图像之前，应该通过软件把图像处理为合适的尺寸。
+        <br>3、src 属性：是必需的。它规定图像的 URL。注意：当一个网页加载时，浏览器从 Web 服务器上获取图像，并把它插入到页面中。因此，确保图像与相关的网页在同一点，否则访问者可能会得到一个损坏的链接图标。如果浏览器找不到图像时，会显示损坏的链接图标。
+        <br>4、usemap 属性：将图像定义为客户端图像映射（图像映射指的是带有可点击区域的图像）。usemap 属性与 &lt;map&gt; 元素的 name 或 id 属性相关联，以建立 &lt;img&gt; 与 &lt;map&gt; 之间的关系。注意：只有当 &lt;img&gt; 元素不属于 &lt;a&gt; 或 &lt;button&gt; 元素的后代时，才允许使用 usemap 属性。
+        <br><span>实例：</span><br>
+        <img src="../assets/planets.gif" width="145" height="126" alt="Planets" usemap="#planetmap">
+        <map name="planetmap">
+          <area shape="rect" coords="0,0,82,126" target="_blank" alt="Sun" href="/web/resources/sun.gif">
+          <area shape="circle" coords="90,58,3" target="_blank" alt="Mercury" href="/web/resources/merglobe.gif">
+          <area shape="circle" coords="124,58,8" target="_blank" alt="Venus" href="/web/resources/venglobe.gif">
+        </map>
+        <br>5、width 属性规定图像的宽度，以像素计。
+    </p>
+    <hr>
+    <!-- HTML <map> 标签 -->
+    <h2 style='text-align:center;'># &lt;map&gt;标签</h2>
+    <p id="map">简介：
+        <br>&lt;map&gt; 标签可以和 &lt;area&gt; 元素一起使用，以此来达到定义图像映射（可点击的链接区域）的目标。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;map&gt; 标签用于客户端图像映射。图像映射指带有可点击区域的一幅图像。
+        <br>&lt;map&gt; 中的 usemap 属性可引用 &lt;map&gt;  中的 id 或 name 属性（取决于浏览器），所以我们应同时向 &lt;map&gt;  添加 id 和 name 属性。
+        <br>area 元素永远嵌套在 map 元素内部。area 元素可定义图像映射中的区域。
+        <br>提示：要完成图像映射要用到三种标签：&lt;img&gt; 标签、&lt;map&gt;标签、&lt;area&gt;标签。
+        <br><span>属性：</span>
+        <br>1、name 属性：必需的，规定图像映射的名称。name 属性与 &lt;img&gt; 标签的 usemap 属性相关联，以创建图像与映射之间的关系。
+        <br><span>实例：</span><br>
+        <img src="../assets/planets.gif" width="145" height="126" alt="Planets" usemap="#planetmap">
+        <map name="planetmap">
+          <area shape="rect" coords="0,0,82,126" target="_blank" alt="Sun" href="/web/resources/sun.gif">
+          <area shape="circle" coords="90,58,3" target="_blank" alt="Mercury" href="/web/resources/merglobe.gif">
+          <area shape="circle" coords="124,58,8" target="_blank" alt="Venus" href="/web/resources/venglobe.gif">
+        </map>
+    </p>
+    <hr>
+    <!-- HTML <area> 标签 -->
+    <h2 style='text-align:center;'># &lt;area&gt;标签</h2>
+    <p id="area">简介：
+        <br>&lt;area&gt; 标签可以在图像上划分区域，这些区域是可以点击的，并且对应不同的操作。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;area&gt; 标签定义图像映射内部的区域（图像映射指的是带有可点击区域的图像）。
+        <br>&lt;area&gt; 元素始终嵌套在 标签内部。
+        <br>注释：&lt;img&gt; 标签中的 usemap 属性与 &lt;map&gt;  元素中的 name 相关联，以创建图像与映射之间的关系。
+        <br><span>属性：</span>
+        <br>1、alt 属性是一个必需的属性，它规定在图像无法显示时的替代文本。
+        <br>2、coords 属性：规定区域的 x 和 y 坐标。coords 属性与 shape 属性配合使用，来规定区域的尺寸、形状和位置。提示： 图像左上角的坐标是 "0,0"。如果 shape 属性设置为 "rect"，则该值规定矩形左上角和右下角的坐标。如果 shape 属性设置为 "circ"，则该值规定圆心的坐标和半径。如果 shape 属性设置为 "poly"，则该值规定多边形各边的坐标。如果第一个坐标和最后一个坐标不一致，那么为了关闭多边形，浏览器必须添加最后一对坐标。
+        <br>3、href 属性：规定区域中连接的目标。如果没有使用href 属性，&lt;area&gt; 标签就不是一个链接。
+        <br>4、hreflang 属性：用于指定被链接文档的语言。仅在使用 href 属性时才可以指定 hreflang 属性。
+        <br><span>实例：</span><br>   
+        <img src="../assets/planets.gif" width="145" height="126" alt="Planets" usemap="#planetmap">
+        <map name="planetmap">
+          <area shape="rect" coords="0,0,82,126" target="_blank" alt="Sun" href="/web/resources/sun.gif" hreflang="en">
+          <area shape="circle" coords="90,58,3" target="_blank" alt="Mercury" href="/web/resources/merglobe.gif">
+          <area shape="circle" coords="124,58,8" target="_blank" alt="Venus" href="/web/resources/venglobe.gif">
+        </map>
+        <br>5、media 属性：规定目标URL将显示在什么设备上。该属性使用与指定的URL显示在指定的设备上 (如 iPhone) , 音频或者打印媒介。该attribute可以接受多个值。仅在使用了href属性才需要media 属性。
+        <br><span>实例：</span><br> 
+        <p>点击查看大图:</p>
+        <img src="../assets/planets.gif" width="145" height="126" alt="Planets" usemap="#planetmap">
+        <map name="planetmap">
+          <area shape="rect" coords="0,0,82,126" target="_blank" alt="Sun" href="/web/resources/sun.gif" media="screen and (min-color-index:256)">
+          <area shape="circle" coords="90,58,3" target="_blank" alt="Mercury" href="/web/resources/merglobe.gif">
+          <area shape="circle" coords="124,58,8" target="_blank" alt="Venus" href="/web/resources/venglobe.gif">
+        </map>
+        <br>6、rel 属性规定当前文档与被链接文档之间的关系。
+        <pre style="color:green;">
+            ● alternate   文档的替代版本（比如打印页、翻译或镜像）。
+            ● author      链接到文档的作者。
+            ● bookmark    用于书签的永久网址
+            ● help        链接到帮助文档
+            ● license     链接到文档的版权信息。
+            ● next        选项中的下一个文档
+            ● nofollow    nofollow 是一个HTML标签的属性值。这个标签的意义是告诉搜索引擎"不要追踪此网页上的链接"或"不要追踪此特定链接。
+            ● noreferrer  如果用户点击链接指定浏览不要发送 HTTP referer 头部信息。
+            ● prefetch    指定的目标文件应该被缓存
+            ● prev        选项中的前一个文档
+            ● search      文档链接到搜索工具
+            ● tag         当前文档的标签(关键词)
+        </pre>
+        <br><span>实例：</span><br> 
+        <img src="../assets/planets.gif" width="145" height="126" alt="Planets" usemap="#planetmap">
+        <map name="planetmap">
+          <area shape="rect" coords="0,0,82,126" target="_blank" alt="Sun" href="/web/resources/sun.gif" rel="alternate">
+          <area shape="circle" coords="90,58,3" target="_blank" alt="Mercury" href="/web/resources/merglobe.gif">
+          <area shape="circle" coords="124,58,8" target="_blank" alt="Venus" href="/web/resources/venglobe.gif">
+        </map>
+        <br>6、shape 属性：指定了区域的形状。shape 属性与 coords 属性配合，可以规定区域的尺寸、形状和位置。
+        <pre style="color:green;">
+            ● default 规定全部区域。
+            ● rect    定义矩形区域。
+            ● circ    定义圆形。
+            ● poly    定义多边形区域。
+        </pre>
+        <br><span>实例：</span><br> 
+        <img src="../assets/planets.gif" width="145" height="126" alt="Planets" usemap="#planetmap">
+        <map name="planetmap">
+          <area shape="rect" coords="0,0,82,126" target="_blank" alt="Sun" href="/web/resources/sun.gif" rel="alternate">
+          <area shape="circle" coords="90,58,3" target="_blank" alt="Mercury" href="/web/resources/merglobe.gif">
+          <area shape="circle" coords="124,58,8" target="_blank" alt="Venus" href="/web/resources/venglobe.gif">
+        </map>
+        <br>7、target 属性：规定区域中连接的目标。仅在使用了 href 属性才使用 target 属性。
+        <pre style="color:green;">
+            ● _blank      在新窗口中打开被链接文档。
+            ● _self       默认。在相同的框架中打开被链接文档。
+            ● _parent     在父框架集中打开被链接文档。
+            ● _top        在整个窗口中打开被链接文档。
+            ● framename   在指定的框架中打开被链接文档。
+        </pre>
+        <br><span>实例：</span><br> 
+        <img src="../assets/planets.gif" width="145" height="126" alt="Planets" usemap="#planetmap">
+        <map name="planetmap">
+          <area shape="rect" coords="0,0,82,126" target="_blank" alt="Sun" href="/web/resources/sun.gif" rel="alternate">
+          <area shape="circle" coords="90,58,3" target="_blank" alt="Mercury" href="/web/resources/merglobe.gif">
+          <area shape="circle" coords="124,58,8" target="_blank" alt="Venus" href="/web/resources/venglobe.gif">
+        </map>
+        <br>8、type 属性指定了目标 URL 的 MIME 类型。该属性仅在 href 属性设置后才使用type属性。
+        <br><span>实例：</span><br> 
+        <img src="../assets/planets.gif" width="145" height="126" alt="Planets" usemap="#planetmap">
+        <map name="planetmap">
+          <area shape="rect" coords="0,0,82,126" target="_blank" alt="Sun" href="/web/resources/sun.gif" type="image/gif">
+          <area shape="circle" coords="90,58,3" target="_blank" alt="Mercury" href="/web/resources/merglobe.gif" type="image/gif">
+          <area shape="circle" coords="124,58,8" target="_blank" alt="Venus" href="/web/resources/venglobe.gif" type="image/gif">
+        </map>
+    </p>
+    <hr>
+    <!-- HTML <canvas> 标签 -->
+    <h2 style='text-align:center;'># &lt;canvas&gt;标签</h2>
+    <p id="canvas">简介：
+        <br>&lt;canvas&gt; 标签是 HTML5 中新定义的标签，它是一个画布标签，只是作为一个图形容器，必须使用脚本来绘制图形。
+        <br>提示：我们可以在&lt;canvas&gt; 标签的开始标签和结束标签之间可以放置一段文本，当浏览器不支持&lt;canvas&gt; 标签时，这段文本将显示在&lt;canvas&gt; 标签所在的位置上，使用者就会明白&lt;canvas&gt; 标签不适用于此浏览器。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;canvas&gt; 标签通过脚本（通常是 JavaScript）来绘制图形（比如图表和其他图像）。
+        <br>&lt;canvas&gt; 标签只是图形容器，您必须使用脚本来绘制图形。
+        <br><span>实例：</span><br> 
+        <canvas id="myCanvas">你的浏览器不支持 HTML5 canvas 标签。</canvas>
+        <br><span>属性：</span>
+        <br>1、height 属性规定 &lt;canvas&gt; 元素的高度, 以像素为单位。提示： 每当画布的高度或宽度被重设时，画布内容就会被清空（请看页面底部的例子）。
+        <br>2、width 属性返回 ImageData 对象的宽度，以像素计。提示： 每当画布的高度或宽度被重设时，画布内容就会被清空（请看页面底部的例子）。
+        <br><span>实例：</span><br> 
+        <canvas id="myCanvas1" width="200" height="200" style="border:1px solid"></canvas>
+    </p>
+    <hr>
+    <!-- HTML <figcaption> 标签 -->
+    <h2 style='text-align:center;'># &lt;figcaption&gt;标签</h2>
+    <p id="figcaption">简介：
+        <br>&lt;figcaption&gt; 标签用于表示与图形或图例有关联的标题，通常用来定义 &lt;figure&gt; 元素的标题。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;figcaption&gt; 标签为 &lt;figure&gt; 元素定义标题。
+        <br>&lt;figcaption&gt; 元素应该被置于 &lt;figure&gt; 元素的第一个或最后一个子元素的位置。
+        <br><span>实例：</span><br> 
+        <figure>
+          <img src="../assets/mlh.jpg" alt="The Pulpit Rock" width="304" height="228">
+          <figcaption>广州木林湖</figcaption>
+        </figure>
+    </p>
+    <hr>
+    <!-- HTML <figure> 标签 -->
+    <h2 style='text-align:center;'># &lt;figure&gt;标签</h2>
+    <p id="figure">简介：
+        <br>&lt;figure&gt; 标签可以用来表示自包含的内容，并且一般作为单个单元引用。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;figure&gt; 标签规定独立的流内容（图像、图表、照片、代码等等）。
+        <br>&lt;figure&gt; 元素的内容应该与主内容相关，同时元素的位置相对于主内容是独立的。如果被删除，则不应对文档流产生影响。
+        <br>&lt;figure&gt; 元素可以与标题相关联，通过在其中插入 &lt;figcaption&gt; 元素（作为第一个或最后一个子项）。
+        <br><span>提示和注释：</span>
+        <br>提示：&lt;figcaption&gt; 元素被用来为 &lt;figure&gt; 元素定义标题。
+        <br><span>实例：</span><br> 
+        <figure>
+          <img src="../assets/pulpit.jpg" tppabs="http://W3Cschool.com/tags/img_pulpit.jpg" alt="The Pulpit Rock" width="304" height="228">
+          <figcaption>Fig.1 - A view of the pulpit rock in Norway.</figcaption>
+        </figure>
+    </p>
+    <hr><!-- ----------------------------HTML 图像标签(END) ---------------------------->
+            
+
+    
+    
 
     <!--==== a 标签 ===-->
     <h2 id='maodian' style="text-align:center;"># &lt;a&gt;标签 </h2>  
