@@ -1928,11 +1928,162 @@
         </figure>
     </p>
     <hr><!-- ----------------------------HTML 图像标签(END) ---------------------------->
-            
 
     
-    
+    <!-- ----------------------------HTML 音频/视频（Audio/Video）标签(start) ---------------------------->
+    <h1 style="text-align:center;">HTML 音频/视频（Audio/Video）标签</h1>
+    <!-- HTML <audio> 标签 -->
+    <h2 style='text-align:center;'># &lt;audio&gt;标签</h2>
+    <p id="audio">简介：
+        <br>&lt;audio&gt; 标签是 HTML5 提供的用来播放音频文件的。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;audio&gt; 标签定义声音，比如音乐或其他音频流。
+        <br>目前，&lt;audio&gt; 元素支持的3种文件格式：MP3、Wav、Ogg。
+        <br>提示：这 3 种音频的 MIME-type 分别是：MP3====>audio/mpeg；Ogg====>audio/ogg；Wavg====>audio/wav
+        <br><span>提示和注释：</span>
+        <br>提示：可以在 &lt;audio&gt; 和 &lt;/audio&gt; 之间放置文本内容，这些文本信息将会被显示在那些不支持 &lt;audio&gt; 标签的浏览器中。
+        <br><span>实例：</span><br> 
+        <audio controls>
+          <source src="/web/resources/horse.ogg" >
+          <source src="/web/resources/horse.mp3" >
+        您的浏览器不支持 audio 元素。
+        </audio>
+        <br><span>属性：</span>
+        <br>1、autoplay 属性：规定一旦音频就绪马上开始播放。如果设置了该属性，音频将自动播放。
+        <br><span>实例：</span><br> 
+        <audio controls autoplay>
+          <source src="/web/resources/horse.ogg" type="audio/ogg">
+          <source src="/web/resources/zszy.mp3" type="audio/mpeg">
+        您的浏览器不支持 audio 元素。
+        </audio>
+        <br>2、controls 属性：是一个布尔属性。如果属性存在，它指定音频控件的显示方式。音视频控件包括：播放、暂停、进度条、音量
+        <br><span>实例：</span><br>
+        <audio controls>
+          <source src="/web/resources/horse.ogg" type="audio/ogg">
+          <source src="/web/resources/zszy.mp3" type="audio/mpeg">
+        您的浏览器不支持 audio 元素。        
+        </audio>
+        <br>3、loop 属性是一个布尔属性。如果设置该属性，则音频将循环播放。
+        <br><span>实例：</span><br>
+        <audio controls loop>
+          <source src="/web/resources/horse.ogg" type="audio/ogg">
+          <source src="/web/resources/zszy.mp3" type="audio/mpeg">
+        您的浏览器不支持 audio 元素。        
+        </audio>
+        <br>4、muted 属性属于逻辑属性。如被设置，则规定视频输出应该被静音。
+        <br><span>实例：</span><br>
+        <audio controls loop muted>
+          <source src="/web/resources/zszy.mp3" type="audio/mpeg">
+        您的浏览器不支持 audio 元素。        
+        </audio>
+        <br>5、preload 属性：规定是否在页面加载后载入音频。如果设置了 autoplay 属性，则忽略该属性。规定是否预加载音频。可能的值：auto - 当页面加载后载入整个音频；meta - 当页面加载后只载入元数据；none - 当页面加载后不载入音频。
+        <br><span>实例：</span><br>
+        <audio controls preload="none">
+          <source src="/web/resources/zszy.mp3" type="audio/mpeg">        
+        您的浏览器不支持 audio 元素。
+        </audio>
+        <br>6、src 属性描述了音频文件的地址 (URL)。Ogg 文件格式的音频，可以在 Firefox, Opera 和 Chrome 浏览器下播放。如果需要在 Internet Explorer 和 Safari浏览器播放音频，必须使用 MP3 文件。如果需要兼容所有浏览器 - 请在&lt;audio&gt; 元素中使用 &lt;source&gt; 元素 。 &lt;source&gt; 元素可以链接到不同的音频文件。浏览器将使用第一个可识别的音频文件格式。
+        <br><span>实例：</span><br>
+        <audio controls>
+          <source src="/web/resources/zszy.mp3" type="audio/mpeg">        
+        您的浏览器不支持 audio 元素。
+        </audio>
+    </p>      
+    <hr> 
+    <!-- HTML <source> 标签 -->
+    <h2 style='text-align:center;'># &lt;source&gt;标签</h2>
+    <p id="source">简介：
+        <br>&lt;source&gt; 标签可以为&lt;picture&gt;、&lt;audio&gt;或&lt;video&gt;元素指定一个或者多个的媒体资源。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;source&gt; 标签为媒体元素（比如 &lt;video&gt; 和 &lt;audio&gt;）定义媒体资源。
+        <br>&lt;source&gt; 标签允许您规定可替换的视频/音频文件共浏览器根据它对媒体类型或者编解码器的支持进行选择。
+        <br><span>属性：</span>
+        <br>1、src 属性：规定要播放的媒体文件的 URL。
+        <br>2、type 属性：规定媒体资源的 MIME 类型。
+        <br><span>实例：</span><br>
+        <audio controls preload="none">
+          <source src="/web/resources/zszy.mp3" type="audio/mpeg">        
+        您的浏览器不支持 audio 元素。
+        </audio>
+    </p>
+    <hr>
+    <!-- HTML <track> 标签 -->
+    <h2 style='text-align:center;'># &lt;track&gt;标签</h2>
+    <p id="track">简介：
+        <br>&lt;track&gt; 标签用作 &lt;audio&gt; 元素和 &lt;video&gt; 元素的子级，它允许您指定定时文本轨道（或基于时间的数据），采用 WebVTT 格式（.vtt 文件）。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;track&gt; 标签为媒体元素（比如 &lt;audio&gt; and &lt;video&gt;）规定外部文本轨道。
+        <br>这个元素用于规定字幕文件或其他包含文本的文件，当媒体播放时，这些文件是可见的。
+        <br>提示：track 给媒体元素添加的数据的类型在 kind 属性中设置，kind 属性的取值请参考下面的可选属性列表。
+        <br>注意：IE 10、Opera 和 Chrome 浏览器支持 &lt;track&gt; 标签。
+        <br><span>属性：</span>
+        <br>1、default 属性是一个 boolean（布尔）属性。如果使用 default 属性，则规定应该使用该轨道，假如用户没有选择其他轨道的话。
+        <br>2、kind 属性规定轨道的种类。
+        <pre style="color:green;">
+            ● captions      该轨道定义将在播放器中显示的简短说明。
+            ● chapters      该轨道定义章节，用于导航媒介资源。
+            ● descriptions  该轨道定义描述，用于通过音频描述媒介的内容，假如内容不可播放或不可见。
+            ● metadata      该轨道定义脚本使用的内容。
+            ● subtitles     该轨道定义字幕，用于在视频中显示字幕。
+        </pre>
+        <br>3、label 属性规定了文本轨迹的标题。例如，当用户选择字幕轨道时，标题会显示出来。
+        <br>4、src 属性：规定轨道的 url。
+        <br>5、srclang 属性定义轨道的语言。如果 kind 属性的值是 "subtitles"，则 srclang 属性是必需的。
+    </p>
+    <hr>
+    <!-- HTML <video> 标签 -->
+    <h2 style='text-align:center;'># &lt;video&gt;标签</h2>
+    <p id="video">简介：
+        <br>&lt;video&gt; 标签可以将视频内容嵌入到HTML文档中。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;video&gt; 标签定义视频，比如电影片段或其他视频流。
+        <br>目前，&lt;video&gt; 元素支持三种视频格式：MP4、WebM、Ogg。音频格式的 MIME 类型：MP4  video/mp4；WebM  video/webm；Ogg  video/ogg。
+        <br><span>提示和注释：</span>
+        <br>提示：可以在 &lt;video&gt; 和 &lt;/video&gt; 标签之间放置文本内容，这样不支持 &lt;video&gt; 元素的浏览器就可以显示出该标签的信息。
+        <br><span>实例：</span><br>
+        <video width="320" height="240" controls>
+          <source src="/web/resources/movie.mp4"  type="video/mp4">
+          <source src="/web/resources/movie.ogg"  type="video/ogg">
+          您的浏览器不支持 HTML5 video 标签。
+        </video>
+        <br><span>属性：</span>
+        <br>1、autoplay 属性：规定一旦视频就绪马上开始播放。如果设置了该属性，视频将自动播放。autoplay 属性是 boolean(布尔) 属性。注意：在&lt;video&gt;标签中 preload 属性与 autoplay 属性相排斥，如果视频之前设置了 autoplay 属性，再设置 preload 属性，则 preload 属性将失效。
+        <br>2、controls 属性规定浏览器应该为视频提供播放控件。controls 属性是一个 boolean(布尔) 属性。如果设置了该属性，则规定不存在作者设置的脚本控件。浏览器控件应该包括：播放、暂停、定位、音量、全屏切换、字幕（如果可用）、音轨（如果可用）。
+        <br>3、height 属性指定视频播放器的高度，以像素计。提示： 规定视频的高度和宽度是一个好习惯。如果设置这些属性，在页面加载时会为视频预留出空间。如果没有设置这些属性，那么浏览器就无法预先确定视频的尺寸，这样就无法为视频保留合适的空间。结果是，在页面加载的过程中，其布局也会产生变化。注意： 请勿通过 height 和 width 属性来缩放视频！通过 height 和 width 属性来缩小视频，只会迫使用户下载原始的视频（即使在页面上它看起来较小）。正确的方法是在网页上使用该视频前，使用软件对视频进行压缩。
+        <br>4、loop 属性规定当视频结束后将重新开始播放。loop 属性是一个 boolean（布尔） 属性。如果设置该属性，则视频将循环播放。
+        <br><span>实例：</span><br>
+        <video width="320" height="240" controls loop>
+          <source src="/web/resources/movie.mp4"  type="video/mp4">
+          <source src="/web/resources/movie.ogg"  type="video/ogg">
+          您的浏览器不支持 HTML5 video 标签。
+        </video>
+        <br>5、muted 属性设置或返回音频/视频是否应该被静音（关闭声音）。muted 属性是一个 boolean(布尔) 属性。
+        <br><span>实例：</span><br>
+        <video width="320" height="240" controls muted>
+          <source src="/web/resources/movie.mp4"  type="video/mp4">
+          <source src="/web/resources/movie.ogg"  type="video/ogg">
+          您的浏览器不支持 HTML5 video 标签。
+        </video>
+        <br>6、poster 属性指定视频下载时显示的图像，或者在用户点击播放按钮前显示的图像。
+        <br><span>实例：</span><br>
+        <video width="320" height="240" poster="/web/resources/xiyang.jpg" controls>
+           <source src="/web/resources/movie.mp4"  type="video/mp4">
+           Your browser does not support the video tag.
+        </video>
+        <br>7、preload 属性规定是否在页面加载后载入视频。如果设置了 autoplay 属性，则忽略该属性。注意： 如果使用 autoplay 属性 preload 将被忽略。属性值：auto  指示一旦页面加载，则开始加载音频/视频。metadata    指示当页面加载后仅加载音频/视频的元数据。none   指示页面加载后不应加载音频/视频。
+        <br><span>实例：</span><br>
+        <video width="320" height="240" controls preload="none">
+            <source src="/web/resources/movie.mp4"  type="video/mp4">
+            <source src="/web/resources/movie.ogg"  type="video/ogg">  您的浏览器不支持 video 标签。
+        </video>
+        <br>8、src 属性指定 video 文件的本地路径(URL) 。以上实例使用了 Ogg 文件, 该使用可正常显示于 Firefox, Opera 和 Chrome。如果需要在 Internet Explorer 和 Safari 播放视频, 必须使用 MPEG4 文件。如果想在所有浏览器播放视频文件 - 可在 &lt;video&gt; 元素总使用 &lt;source&gt; 元素。 &lt;source&gt; 元素可以链接到不同的视频文件。浏览器将使用第一个可识别的格式：
+        <br>9、width 属性指定视频播放器的宽度。提示： 规定视频的高度和宽度是一个好习惯。如果设置这些属性，在页面加载时会为视频预留出空间。如果没有设置这些属性，那么浏览器就无法预先确定视频的尺寸，这样就无法为视频保留合适的空间。结果是，在页面加载的过程中，其布局也会产生变化。注意：请勿通过 height 和 width 属性来缩放视频！通过 height 和 width 属性来缩小视频，只会迫使用户下载原始的视频（即使在页面上它看起来较小）。正确的方法是在网页上使用该视频前，使用软件对视频进行压缩。
+    </p>
+    <hr><!-- ----------------------------HTML 音频/视频（Audio/Video）标签(END) ---------------------------->
 
+
+    <!-- ----------------------------HTML 链接标签(start) ---------------------------->
+    <h1 style="text-align:center;">HTML 链接标签</h1>
     <!--==== a 标签 ===-->
     <h2 id='maodian' style="text-align:center;"># &lt;a&gt;标签 </h2>  
     <p class='important'>1、download属性与href属性配合实现静态资源下载功能：    
@@ -1980,6 +2131,229 @@
         <br><a href="/web/index.html"  re="tag">tag---- 当前文档标签（关键词）。</a>
         <br><a href="/web/index.html"  re="friend">tag---- 赞助。</a>
     </p>
+    <hr>
+    <!-- HTML <link> 标签 -->
+    <h2 style='text-align:center;'># &lt;link&gt;标签</h2>
+    <p id="link">简介：
+        <br>&lt;link&gt; 标签经常用于链接 CSS 样式表。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;link&gt; 标签定义文档与外部资源的关系。
+        <br>&lt;link&gt; 标签最常见的用途是链接样式表。
+        <br>注意： link 元素是空元素，它仅包含属性。
+        <br>注意： 此元素只能存在于 head 部分，不过它可出现任何次数。
+        <br>注意：根据 W3C 标准，&lt;link .... ... /&gt;构成完整的一个 link 标签。
+        <br><span>实例：</span><br>
+        <br><span>属性：</span>
+        <br>1、href 属性：规定外部资源（通常是样式表文件）的位置（URL）。
+        <br>2、hreflang 属性：规定被链接文档中文本的语言。只有设置了 href 属性时才能使用 hreflang 属性。注意：该属性是纯粹的建议。
+        <br>3、media 属性：规定被链接文档将显示在什么设备上。该属性通常与 CSS 样式表一起使用，用于为不同的媒介类型规定不同的样式。media 属性接受若干个值。
+        <br>4、rel 属性是必须的，规定当前文档与被链接文档/资源之间的关系。
+        <pre style="color:green;">
+            ● alternate   链接到该文档的替代版本（比如打印页、翻译或镜像）。
+            ● author      链接到该文档的作者。
+            ● help        链接到帮助文档。
+            ● icon        导入表示该文档的图标。
+            ● license     链接到该文档的版权信息。
+            ● next        表示该文档是集合中的一部分，且集合中的下一个文档是被引用的文档。
+            ● prefetch    规定应该对目标资源进行缓存。
+            ● prev        表示该文档是集合中的一部分，且集合中的上一个文档是被引用的文档。
+            ● search      链接到针对文档的搜索工具。
+            ● stylesheet  要导入的样式表的 URL。
+        </pre>
+        <br>5、type 属性：规定被链接文档/资源的 MIME 类型。只有当设置了 href 属性时，才能使用该属性。&lt;link&gt; 标签常用的 MIME 类型是 "text/css"，它规定样式表。      
+    </p>
+    <hr>
+    <!-- HTML <nav> 标签 -->
+    <h2 style='text-align:center;'># &lt;nav&gt;标签</h2>
+    <p id="nav">简介：
+        <br>&lt;nav&gt; 标签表示一个页面中的某个部分，目的是提供导航链接，常见的导航栏的示例是菜单、目录和索引。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;nav&gt; 标签定义导航链接的部分。
+        <br>并不是所有的 HTML 文档都要使用到 &lt;nav&gt; 元素。&lt;nav&gt; 元素只是作为标注一个导航链接的区域。
+        <br>在不同设备上（手机或者PC）可以制定导航链接是否显示，以适应不同屏幕的需求。
+        <br><span>实例：</span><br>
+        <nav>
+            <a href="/web/index.html">HTML</a> |
+            <a href="/web/css/">CSS</a> |
+            <a href="/web//js/">Javascript</a> |
+            <a href="/web//img/">Picture</a>
+        </nav>
+        <br><span>属性：</span>
+    </p>
+    <hr><!-- ----------------------------HTML 链接标签(END) ---------------------------->
+
+    <!-- ----------------------------HTML 列表标签(start) ---------------------------->
+    <h1 style="text-align:center;">HTML 列表标签</h1>
+    <!-- HTML <ul> 标签 -->
+    <h2 style='text-align:center;'># &lt;ul&gt;标签</h2>
+    <p id="ul">简介：
+        <br>&lt;ul&gt; 标签表示HTML页面中项目的无序列表，一般会以项目符号列表呈现。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;ul&gt; 标签定义无序列表。
+        <br>将 &lt;ul&gt; 标签与 &lt;li&gt; 标签一起使用，创建无序列表。
+        <br><span>提示和注释：</span>
+        <br>提示：使用 CSS 为列表定义样式。
+        <br>提示：使用 &lt;ol&gt; 标签创建有序列表。
+        <br><span>实例：</span><br>
+        <h4>无序列表:</h4>
+        <ul>
+          <li>咖啡</li>
+          <li>茶</li>
+          <li>牛奶</li>
+        </ul>
+    </p>
+    <hr>
+    <!-- HTML <ol> 标签 -->
+    <h2 style='text-align:center;'># &lt;ol&gt;标签</h2>
+    <p id="ol">简介：
+        <br>&lt;ol&gt; 标签在 HTML 中表示有序列表，是 ordered lists 的缩写。您可以自定义有序列表的初始序号。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;ol&gt; 标签定义了一个有序列表. 列表排序以数字来显示。
+        <br>使用&lt;li&gt; 标签来定义列表选项。
+        <br><span>提示和注释：</span>
+        <br>提示： 如果需要无序列表，请使用 &lt;ul&gt; 标签。
+        <br>提示：使用 CSS 来定义列表样式。
+        <br><span>实例：</span><br>
+        <ol>
+          <li>咖啡</li>
+          <li>茶</li>
+          <li>牛奶</li>
+        </ol>
+        <br><span>实例：</span><br>
+        <ol start="50">
+          <li>咖啡</li>
+          <li>茶</li>
+          <li>牛奶</li>
+        </ol>
+        <br><span>属性：</span>
+        <br>1、reversed 属性规定列表顺序为降序 (9, 8, 7...)，而不是升序 (1, 2, 3...)。reversed 属性是一个布尔属性。目前只有 Chrome 和 Safari 6 支持 reversed 属性。
+        <br><span>实例：</span><br>
+        <ol reversed>
+        <li>咖啡</li>
+        <li>茶</li>
+        <li>牛奶</li>
+        </ol>
+        <br>2、start 属性规定有序列表中第一个列表项目的开始值。注释：目前，仍然没有 start 属性的 CSS 替代方案。
+        <br><span>实例：</span><br>
+        <ol start="50">
+          <li>咖啡</li>
+          <li>茶</li>
+          <li>牛奶</li>
+        </ol>
+        <ol type="I" start="50">
+          <li>咖啡</li>
+          <li>茶</li>
+          <li>牛奶</li>
+        </ol>
+        <br>3、type 属性：用来规定HTML有序列表中序号的类型，包括大小写字母、阿拉伯数字和大小写罗马数字。提示：您可以使用 CSS 的list-style-type 属性 来代替 type 属性。
+        <pre style="color:green;">
+            1   默认。十进制数字 (1, 2, 3, 4)。
+            a   字母顺序的有序列表，小写 (a, b, c, d)。
+            A   字母顺序的有序列表，大写 (A, B, C, D)。
+            i   罗马数字，小写 (i, ii, iii, iv)。
+            I   罗马数字，大写 (I, II, III, IV)。
+        </pre>
+        <br><span>实例：</span><br>
+        <ol type="I">
+          <li>咖啡</li>
+          <li>茶</li>
+          <li>牛奶</li>
+        </ol>
+    </p>
+    <hr>
+    <!-- HTML <li> 标签 -->
+    <h2 style='text-align:center;'># &lt;li&gt;标签</h2>
+    <p id="li">简介：
+        <br>定义一个列表项
+        <br><span>实例：</span><br>
+        <ol>
+          <li>咖啡</li>
+          <li>茶</li>
+          <li>牛奶</li>
+        </ol>
+    </p>
+    <hr>
+    <!-- HTML <dl> 标签 -->
+    <h2 style='text-align:center;'># &lt;dl&gt;标签</h2>
+    <p id="dl">简介：
+        <br>&lt;dl&gt; 标签代表一个描述列表。该标签的常用用途是实现词汇表或显示元数据（键值对列表）。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;dl&gt; 标签定义一个描述列表。
+        <br>&lt;dl&gt; 标签与 &lt;dt&gt; （定义项目/名字）和 &lt;dd&gt; （描述每一个项目/名字）一起使用。
+        <br>&lt;dl&gt; 标签必须有开始标签和结束标签。
+        <br><span>实例：</span><br>
+        <dl>
+          <dt>咖啡</dt>
+          <dd>黑色的热饮</dd>
+          <dt>牛奶</dt>
+          <dd>白色的冷饮</dd>
+        </dl>
+    </p>
+    <hr>
+    <!-- HTML <dt> 标签 -->
+    <h2 style='text-align:center;'># &lt;dt&gt;标签</h2>
+    <p id="dt">简介：
+        <br>&lt;dt&gt; 标签只能够作为 &lt;dl&gt; 标签的一个子元素出现，常常后跟一个 &lt;dd&gt; 标签。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;dt&gt; 标签定义一个描述列表的项目/名字。
+        <br>&lt;dt&gt; 标签与 &lt;dl&gt; （定义一个描述列表）和 &lt;dd&gt; （描述每一个项目/名字）一起使用。
+        <br>一行中的多个 &lt;dt&gt; 标签表示由紧邻的下一个 &lt;dd&gt; 元素定义的多个术语。
+        <br><span>实例：</span>
+        <dl>
+          <dt>咖啡</dt>
+          <dd>黑色的热饮</dd>
+          <dt>牛奶</dt>
+          <dd>白色的冷饮</dd>
+        </dl> 
+    </p>
+    <hr>
+    <!-- HTML <dd> 标签 -->
+    <h2 style='text-align:center;'># &lt;dd&gt;标签</h2>
+    <p id="dd">简介：
+        <br>&lt;dd&gt; 元素是 HTML 描述元素，作为描述列表（&lt;dl&gt; 元素）的子元素出现，必须后跟一个 &lt;dt&gt; 元素。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;dd&gt; 标签被用来对一个描述列表中的项目/名字进行描述。
+        <br>&lt;dd&gt; 标签与 &lt;dl&gt; （定义一个描述列表）和 &lt;dt&gt; （定义项目/名字）一起使用。
+        <br>在 &lt;dd&gt; 标签内，您能放置段落、换行、图片、链接、列表等等。
+        <br><span>实例：</span>
+        <dl>
+          <dt>咖啡</dt>
+          <dd>黑色的热饮</dd>
+          <dt>牛奶</dt>
+          <dd>白色的冷饮</dd>
+        </dl>
+    </p>
+    <hr><!-- ----------------------------HTML 列表标签(END) ---------------------------->
+
+    
+    <!-- ----------------------------HTML 表格标签(start) ---------------------------->
+    <h1 style="text-align:center;">HTML 表格标签</h1>
+    <!-- HTML <table> 标签 -->
+    <h2 style='text-align:center;'># &lt;table&gt;标签</h2>
+    <p id="table">简介：
+        <br>&lt;table&gt; 标签用来定义 HTML 表格，一个简单的 HTML 表格应该包括两行两列。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;table&gt; 标签定义 HTML 表格。
+        <br>一个 HTML 表格包括 &lt;table&gt; 元素，一个或多个 &lt;tr&gt;、&lt;th&gt; 以及 &lt;td&gt; 元素。
+        <br>&lt;tr&gt; 元素定义表格行，&lt;th&gt; 元素定义表头，&lt;td&gt; 元素定义表格单元。
+        <br>更复杂的 HTML 表格也可能包括 &lt;caption&gt;、&lt;col&gt;、&lt;colgroup&gt;、&lt;thead&gt;、&lt;tfoot&gt; 以及 &lt;tbody&gt; 元素。
+        <br><span>实例：</span>
+        <table border="1">
+          <tr>
+            <th>Month</th>
+            <th>Savings</th>
+          </tr>
+          <tr>
+            <td>January</td>
+            <td>$100</td>
+          </tr>
+          <tr>
+            <td>February</td>
+            <td>$80</td>
+          </tr>
+        </table>
+    </p>
+
 
     
 
