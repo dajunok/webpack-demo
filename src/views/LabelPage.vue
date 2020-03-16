@@ -2337,6 +2337,8 @@
         <br>一个 HTML 表格包括 &lt;table&gt; 元素，一个或多个 &lt;tr&gt;、&lt;th&gt; 以及 &lt;td&gt; 元素。
         <br>&lt;tr&gt; 元素定义表格行，&lt;th&gt; 元素定义表头，&lt;td&gt; 元素定义表格单元。
         <br>更复杂的 HTML 表格也可能包括 &lt;caption&gt;、&lt;col&gt;、&lt;colgroup&gt;、&lt;thead&gt;、&lt;tfoot&gt; 以及 &lt;tbody&gt; 元素。
+        <br><span>属性：</span>
+        <br>1、border 属性规定表格单元周围是否显示边框。值 "1" 指示应该显示边框，且表格不用于布局目的。""  表格单元周围没有边框（表格可用于布局目的）。
         <br><span>实例：</span>
         <table border="1">
           <tr>
@@ -2353,8 +2355,412 @@
           </tr>
         </table>
     </p>
-
-
+    <hr>
+    <!-- HTML <caption> 标签 -->
+    <h2 style='text-align:center;'># &lt;caption&gt;标签</h2>
+    <p id="caption">简介：
+        <br>&lt;caption&gt; 标签表示 HTML 表格的标题，对表格的简单描述。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;caption&gt; 标签定义表格的标题。
+        <br>&lt;caption&gt; 标签必须直接放置到 &lt;table&gt; 标签之后。
+        <br>您只能对每个表格定义一个标题。
+        <br>提示：通常这个标题会被居中于表格之上。然而，CSS 属性 "text-align" 和 "caption-side" 能用来设置标题的对齐方式和显示位置。
+        <br><span>实例：</span>
+        <table border="1">
+          <caption>Monthly savings</caption>
+          <tr>
+            <th>Month</th>
+            <th>Savings</th>
+          </tr>
+          <tr>
+            <td>January</td>
+            <td>$100</td>
+          </tr>
+          <tr>
+            <td>February</td>
+            <td>$50</td>
+          </tr>
+        </table>
+    </p>
+    <hr>
+    <!-- HTML <th> 标签 -->
+    <h2 style='text-align:center;'># &lt;th&gt;标签</h2>
+    <p id="th">简介：
+        <br><br>&lt;th&gt; 标签表示HTML表格的表头部分，该标签中的内容会以粗体显示。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;th&gt; 标签定义 HTML 表格中的表头单元格。
+        <br>HTML 表格有两种单元格类型：
+        <br>● 表头单元格 - 包含头部信息（由 &lt;th&gt; 元素创建）
+        <br>● 标准单元格 - 包含数据（由 &lt;td&gt; 元素创建）
+        <br>&lt;th&gt; 元素中的文本通常呈现为粗体并且居中。
+        <br>&lt;td&gt; 元素中的文本通常是普通的左对齐文本。
+        <br><span>提示和注释：</span>
+        <br>提示：如果需要将内容横跨多个行或列，请使用 colspan 和 rowspan 属性！
+        <br><span>实例：</span>
+        <table border="1">
+          <tr>
+            <th>Month</th>
+            <th>Savings</th>
+          </tr>
+          <tr>
+            <td>January</td>
+            <td>$100</td>
+          </tr>
+          <tr>
+            <td>February</td>
+            <td>$50</td>
+          </tr>
+        </table>
+        <br><span>属性：</span>
+        <br>1、colspan 属性定义表头单元格应该横跨的列数。
+        <br><span>实例：</span>
+        <table border="1">
+          <tr>
+            <th colspan="2">Monthly Savings</th>
+          </tr>
+          <tr>
+            <td>January</td>
+            <td>$100</td>
+          </tr>
+          <tr>
+            <td>February</td>
+            <td>$80</td>
+          </tr>
+        </table>
+        <br>2、headers 属性：规定与表头单元格相关联的一个或多个表头单元格。
+        <br><span>实例：</span>
+        <table border="1">
+          <tr>
+            <th id="name" colspan="2">Name</th>
+          </tr>
+          <tr>
+            <th headers="name">Firsname</th>
+            <th headers="name">Lastname</th>
+          </tr>
+        </table>
+        <br>3、rowspan 属性定义表头单元格应该横跨的行数。
+        <br><span>实例：</span>
+        <table border="1">
+          <tr>
+            <th>Month</th>
+            <th>Savings</th>
+            <th rowspan="3">Savings for holiday!</th>
+          </tr>
+          <tr>
+            <td>January</td>
+            <td>$100</td>
+          </tr>
+          <tr>
+            <td>February</td>
+            <td>$80</td>
+          </tr>
+        </table>
+        <br>4、scope 属性规定某个表头单元格是否是列、行、列组或行组的表头。scope 属性在普通的 Web 浏览器中没有视觉效果，但可以通过屏幕阅读器使用。
+        <pre style="color:green;">
+            值           描述
+            col         规定单元格是列的表头。
+            row         规定单元格是行的表头。
+            colgroup    规定单元格是列组的表头。
+            rowgroup    规定单元格是行组的表头。        
+        </pre>
+        <br><span>实例：</span>
+        <table border="1">
+          <tr>
+            <th></th>
+            <th scope="col">Month</th>
+            <th scope="col">Savings</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>January</td>
+            <td>$100</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>February</td>
+            <td>$80</td>
+          </tr>
+        </table>
+    </p>
+    <hr>
+    <!-- HTML <tr> 标签 -->
+    <h2 style='text-align:center;'># &lt;tr&gt;标签</h2>
+    <p id="tr">简介：
+        <br>&lt;tr&gt; 标签定义HTML表格中的一行单元格，它应该是成对出现的。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;tr&gt; 标签定义 HTML 表格中的行。
+        <br>一个 &lt;tr&gt; 元素包含一个或多个 &lt;th&gt; 或&lt;td&gt; 元素。
+         <br><span>实例：</span>
+         <table border="1">
+          <tr>
+            <th>Month</th>
+            <th>Savings</th>
+          </tr>
+          <tr>
+            <td>January</td>
+            <td>$100</td>
+          </tr>
+          <tr>
+            <td>February</td>
+            <td>$80</td>
+          </tr>
+        </table>
+    </p>
+    <hr>
+    <!-- HTML <td> 标签 -->
+    <h2 style='text-align:center;'># &lt;td&gt;标签</h2>
+    <p id="td">简介：
+        <br>&lt;td&gt; 标签表示&lt;table&gt;标签中的单元格。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;td&gt; 标签定义 HTML 表格中的标准单元格。
+        <br>HTML 表格有两种单元格类型：
+        <br>表头单元格 - 包含头部信息（由 &lt;th&gt; 元素创建）
+        <br>标准单元格 - 包含数据（由 &lt;td&gt; 元素创建）
+        <br>&lt;th&gt; 元素中的文本通常呈现为粗体并且居中。
+        <br>&lt;td&gt; 元素中的文本通常是普通的左对齐文本。
+        <br><span>提示和注释：</span>
+        <br>提示：如果需要将内容横跨多个行或列，请使用 colspan 和 rowspan 属性！
+        <br><span>属性：</span>
+        <br>1、colspan 属性定义单元格应该横跨的列数。注意：只有 Firefox 支持 colspan="0"，该值有特殊的含义（请看下面的"属性值"表格）。        
+        <br><span>实例：</span>
+        <table border="1">
+          <tr>
+            <th>Month</th>
+            <th>Savings</th>
+          </tr>
+          <tr>
+            <td>January</td>
+            <td>$100</td>
+          </tr>
+          <tr>
+            <td>February</td>
+            <td>$100</td>
+          </tr>
+          <tr>
+            <td colspan="2">Sum: $180</td>
+          </tr>
+        </table>
+        <br>2、headers 属性规定与表格单元格相关联的一个或多个表头单元格。headers 属性在普通的 Web 浏览器中没有视觉效果，但可以通过屏幕阅读器使用。
+        <br><span>实例：</span>
+        <table border="1" width="100%">
+          <tr>
+            <th id="name">Name</th>
+            <th id="email">Email</th>
+            <th id="phone">Phone</th>
+            <th id="addr">Address</th>
+          </tr>
+          <tr>
+            <td headers="name">John Doe</td>
+            <td headers="email">someone@example.com</td>
+            <td headers="phone">+45342323</td>
+            <td headers="addr">Rosevn 56,4300 Sandnes,Norway</td>
+          </tr>
+        </table>
+        <br>3、rowspan 属性定义单元格应该横跨的行数。注意：只有 Firefox 和 Opera 支持 rowspan="0"，该值有特殊的含义（请看下面的"属性值"表格）。
+        <br><span>实例：</span>
+        <table border="1">
+          <tr>
+            <th>Month</th>
+            <th>Savings</th>
+            <th>Savings for holiday!</th>
+          </tr>
+          <tr>
+            <td>January</td>
+            <td>$100</td>
+            <td rowspan="2">$50</td>
+          </tr>
+          <tr>
+            <td>February</td>
+            <td>$80</td>
+          </tr>
+        </table>
+    </p>
+    <hr>
+    <!-- HTML <thead> 标签 -->
+    <h2 style='text-align:center;'># &lt;thead&gt;标签</h2>
+    <p id="thead">简介：
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;thead&gt; 标签用于组合 HTML 表格的表头内容。
+        <br>&lt;thead&gt; 元素应该与 &lt;tbody&gt; 和 &lt;tfoot&gt; 元素结合起来使用，用来规定表格的各个部分（表头、主体、页脚）。
+        <br>通过使用这些元素，使浏览器有能力支持独立于表格表头和表格页脚的表格主体滚动。当包含多个页面的长的表格被打印时，表格的表头和页脚可被打印在包含表格数据的每张页面上。
+        <br>&lt;thead&gt; 标签必须被用在以下情境中：作为 &lt;table&gt; 元素的子元素，出现在 &lt;caption&gt;、&lt;colgroup&gt; 元素之后，&lt;tbody&gt;、&lt;tfoot&gt; 和 &lt;tr&gt; 元素之前。
+        <br><span>提示和注释：</span>
+        <br>注释：&lt;thead&gt; 元素内部必须包含一个或者多个 &lt;tr&gt; 标签。
+        <br>提示：&lt;thead&gt;、&lt;tbody&gt; 和 &lt;tfoot&gt; 元素默认不会影响表格的布局。不过，您可以使用 CSS 来为这些元素定义样式，从而改变表格的外观。
+        <br><span>实例：</span>
+        <table border="1">
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Savings</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <td>Sum</td>
+              <td>$180</td>
+            </tr>
+          </tfoot>
+          <tbody>
+            <tr>
+              <td>January</td>
+              <td>$100</td>
+            </tr>
+            <tr>
+              <td>February</td>
+              <td>$80</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>提示: thead, tbody, 和 tfoot 元素默认不会影响表格的布局。不过，您可以使用 CSS 来为这些元素定义样式，从而改变表格的外观。</p>
+    </p>
+    <hr>
+    <!-- HTML <tbody> 标签 -->
+    <h2 style='text-align:center;'># &lt;tbody&gt;标签</h2>
+    <p id="tbody">简介：
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;tbody&gt; 标签用于组合 HTML 表格的主体内容。
+        <br>&lt;tbody&gt; 元素应该与 &lt;thead&gt; and&lt;tfoot&gt; 元素结合起来使用，用来规定表格的各个部分（主体、表头、页脚）。它们的出现次序是：thead、tfoot、tbody。
+        <br>通过使用这些元素，使浏览器有能力支持独立于表格表头和表格页脚的表格主体滚动。当包含多个页面的长的表格被打印时，表格的表头和页脚可被打印在包含表格数据的每张页面上。
+        <br>&lt;tbody&gt; 标签必须被用在以下情境中：作为 &lt;table&gt; 元素的子元素，出现在 &lt;caption&gt;、&lt;colgroup&gt; 和 &lt;thead&gt; 元素之后。
+        <br><span>提示和注释：</span>
+        <br>注释：&lt;tbody&gt; 元素内部必须包含一个或者多个 &lt;tr&gt; 标签。
+        <br>提示：&lt;thead&gt;、&lt;tbody&gt; 和 &lt;tfoot&gt; 元素默认不会影响表格的布局。不过，您可以使用 CSS 来为这些元素定义样式，从而改变表格的外观。
+        <br>提示：&lt;thead&gt; 元素用于对 HTML 表格中的表头内容进行分组，而 &lt;tfoot&gt; 元素用于对 HTML 表格中的表注（页脚）内容进行分组。
+        <br><span>实例：</span>
+        <table border="1">
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Savings</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <td>Sum</td>
+              <td>$180</td>
+            </tr>
+          </tfoot>
+          <tbody>
+            <tr>
+              <td>January</td>
+              <td>$100</td>
+            </tr>
+            <tr>
+              <td>February</td>
+              <td>$80</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>提示: thead, tbody, 和 tfoot 元素默认不会影响表格的布局。不过，您可以使用 CSS 来为这些元素定义样式，从而改变表格的外观。</p>
+    </p>
+    <hr>
+    <!-- HTML <tfoot> 标签 -->
+    <h2 style='text-align:center;'># &lt;tfoot&gt;标签</h2>
+    <p id="tfoot">简介：
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;tfoot&gt; 标签用于组合 HTML 表格的页脚内容。
+        <br>&lt;tfoot&gt; 元素应该与 &lt;thead&gt; 和 &lt;tbody&gt; 元素结合起来使用，用来规定表格的各个部分（页脚、表头、主体）。
+        <br>通过使用这些元素，使浏览器有能力支持独立于表格表头和表格页脚的表格主体滚动。当包含多个页面的长的表格被打印时，表格的表头和页脚可被打印在包含表格数据的每张页面上。
+        <br>&lt;tfoot&gt; 标签必须被用在以下情境中：作为 &lt;table&gt; 元素的子元素，出现在 &lt;caption&gt;、&lt;colgroup&gt; 和 &lt;thead&gt; 元素之后，&lt;tbody&gt; 和 &lt;tr&gt; 元素之前。
+        <br><span>提示和注释：</span>
+        <br>注释：&lt;tfoot&gt; 元素内部必须包含一个或者多个 &lt;tr&gt; 标签。
+        <br>提示：&lt;thead&gt;、&lt;tbody&gt; 和 &lt;tfoot&gt; 元素默认不会影响表格的布局。不过，您可以使用 CSS 来为这些元素定义样式，从而改变表格的外观。
+        <br><span>实例：</span>
+        <table border="1">
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Savings</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <td>Sum</td>
+              <td>$180</td>
+            </tr>
+          </tfoot>
+          <tbody>
+            <tr>
+              <td>January</td>
+              <td>$100</td>
+            </tr>
+            <tr>
+              <td>February</td>
+              <td>$80</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>提示: thead, tbody, 和 tfoot 元素默认不会影响表格的布局。不过，您可以使用 CSS 来为这些元素定义样式，从而改变表格的外观。</p>
+    </p>
+    <hr>
+    <!-- HTML <col> 标签 -->
+    <h2 style='text-align:center;'># &lt;col&gt;标签</h2>
+    <p id="col">简介：
+        <br>&lt;col&gt; 标签用于为表格中的一列或多列设置属性值。
+        <br>&lt;col&gt; 标签只能在 &lt;table&gt; 元素或 &lt;colgroup&gt; 元素内部使用。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;col&gt; 标签规定了 &lt;colgroup&gt; 元素内部的每一列的列属性。
+        <br>通过使用 &lt;col&gt; 标签，可以向整个列应用样式，而不需要重复为每个单元格或每一行设置样式。
+        <br>注释：col 元素是仅包含属性的空元素。如需创建列，您就必须在 tr 元素内部规定 td 元素。
+        <br><span>属性：</span>
+        <br>1、span 属性规定 col 元素应该横跨的列数。
+        <br><span>实例：</span>
+        <table border="1">
+          <colgroup>
+            <col span="2" style="background-color:red">
+            <col style="background-color:yellow">
+          </colgroup>
+          <tr>
+            <th>ISBN</th>
+            <th>Title</th>
+            <th>Price</th>
+          </tr>
+          <tr>
+            <td>3476896</td>
+            <td>My first HTML</td>
+            <td>$53</td>
+          </tr>
+          <tr>
+            <td>5869207</td>
+            <td>My first CSS</td>
+            <td>$49</td>
+          </tr>
+        </table>
+    </p>
+    <hr>
+    <!-- HTML <colgroup> 标签 -->
+    <h2 style='text-align:center;'># &lt;colgroup&gt;标签</h2>
+    <p id="colgroup">简介：
+        <br>&lt;colgroup&gt; 标签用于表示 HTML 的表格列组，定义了表中的一组列表。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;colgroup&gt; 标签用于对表格中的列进行组合，以便对其进行格式化。
+        <br>通过使用 &lt;colgroup&gt; 标签，可以向整个列应用样式，而不需要重复为每个单元格或每一行设置样式。
+        <br>注释：只能在 &lt;table&gt; 元素之内，在任何一个 &lt;caption&gt; 元素之后，在任何一个 &lt;thead&gt;、&lt;tbody&gt;、&lt;tfoot&gt;、&lt;tr&gt; 元素之前使用 &lt;colgroup&gt; 标签。
+        <br>提示：如果想对 &lt;colgroup&gt; 中的某列定义不同的属性，请在 &lt;colgroup&gt; 标签内使用 &lt;col&gt; 标签。
+        <br><span>属性：</span>
+        <br>1、span 属性定义了 &lt;colgroup&gt; 元素应该横跨的列数。提示：要为 &lt;colgroup&gt; 内的列定义不同的属性，请在 &lt;colgroup&gt; 标签内使用 &lt;col&gt; 标签。
+        <br><span>实例：</span>
+        <table border="1">
+          <colgroup span="2" style="background:red"></colgroup>
+          <tr>
+            <th>ISBN</th>
+            <th>Title</th>
+            <th>Price</th>
+          </tr>
+          <tr>
+            <td>3476896</td>
+            <td>My first HTML</td>
+            <td>$53</td>
+          </tr>
+          <tr>
+            <td>5869207</td>
+            <td>My first CSS</td>
+            <td>$49</td>
+          </tr>
+        </table>      
+    </p>
+    <hr>
     
 
     <br><br><br><br><br><br><br>
@@ -2414,6 +2820,8 @@ export default{
 
 
 <style>
+    
+
     p{ 
         font: 16px/1.5 "Microsoft yahei", arial, Simsun, sans-serif;    
     }
@@ -2441,6 +2849,11 @@ export default{
         color:green;
     }
     #div1,#div2 {width:350px;height:70px;padding:10px;border:1px solid #aaaaaa;}
+
+    /*表格元素标签样式*/
+    thead {color:green;}
+    tbody {color:blue;}
+    tfoot {color:red;}
     
     /*改变input标签data控件样式*/
     input[type=date]::-webkit-inner-spin-button { visibility: hidden; }
