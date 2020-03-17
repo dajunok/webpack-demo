@@ -62,6 +62,7 @@
         <p style="color:green;" translate="yes">这个段落需要翻译。</p>
         <p translate="no">这个段落不能翻译。</p>
     </p><!-- ------------------HTML 全局属性(end) ------------------------>   
+    <hr>
     
     <!-- ----------------------------HTML基础标签(start) ---------------------------->
     <h1 style="text-align:center;">HTML基础标签</h1>
@@ -2759,6 +2760,375 @@
             <td>$49</td>
           </tr>
         </table>      
+    </p>
+    <hr><!-- ----------------------------HTML 表格标签(END) ---------------------------->
+
+
+    <!-- ----------------------------HTML 样式/节标签(start) ---------------------------->
+    <h1 style="text-align:center;">HTML 样式/节标签</h1>
+    <!-- HTML <style> 标签 -->
+    <h2 style='text-align:center;'># &lt;style&gt;标签</h2>
+    <p id="style">简介：
+        <br>&lt;style&gt; 标签包含了 HTML 文档的样式详细，在默认情况下，在该元素内写入的样式指令将被认为是CSS。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;style&gt; 标签定义 HTML 文档的样式信息。
+        <br>在 &lt;style&gt; 元素中，您可以规定在浏览器中如何呈现 HTML 文档。
+        <br>每个 HTML 文档能包含多个 &lt;style&gt; 标签。
+        <br><span>提示和注释：</span>
+        <br>提示：如需链接外部样式表，请使用 &lt;link&gt; 标签。
+        <br>提示：如需学习更多有关样式表的知识，请阅读我们的 CSS 教程。
+        <br>注释：如果没有使用 "scoped" 属性，则每一个 &lt;style&gt; 标签必须位于 head 头部区域。
+        <br><span>属性：</span>
+        <br>1、media 属性规定目前资源是为何种媒介/设备优化的。该属性大多用在为不同媒介类型规定不同样式的 CSS 样式表。提示：该属性可以接受多个值。如果需要在一个 style 元素中定义一个以上的媒介类型，请使用逗号来分隔要使用的媒介类型，例如：&lt;style type="text/css" media="screen,projection"&gt;。
+        <br>2、scoped 属性：会限制样式只影响 &lt;style&gt; 标签的父元素和它所有的后代元素。如果使用该属性，则样式仅仅应用到 style 元素的父元素及其子元素。只有 Firefox属性支持 scoped 属性 。
+        <br>3、type 属性：规定必需样式表的 MIME 类型。type 属性指示 &lt;style&gt; 与 &lt;/style&gt; 标签之间的内容。值 "text/css" 指示内容是标准的 CSS。
+    </p>
+    <hr>
+    <!-- HTML <div> 标签 -->
+    <h2 style='text-align:center;'># &lt;div&gt;标签</h2>
+    <p id="div">简介：
+        <br>&lt;div&gt; 标签本身并不代表任何东西，使用它可以标记区域，例如样式化 (使用 class 或 id 属性)、用不同的语言 (使用 lang 属性) 标记 HTML 文档的某个部分，等等。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;div&gt; 标签定义 HTML 文档中的一个分隔区块或者一个区域部分。
+        <br>&lt;div&gt;标签常用于组合块级元素，以便通过 CSS 来对这些元素进行格式化。
+        <br>可以对同一个 &lt;div&gt; 标签同时应用 class 或 id 属性，但通常情况下我们偏向于只使用其中一种。
+        <br>为了避免麻烦，您可以不必为每一个 &lt;div&gt; 标签都加上 class 或 id 属性。
+        <br><span>提示和注释：</span>
+        <br>提示：&lt;div&gt; 元素经常与 CSS 一起使用，用来布局网页。
+        <br>注释：默认情况下，浏览器通常会在 &lt;div&gt; 元素前后放置一个换行符。然而，您可以通过使用 CSS 改变这种情况。
+        <br><span>实例：</span>
+        <div style="color:#0000FF">
+          <h3>这是一个在 div 元素中的标题。</h3>
+          <p>这是一个在 div 元素中的文本。</p>
+        </div>
+    </p>
+    <hr>
+    <!-- HTML <span> 标签 -->
+    <h2 style='text-align:center;'># &lt;span&gt;标签</h2>
+    <p id="span">简介：
+        <br>&lt;span&gt; 元素是无语义的行内元素，它可以对元素进行分组，使它们以不同的样式显示。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;span&gt; 用于对文档中的行内元素进行组合。
+        <br>&lt;span&gt; 标签没有固定的格式表现。当对它应用样式时，它才会产生视觉上的变化。如果不对 &lt;span&gt; 应用样式，那么 &lt;span&gt; 元素中的文本与其他文本不会任何视觉上的差异。
+        <br>&lt;span&gt; 标签提供了一种将文本的一部分或者文档的一部分独立出来的方式。
+        <br>提示：可以对同一个 &lt;span&gt; 元素应用 class 或 id 属性，但是更常见的情况是只应用其中一种。这两者的主要差异是，class 用于元素组（类似的元素，或者可以理解为某一类元素），而 id 用于标识单独的唯一的元素。
+        <br><span>提示和注释：</span>
+        <br>提示：被 &lt;span&gt; 元素包含的文本，您可以使用 CSS 对它定义样式，或者使用 JavaScript 对它进行操作。
+        <br><span>实例：</span>
+        <p>我的母亲有 <span style="color:blue;font-weight:bold">蓝色</span> 的眼睛，我得父亲有 <span style="color:darkolivegreen;font-weight:bold">碧绿色</span> 的眼睛。</p>
+    </p>
+    <hr>
+    <!-- HTML <header> 标签 -->
+    <h2 style='text-align:center;'># &lt;header&gt;标签</h2>
+    <p id="header">简介：
+        <br>&lt;header&gt; 标签表示介绍性的内容，可以让您了解页面涉及的内容，具有导航性。
+        <br>&lt;header&gt; 标签可能包含标题元素或者其他元素
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;header&gt; 标签定义文档或者文档的一部分区域的页眉。
+        <br>&lt;header&gt; 元素应该作为介绍内容或者导航链接栏的容器。
+        <br>在一个文档中，您可以定义多个 &lt;header&gt; 元素。
+        <br>注释：&lt;header&gt; 标签不能被放在 &lt;footer&gt;、&lt;address&gt; 或者另一个 &lt;header&gt; 元素内部。
+        <br><span>实例：</span>
+        <article>
+          <header>
+            <h1>Internet Explorer 9</h1>
+            <p><time pubdate datetime="2011-03-15"></time></p>
+          </header>
+          <p>Windows Internet Explorer 9(缩写为 IE9 )是在2011年3月14日21:00发布的。</p>
+        </article>
+    </p>
+    <hr>
+    <!-- HTML <footer> 标签 -->
+    <h2 style='text-align:center;'># &lt;footer&gt;标签</h2>
+    <p id="footer">简介：
+        <br>&lt;footer&gt; 标签一般用于网页的底部布局，表示页脚，包含与文档相关的信息。
+        <br><span>标签定义及使用说明：</span>
+        <br>lt;footer&gt; 标签定义文档或者文档的一部分区域的页脚。
+        <br>&lt;footer&gt; 元素应该包含它所包含的元素的信息。
+        <br>在典型情况下，该元素会包含文档创作者的姓名、文档的版权信息、使用条款的链接、联系信息等等。
+        <br>在一个文档中，您可以定义多个 &lt;footer&gt; 元素。
+        <br><span>提示和注释：</span>
+        <br>提示：假如您使用 &lt;footer&gt; 元素来插入联系信息，应该在 &lt;footer&gt; 元素内使用 &lt;address&gt; 标签。
+        <br><span>实例：</span>
+        <footer>
+          <p>Posted by: Hege Refsnes</p>
+          <p><time pubdate datetime="2012-03-01"></time></p>
+        </footer>
+    </p>
+    <hr>
+    <!-- HTML <section> 标签 -->
+    <h2 style='text-align:center;'># &lt;section&gt;标签</h2>
+    <p id="section">简介：
+        <br>&lt;section&gt; 标签表示文档中的一个独立部分。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;section&gt; 标签定义了文档的某个区域。比如章节、头部、底部或者文档的其他区域。   
+        <br><span>实例：</span>
+        <section>
+          <h1>WWF</h1>
+          <p>The World Wide Fund for Nature (WWF) is an international organization working on issues regarding the conservation, research and restoration of the environment, formerly named the World Wildlife Fund. WWF was founded in 1961.</p>
+        </section>
+    <hr>
+    <!-- HTML <article> 标签 -->
+    <h2 style='text-align:center;'># &lt;article&gt;标签</h2>
+    <p id="article">简介：
+        <br>&lt;article&gt; 标签是 HTML5 新增标签。
+        <br>&lt;article&gt; 标签表示页面中与上下文不相关的独立的内容部分
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;article&gt; 标签定义独立的内容。
+        <br>&lt;article&gt; 标签定义的内容本身必须是有意义的且必须是独立于文档的其余部分。
+        <br>&lt;article&gt; 标签可以嵌套使用，内外层内容相关联。
+        <br>&lt;article&gt; 标签主要是布局文章、内容方面的内容。
+        <br>&lt;article&gt; 的潜在来源：
+        <pre style="color:green;">
+            ● 论坛帖子
+            ● 博客文章
+            ● 新闻故事
+            ● 评论
+        </pre>
+        <br><span>实例：</span>
+        <article>
+          <h1>Internet Explorer 9</h1>
+          <p> Windows Internet Explorer 9(缩写为 IE9 )在2011年3月14日21:00 发布。</p>
+        </article>        
+    <hr>
+    <!-- HTML <aside> 标签 -->
+    <h2 style='text-align:center;'># &lt;aside&gt;标签</h2>
+    <p id="aside">简介：   
+        <br>&lt;aside&gt; 标签为语义化标签。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;aside&gt; 标签定义 &lt;article&gt; 标签外的内容。
+        <br>&lt;aside&gt; 标签在 article 元素之外使用作为页面或站点全局的附属信息部分。
+        <br>aside 的内容应该与附近的内容相关。
+        <br><span>提示和注释：</span>
+        <br>提示：&lt;aside&gt; 的的内容可用作文章的侧栏。
+        <br><span>实例：</span>
+        <aside>
+        <h4>Epcot Center</h4>
+        <p>The Epcot Center is a theme park in Disney World, Florida.</p>
+        </aside>
+    <hr>
+    <!-- HTML <details> 标签 -->
+    <h2 style='text-align:center;'># &lt;details&gt;标签</h2>
+    <p id="details">简介： 
+        <br>&lt;details&gt; 标签用于创建一个可展开折叠的元件，用户可以从中检索其他附加的信息。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;details&gt; 标签规定了用户可见的或者隐藏的需求的补充细节。
+        <br>&lt;details&gt; 标签用来供用户开启关闭的交互式控件。任何形式的内容都能被放在 &lt;details&gt; 标签里边。
+        <br>&lt;details&gt; 元素的内容对用户是不可见的，除非设置了 open 属性。 
+        <br><span>提示和注释：</span>
+        <br>提示：与 &lt;summary&gt; 标签配合使用可以为 details 定义标题。标题是可见的，用户点击标题时，会显示出 details。
+        <br><span>实例：</span>
+        <details>
+        <summary>Copyright 1999-2011.</summary>
+        <p> - by Refsnes Data. All Rights Reserved.</p>
+        <p>All content and graphics on this web site are the property of the company Refsnes Data.</p>
+        </details>
+        <p><b>注意：</b>目前，只有 Chrome 和 Safari 6 支持 details 标签。</p>
+        <br><span>属性：</span>
+        <br>1、open 属性是一个 boolean（布尔）属性。open 属性规定在 HTML 页面上 details 应该是可见的。
+        <br><span>实例：</span>
+        <details open>
+        <summary>Copyright 1999-2011.</summary>
+        <p> - by Refsnes Data. All Rights Reserved.</p>
+        <p>All content and graphics on this web site are the property of the company Refsnes Data.</p>
+        </details>
+        <p><b>注意:</b>目前只有 Chrome 和 Safari 6 支持 open 属性。</p>
+    <hr>
+    <!-- HTML <dialog> 标签 -->
+    <h2 style='text-align:center;'># &lt;dialog&gt;标签</h2>
+    <p id="dialog">简介： 
+        <br>如果您需要在 HTML 中实现对话框，那么可以使用 &lt;dialog&gt; 标签。
+        <br>&lt;dialog&gt; 标签用于表示一个对话框或其他交互式组件
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;dialog&gt; 标签定义一个对话框、确认框或窗口。
+        <br><span>实例：</span>
+        <p><b>注意:</b>目前只有 Chrome 和 Safari 6 支持 dialog 标签。</p>
+        <table border="1">
+        <tr>
+        <th>January <dialog open>This is an open dialog window</dialog></th>
+        <th>February</th>
+        <th>March</th>
+        </tr>
+        <tr>
+        <td>31</td>
+        <td>28</td>
+        <td>31</td>
+        </tr>
+        </table>
+    </p>
+    <hr>
+    <!-- HTML <summary> 标签 -->
+    <h2 style='text-align:center;'># &lt;summary&gt;标签</h2>
+    <p id="summary">简介： 
+        <br>&lt;summary&gt; 标签元素作为一个&lt;dialog&gt;元素的标题，该标题可以包含详细的信息，但是默认情况下不显示，需要单击才能显示详细信息。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;summary&gt; 标签为 &lt;dialog&gt; 元素定义一个可见的标题。 当用户点击标题时会显示出详细信息。
+        <br><span>提示和注释：</span>
+        <br>注释：&lt;summary&gt; 元素应该是 &lt;dialog&gt; 元素的第一个子元素。
+        <br><span>实例：</span>
+        <details>
+        <summary>Copyright 1999-2011.</summary>
+        <p> - by Refsnes Data. All Rights Reserved.</p>
+        <p>All content and graphics on this web site are the property of the company Refsnes Data.</p>
+        </details>
+        <p><b>注意：</b>目前只有 Chrome 和 Safari 6 支持 summary 标签。</p>
+    </p>
+    <hr><!-- ----------------------------HTML 样式/节标签(END) ---------------------------->
+
+
+    <!-- ----------------------------HTML 元信息标签(start) ---------------------------->
+    <h1 style="text-align:center;">HTML 元信息标签</h1>
+    <!-- HTML <head> 标签 -->
+    <h2 style='text-align:center;'># &lt;head&gt;标签</h2>
+    <p id="head">简介：
+        <br>&lt;head&gt; 标签包含关于 HTML 文档的一般信息（元数据），这些数据可以是：标题、指向脚本和样式表的链接。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;head&gt; 元素是所有头部元素的容器。
+        <br>&lt;head&gt; 元素必须包含文档的标题（title），可以包含脚本、样式、meta 信息 以及其他更多的信息。
+        <br>以下列出的元素能被用在 &lt;head&gt; 元素内部：
+        <pre style="color:green;">
+            &lt;title&gt; （在头部中，这个元素是必需的）
+            &lt;style&gt;
+            &lt;base&gt;
+            &lt;link&gt;
+            &lt;meta&gt;
+            &lt;script&gt;
+            &lt;noscript&gt; 
+        </pre>
+    </p>
+    <hr>
+    <!-- HTML <meta> 标签 -->
+    <h2 style='text-align:center;'># &lt;meta&gt;标签</h2>
+    <p id="meta">简介：
+        <br>&lt;meta&gt; 标签是 HTML 语言头部的一个辅助性标签，提供有关页面的元信息（比如：针对搜索引擎和更新频度的描述和关键词、定义页面使用的语言），使用好 &lt;meta&gt; 标签对 HTML 很有益。 
+        <br><span>标签定义及使用说明：</span>
+        <br>元数据（Metadata）是数据的数据信息。
+        <br>&lt;meta&gt; 标签提供了 HTML 文档的元数据。元数据不会显示在客户端，但是会被浏览器解析。
+        <br>META元素通常用于指定网页的描述，关键词，文件的最后修改时间，作者及其他元数据。
+        <br>元数据可以被使用浏览器（如何显示内容或重新加载页面），搜索引擎（关键词），或其他 Web 服务调用。
+        <br>注意：&lt;meta&gt; 标签中的元数据无法使用其他的元相关标签表示，例如：&lt;base&gt;、&lt;link&gt;，&lt;script&gt;、&lt;style&gt;或&lt;title&gt;。
+        <br><span>提示和注释：</span>
+        <br>注意：&lt;meta&gt; 标签通常位于 &lt;head&gt;区域内。
+        <br>注意： 元数据通常以 名称/值 对出现。
+        <br>注意： 如果没有提供 name 属性，那么名称/值对中的名称会采用 http-equiv 属性的值。
+    </p>
+    <hr>
+    <!-- HTML <base> 标签 -->
+    <h2 style='text-align:center;'># &lt;base&gt;标签</h2>
+    <p id="base">简介：
+        <br>&lt;base&gt; 标签是 HTML 语言中的基准网址标记，是一个单标签。
+        <br>&lt;base&gt; 标签位于网页头部文件的 &lt;head&gt; 标签内，一个页面最多只能使用一个 base 元素，用来提供一个指定的默认目标。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;base&gt; 标签为页面上的所有的相对链接规定默认 URL 或默认目标。
+        <br>在一个文档中，最多能使用一个 &lt;base&gt; 元素。 &lt;base&gt; 标签必须位于 &lt;head&gt; 元素内部。
+        <br><span>提示和注释：</span>
+        <br>提示：请把 &lt;base&gt; 标签排在 &lt;head>  元素中第一个元素的位置，这样 head 区域中其他元素就可以使用 &lt;base&gt; 元素中的信息了。
+        <br>注释：如果使用了 &lt;base&gt; 标签，则必须具备 href 属性或者 target 属性或者两个属性都具备。    
+        <br><span>属性：</span>
+        <br>1、href 属性：规定页面中所有相对链接的基准 URL。
+        <br>2、target 属性：规定在何处打开页面上的所有链接。该属性可以被链接或者表单的 target 属性覆盖。
+    </p>
+    <hr><!-- ----------------------------HTML 元信息标签(END) ---------------------------->
+
+
+    <!-- ----------------------------HTML 程序标签(start) ---------------------------->
+    <h1 style="text-align:center;">HTML 程序标签</h1>
+    <!-- HTML <script> 标签 -->
+    <h2 style='text-align:center;'># &lt;script&gt;标签</h2>
+    <p id="script">简介：
+        <br>&lt;script&gt; 标签通常放置在一个 HTML 网页的头部标签 &lt;head&gt; 标签内，用于链接外部 JavaScript 文件的外部资源标签。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;script&gt; 标签用于定义客户端脚本，比如 JavaScript。
+        <br>&lt;script&gt; 元素既可包含脚本语句，也可以通过 "src" 属性指向外部脚本文件。
+        <br>JavaScript 通常用于图像操作、表单验证以及动态内容更改。
+        <br><span>提示和注释：</span>
+        <br>注释：如果使用 "src" 属性，则 &lt;script&gt; 元素必须是空的。
+        <br>注释：假如 &lt;script&gt; 元素内部的代码没有位于某个函数中，那么这些代码会在页面被加载时被立即执行。&lt;frameset&gt; 标签之后的脚本会被忽略。
+        <br>提示：请参阅 &lt;noscript&gt; 元素，对于那些在浏览器中禁用脚本或者其浏览器不支持客户端脚本的用户来说，该元素非常有用。
+        <br>注释： 有多种执行外部脚本的方法：
+        <br>如果 async="async"：脚本相对于页面的其余部分异步地执行（当页面继续进行解析时，脚本将被执行）
+        <br>如果不使用 async 且 defer="defer"：脚本将在页面完成解析时执行
+        <br>如果既不使用 async 也不使用 defer：在浏览器继续解析页面之前，立即读取并执行脚本
+        <br><span>属性：</span>
+        <br>1、&lt;script&gt;标签中的js脚本默认为是同步进行的，您可以通过 async 属性来改变脚本的执行方式。async 属性是一个布尔属性。async 属性一旦脚本可用，则会异步执行。注意：async 属性仅适用于外部脚本（只有在使用 src 属性时）。
+        <pre style="color:green;">
+        注意：有多种执行外部脚本的方法：
+            如果 async="async"：脚本相对于页面的其余部分异步地执行（当页面继续进行解析时，脚本将被执行）
+            如果不使用 async 且 defer="defer"：脚本将在页面完成解析时执行
+            如果既不使用 async 也不使用 defer：在浏览器继续解析页面之前，立即读取并执行脚本
+        </pre>
+        <br>2、charset 属性：规定在外部脚本文件中使用的字符编码。当外部脚本文件中的字符编码与 HTML 文档中的编码不同时，会用到 charset 属性。提示：charset 属性与 src 属性一起使用，告诉浏览器用来编码的字符集。它的值是任何一个 ISO 标准字符集编码的名称。注意：charset 属性仅适用于外部脚本（只有在使用 src 属性时）。
+        <br>3、defer 属性：规定当页面已完成加载后，才会执行脚本。defer 属性是一个布尔属性。注意：defer 属性仅适用于外部脚本（只有在使用 src 属性时）。注意：有多种执行外部脚本的方法：如果 async="async"：脚本相对于页面的其余部分异步地执行（当页面继续进行解析时，脚本将被执行）；如果不使用 async 且 defer="defer"：脚本将在页面完成解析时执行；如果既不使用 async 也不使用 defer：在浏览器继续解析页面之前，立即读取并执行脚本；提示：如果您的脚本不会改变文档的内容，可将 defer 属性加入到 &lt;script&gt; 标签中，以便加快处理文档的速度。因为浏览器知道它将能够安全地读取文档的剩余部分而不用执行脚本，它将推迟对脚本的解释，直到文档已经显示给用户为止。
+        <br>4、src 属性：规定外部脚本文件的 URL。如果您希望在网站中的多个页面上运行相同的 JavaScript，就应该创建外部 JavaScript 文件，而不是重复编写相同的脚本。把脚本文件以 .js 扩展名进行保存，然后在 &lt;script&gt; 标签中使用 src 属性引用它。注意：外部脚本文件不能包含 &lt;script&gt; 标签。注意：正确地引用您写入脚本的外部脚本文件。
+        <br>5、type 属性：规定脚本的 MIME 类型。type 属性标识 &lt;script&gt; 与 &lt;/script&gt; 标签之间的内容。MIME 类型包括两部分：media type 和 subtype。对于 JavaScript，MIME 类型是 "text/javascript"。
+    </p>
+    <hr>
+    <!-- HTML <noscript> 标签 -->
+    <h2 style='text-align:center;'># &lt;noscript&gt;标签</h2>
+    <p id="noscript">简介：
+        <br>&lt;noscript&gt; 标签在不支持 JavaScript 的浏览器中显示替代的内容，它可以包含任何 HTML 元素。
+        <br><span>标签定义及使用说明：</span>
+        <br>noscript 元素用来定义在脚本未被执行时的替代内容（文本）。
+        <br>此标签可被用于可识别 &lt;noscript&gt; 标签但无法支持其中的脚本的浏览器。
+        <br><span>提示和注释：</span>
+        <br>提示：如果浏览器支持脚本，那么它不会显示出 noscript 元素中的文本。
+        <br>注释：无法识别 &lt;script&gt; 标签的浏览器会把标签的内容显示到页面上。为了避免浏览器这样做，您应当在注释标签中隐藏脚本。老式的（无法识别 &lt;script&gt; 标签的）浏览器会忽略注释，这样就不会把标签的内容写到页面上，而新式的浏览器则懂得执行这些脚本，即使它们被包围在注释标签中！
+    </p>
+    <hr>
+    <!-- HTML <embed> 标签 -->
+    <h2 style='text-align:center;'># &lt;embed&gt;标签</h2>
+    <p id="embed">简介：
+        <br>&lt;embed&gt; 标签用来定义在页面中嵌入的内容，比如插件。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;embed&gt;标签定义了一个容器，用来嵌入外部应用或者互动程序（插件）。
+        <br><span>实例：</span><br>
+        <embed src="/web/resources/xiyang.jpg">
+        <br><span>属性：</span>
+        <br>1、height 属性：规定被嵌入内容的高度，以像素计。
+        <br>2、src 属性：规定要嵌入的外部文件的地址。
+        <br>3、type 属性规定被嵌入内容的 MIME 类型。
+        <br>4、width 属性：规定被嵌入内容的宽度，以像素计。
+    </p>
+    <hr>
+    <!-- HTML <object> 标签 -->
+    <h2 style='text-align:center;'># &lt;object&gt;标签</h2>
+    <p id="object">简介：
+        <br>&lt;object&gt; 标签可以表示一个外部资源，可以将其视为一个映像、一个嵌套的浏览上下文，或者一个由插件处理的资源。
+        <br>定义一个嵌入的对象。请使用此元素向您的 XHTML 页面添加多媒体。此元素允许您规定插入 HTML 文档中的对象的数据和参数，以及可用来显示和操作数据的代码。
+        <br>&lt;object&gt; 标签用于包含对象，比如图像、音频、视频、Java applets、ActiveX、PDF 以及 Flash。
+        <br>object 的初衷是取代 img 和 applet 元素。不过由于漏洞以及缺乏浏览器支持，这一点并未实现。
+        <br>浏览器的对象支持有赖于对象类型。不幸的是，主流浏览器都使用不同的代码来加载相同的对象类型。
+        <br>而幸运的是，object 对象提供了解决方案。如果未显示 object 元素，就会执行位于 &lt;object&gt; 和 &lt;/object&gt; 之间的代码。通过这种方式，我们能够嵌套多个 object 元素（每个对应一个浏览器）。
+        <br><span>提示与注释：</span>
+        <br>提示：&lt;param&gt; 标签定义用于对象的 run-time 设置。
+        <br>提示：不要对图像使用 &lt;object&gt; 标签，请使用 &lt;img&gt; 标签代替。
+        <br><span>实例：</span><br>
+        <object width="400" height="400" data="/web/resources/xiyang.jpg" name="obj1" />
+        <br><span>属性：</span>
+        <br>1、data 属性：规定对象所用资源的 URL。
+        <br>2、height 属性：规定以像素计的对象高度。
+        <br>3、name 属性规定 &lt;object&gt; 元素的名称。name 属性用于在 JavaScript 中引用 &lt;object&gt; 元素（替代方法是通过使用 id 属性来引用它）。
+        <br>4、type 属性规定对象的 MIME 类型。
+        <br>5、usemap 属性规定与对象一起使用的图像映射的名称。图像映射是带有可点击区域的图像。usemap 属性与 &lt;map&gt; 元素的 name 属性相关联，创建对象和映射之间的关系。
+        <br><span>实例：</span><br>
+        <object data="../assets/planets.gif" width="145" height="126" usemap="#planetmap"></object>
+        <map name="planetmap">
+          <area shape="rect" coords="0,0,82,126" target="_blank" alt="Sun" href="/web/resources/sun.gif">
+          <area shape="circle" coords="90,58,3" target="_blank" alt="Mercury" href="/web/resources/merglobe.gif">
+          <area shape="circle" coords="124,58,8" target="_blank" alt="Venus" href="/web/resources/venglobe.gif">
+        </map>
+        <br>6、width 属性：规定以像素计的对象宽度。
+    </p>
+    <hr>
+    <!-- HTML <param> 标签 -->
+    <h2 style='text-align:center;'># &lt;param&gt;标签</h2>
+    <p id="param">简介：
+        <br>&lt;param&gt; 标签为包含它的 &lt;object&gt; 标签和 &lt;applet&gt; 标签定义参数。
+        <br><span>标签定义及使用说明：</span>
+        <br>&lt;param&gt;元素允许您为插入 XHTML 文档的对象规定 run-time 设置，也就是说，此标签可为包含它的 &lt;object&gt; 或者 &lt;applet&gt; 标签提供参数。
+        <br><span>属性：</span>
+        <br>1、name 属性规定 &lt;param&gt; 元素的名称。该属性通常与 value 属性一起使用来规定由 &lt;object&gt; 标签规定的插件的参数。name 属性的值可以是指定对象支持的任何名称。
+        <br>2、value 属性规定 &lt;param&gt; 元素的值。该属性通常与 name 属性一起使用来规定由 &lt;object&gt; 标签规定的插件的参数。value 属性的值可以是指定对象支持的任何值。
     </p>
     <hr>
     
