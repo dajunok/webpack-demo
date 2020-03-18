@@ -26,7 +26,8 @@ module.exports={
         demo:'./demo.js',
         vuex:'./vuexState.js',
         router:'./vueRouter.js',
-        label:'./label.js'
+        label:'./label.js',
+        btstrap:'./btstrap.js'
         
     },
     output:{   
@@ -298,6 +299,22 @@ module.exports={
                     removeComments: true, // 移除注释
                     collapseBooleanAttributes: true // 省略只有 boolean 值的属性值 例如：readonly checked
             },
+        }),
+        new HtmlWebpackPlugin({            
+            filename: 'bootstrap.html', // 生成的html文件名，该文件将被放置在输出目录
+            chunks: ['btstrap','chunk-vendors','chunk-common','runtime'],            
+            template: path.join(__dirname, './public/bootstrap.ejs'),    // 模板源html或ejs文件路径
+            minify:{  //代码压缩
+                    removeRedundantAttributes:true, // 删除多余的属性
+                    collapseWhitespace:true, // 折叠空白区域
+                    removeAttributeQuotes: true, // 移除属性的引号
+                    removeComments: true, // 移除注释
+                    collapseBooleanAttributes: true // 省略只有 boolean 值的属性值 例如：readonly checked
+            },
+        }),
+        new webpack.ProvidePlugin({  //自动加载模块，而不必到处 import 或 require 。
+          $: 'jquery',
+          jQuery: 'jquery'
         }),
         new PreloadWebpackPlugin({
           rel: 'preload',

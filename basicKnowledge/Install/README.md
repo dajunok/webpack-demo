@@ -35,6 +35,9 @@ npm install terser-webpack-plugin --save-dev
 npm install copy-webpack-plugin --save-dev
 npm install --save-dev preload-webpack-plugin@next    //^3.0.0-beta.4
 
+-----------------安装bootstrap前端CSS框架
+npm install bootstrap@3
+npm install jquery
 
 
 //////////////////////案例
