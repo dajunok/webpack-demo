@@ -1,7 +1,15 @@
-.duohe{
-    color: #FF8000;
+#id {
+  .style() {
+    @detached: { font-style: @font; };
+  }
 }
 
-.zhunei{
-    color: #5882FA;
+.container() {
+  @font: italic;
+  #id > .style();
+}
+
+.cont {
+  .container();
+   @detached();
 }

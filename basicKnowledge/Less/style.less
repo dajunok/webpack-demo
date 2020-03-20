@@ -175,9 +175,9 @@ p {
 @a: @b;
 @b: 25px;
 
-/*Less 扩展
+/*=====================================Less 扩展==================================
   Extend是一个LESS伪类，它通过使用:extend 选择器在一个选择器中扩展其他选择器样式。
-*/
+==================================================================================*/
 h2 {
   &:extend(.style);
   font-style: italic;
@@ -185,12 +185,141 @@ h2 {
 .style {
   background: green;
 }
+//----------------------
+.style:extend(.container, .img)
+{
+  background: #BF70A5;
+}
+.container {
+  font-style: italic;
+}
+.img{
+   font-size: 30px;
+ }
+/*1、LESS 扩展附加到选择器
+  扩展连接到一个选择器，它看起来类似于具有选择器作为参数的伪类。 当规则集具有许多选择器时，
+  则关键字扩展可以应用于任何选择器。 以下是用于定义代码中 extend 的格式。
+  ● 在选择器之后扩展。 [例如： pre：hover：extend（div pre）]
+  ● 允许选择器和扩展之间的空格[例如： pre：hover：extend（div pre）]
+  ● 允许多个扩展[例如： pre：hover：extend（div pre）：extend（.bucket tr）或 pre：hover：extend（div pre，.bucket tr） ]
+  ● 扩展必须在选择器的末尾定义。 pre：hover：extend（div pre）.nth-child（odd）类型不允许。
+*/
+.style1,
+.container1:extend(.img1){
+   background: #BF70A5;
+}
+.img1{
+   font-size: 45px;
+   font-style: italic;
+}
+/*2、LESS 扩展内部规则集
+  &:extend(selector) 语法可以放在规则集的正文中。 它是放置扩展到规则集的每个选择器的快捷方式。
+*/
+.container2,
+.style2 {
+     &:extend(.img2);
+}
+.img2{
+    font-style: italic;
+    background-color: #7B68EE;
+ }
+ /*3、LESS 扩展嵌套选择器
+  使用 extend 选择器匹配嵌套选择器。
+*/
+.style3 {
+  h3{
+  color: #BF70A5;
+  font-size: 30px;
+}
+}
+.img3:extend(.style3 h3){}
+/*4、LESS 完全匹配与扩展
+  默认情况下， extend 查找选择器之间的完全匹配。 对于具有相同含义的两个第n个表达式，扩展无关紧要，
+  但它只寻找与为选择器匹配定义的相同的顺序形式。
+*/
+.style4 h3,
+h3.style4{
+  color: #BF70A5;
+  font-style: italic;
+}
+.img4:extend(.style4 h3){}
+/*5、LESS-nth表达式
+  nth表达式的形式在扩展中很重要，否则它将选择器视为不同。 nth表达式1n + 2和n + 2是等效的，但扩展将该表达式视为不同。
+*/
+:nth-child(n+2)
+{
+color: #BF70A5;
+  font-style: italic;
+}
+.child:extend(:nth-child(n+2)){}
+//--------------------------------------
+[title=tutorialspoint] {   //不带引号
+  font-style: italic;
+}
+[title='tutorialspoint'] {  //单引号
+ font-style: italic;
+}
+[title="tutorialspoint"] {  //双引号
+  font-style: italic;
+}
+.style5:extend([title=tutorialspoint]) {}
+.container5:extend([title='tutorialspoint']) {}
+.img5:extend([title="tutorialspoint"]) {}
+/*6、LESS 扩展“all”
+当最后在扩展参数中标识关键字 all 时，LESS将该选择器作为另一个选择器的一部分。 匹配的选择器部分将被extend替换，形成一个新的选择器。
+*/
+.style6.nav,
+.nav h3 {
+  color: orange;
+}
+.nav {
+  &:hover {
+    color: green;
+  }
+}
+.container6:extend(.nav all) {}
+/*7、LESS 选择器插值(变量)扩展
+  @{variable} 符号用作变量名，id和类名的一部分（即定义选择器变量）。 扩展不具有使选择器与变量匹配的能力。 扩展可以连接到内插选择器。
+*/
+.style7 {
+  color: #BF70A5;
+  font-style: italic;
+}
+@{my-selector}{
+  &:extend(.style7);
+}
+@my-selector: .selector;
+/*8、LESS @media内部作用域/扩展
+  在媒体声明中，应写入extend。 该扩展匹配仅在同一媒体声明内存在的选择器。 在媒体声明中存在的扩展与嵌套声明中存在的选择器不匹配。
+*/
+@media screen {
+  .style8 {
+    width:500px;
+  }
+  @media (min-width: 1023px) {
+    .style8 {
+      width:500px;
+    }
+  }
+}
+.cont:extend(.style8) {}
+/*9、LESS 重复检测。 它不能检测选择器的重复。*/
+.cont-main,
+.style10 {
+  font-family: "Comic Sans MS";
+  font-size: 30px;
+}
+.cont-main{
+  font-size: 30px;
+}
+.cont2:extend(.cont-main, .style10) {}
 
-/*Less 混合
+
+/*==================================Less 混合=======================================================
 混合类似于编程语言中的函数。 Mixins是一组CSS属性，允许您将一个类的属性用于另一个类，并且包含类名作为其属性。 
 在LESS中，可以使用类或id选择器以与CSS样式相同的方式声明mixin。
 它可以存储多个值，并且可以在必要时在代码中重复使用。
-*/
+====================================================================================================*/
 
 /*1、LESS 不输出Mixin， 可以创建一个mixin，它可以通过简单地放置括号后在输出中消失。*/
 .a(){
@@ -248,13 +377,10 @@ p{
   .mixin5() !important;
 }
 
-//============================================================================================
 
-/*Less 混合参数
-参数mixin使用一个或多个参数，通过参数和其属性来扩展LESS的功能，以便在混合到另一个块时自定义mixin输出。
-*/
-
-//==========================================================================================
+/*====================================Less 混合参数==============================================
+  参数mixin使用一个或多个参数，通过参数和其属性来扩展LESS的功能，以便在混合到另一个块时自定义mixin输出。
+*================================================================================================/
 .border(@width; @style; @color) {
     border: @width @style @color;
 }
@@ -345,6 +471,126 @@ div {
 .myclass {
   .mixin9(@color-new; #FF0000);
 }
+
+/*=================================Less Mixins函数==========================================
+和混合和函数的工作方式非常相似的函数，mixins可以嵌套，可以接受参数和返回值。
+============================================================================================*/
+
+/*1、LESS Mixin范围
+  由变量和混合组成的混合可以在调用者的作用域中使用，并且是可见的。 但是有一个例外，如果调用者包含具有相同名称的变量，
+  那么该变量不会复制到调用者的作用域中。 只有调用者范围内的变量被保护，并且继承的变量将被覆盖。
+*/
+.mixin10() {
+  @bgcolor: #C0C0C0;
+}
+.myclass{
+  .mixin10();
+  background-color: @bgcolor;
+}
+
+/*2、LESS Mixin和返回值
+mixin类似于函数，在mixin中定义的变量将作为它的返回值。
+*/
+.padding(@x, @y) {
+  @padding: ((@x + @y) / 2);
+}
+.myclass{
+  .padding(80px, 120px);  // call to the mixin
+  padding-left: @padding; //  returns the value
+}
+
+/*3、LESS mixin定义在另一个mixin
+每当一个mixin定义在另一个mixin中时，它也可以用作返回值。
+*/
+.outerMixin(@value) {
+  .nestedMixin() {
+    font-size: @value;
+  }
+}
+.myclass {
+  .outerMixin(30);
+  .nestedMixin();
+}
+
+/*=================================Less 将规则集传递给Mixins+================================
+分离的规则集包含一个普通的规则集，如属性，嵌套规则集，变量声明，mixins等。它存储在一个变量中，
+并包含到其他结构中，其中规则集的所有属性都将被复制到该结构。
+  分离的规则集中的所有变量和混合宏在被调用或定义的地方都可用，否则调用者和定义范围都可用。 
+当两个范围包含相同的mixin或variable时，声明范围获取优先级。 分离的规则集体在声明范围中定义。 
+在将分离的规则集从一个变量复制到另一个变量后，它不会更改其范围。
+============================================================================================*/
+@detached-ruleset: {
+    .mixin() {
+        font-family: "Comic Sans MS";
+        background-color: #AA86EE;
+    }
+};
+.cont {
+    @detached-ruleset();
+    .mixin();
+}
+
+/*1、LESS 定义和调用范围可见性
+  变量和mixin在分离的规则集中定义。
+*/
+@detached-ruleset2: {    //定义规则集
+  background-color: @caller-variable;
+  .caller-mixin(){
+    font-style:italic;
+  };
+};
+.cont1 {
+  @detached-ruleset2();
+  @caller-variable: #AA86EE;
+  .caller-mixin();
+}
+
+/*2、LESS 解锁将修改分离Ruleset Scope
+  分离的规则集可以通过导入到范围中来访问。
+*/
+#id {
+  .style() {
+    @detached: { font-style: @font; };  //定义规则集
+  }
+}
+.container11() {
+  @font: italic;
+  #id > .style();
+}
+.cont {
+  .container11();
+   @detached();
+}
+
+/*=================================Less 导入指令与导入选项=========================================
+Less 中，可以通过 @import 指令来导入外部文件。 
+@import 伪指令用于在代码中导入文件。 它将LESS代码分布在不同的文件上，并允许轻松地维护代码的结构。 
+您可以将 @import 语句放在代码中的任何位置。
+例如，您可以使用 @import 关键字作为 @import“file_name.less"导入文件。
+文件扩展名
+您可以使用 @import 语句，具体取决于不同的文件扩展名，例如:
+如果您使用 .css 扩展名，那么它将被视为CSS和 @import 语句保持不变。
+如果它包含任何其他扩展名，那么它将被视为LESS并将被导入。
+如果没有较少的扩展，那么它将被附加并包含为导入的较少文件。
+@import "style";      // imports the style.less
+@import "style.less"; // imports the style.less
+@import "style.php";  // imports the style.php as a less file
+@import "style.css";  // it will kept the statement as it is
+============================================================================================*/
+/*1、LESS 导入选项reference关键字
+  @import(reference)用于导入外部文件，但不会将导入的样式添加到编译的CSS文件中。 这是在版本1.5.0 中发布的。
+*/
+@import (reference) "./reference.less";
+p {
+    .style11;
+}
+
+
+
+
+
+
+
 
 
 
