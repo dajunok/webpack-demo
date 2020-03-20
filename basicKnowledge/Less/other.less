@@ -1,15 +1,8 @@
-#id {
-  .style() {
-    @detached: { font-style: @font; };
-  }
+@import  "./css.txt";
+.para_3 {
+    color: green;
+    .my_css;
 }
-
-.container() {
-  @font: italic;
-  #id > .style();
-}
-
-.cont {
-  .container();
-   @detached();
+.para_4 {
+    color: blue;
 }

@@ -1,23 +1,5 @@
 @import "//webpack-demo.com:8080/web/css/index.css";
-.cont {
-  font-style: italic;
-}
-.cont h1 {
-  font-size: 25px;
-  color: #E45456;
-}
-.cont p {
-  font-size: 25px;
-  color: #3C7949;
-}
-.cont .myclass h1 {
-  font-size: 25px;
-  color: #E45456;
-}
-.cont .myclass p {
-  font-size: 25px;
-  color: #a0ab67;
-}
+@import "fileNotExist.css";
 .container h1 {
   font-size: 25px;
   color: #E45456;
@@ -433,7 +415,7 @@ Less 中，可以通过 @import 指令来导入外部文件。
 @import "style.php";  // imports the style.php as a less file
 @import "style.css";  // it will kept the statement as it is
 ============================================================================================*/
-/*1、LESS 导入选项reference关键字
+/*1、LESS 导入：reference选项关键字
   @import(reference)用于导入外部文件，但不会将导入的样式添加到编译的CSS文件中。 这是在版本1.5.0 中发布的。
 */
 p {
@@ -441,3 +423,90 @@ p {
   font-family: "Comic Sans MS";
   font-size: 20px;
 }
+/*2、LESS 导入：inline选项关键字
+@import(inline)会将CSS复制到输出CSS文件中，而不进行处理。 当CSS文件不是LESS兼容时，这是有用的。 
+虽然LESS支持大多数标准CSS，但在某些地方不支持注释，并且不修改CSS，它不会支持所有已知的CSS黑客。 
+即使 @import(inline)不会处理CSS，它将确保所有的CSS将在一个文件中。 这是在版本1.5.0 中发布的。
+*/
+.style12 {
+    font-family: "Comic Sans MS";
+    font-size: 20px;
+}
+p {
+  color: red;
+}
+/*3、LESS 导入：Less选项关键字
+  @import(less)会将文件导入为LESS文件，而不管文件扩展名是什么。 这是在版本1.4.0 中发布的。
+*/
+.style13 {
+  font-family: "Comic Sans MS";
+  font-size: 20px;
+}
+.para_1 {
+  color: red;
+  font-family: "Comic Sans MS";
+  font-size: 20px;
+}
+.para_2 {
+  color: blue;
+}
+/*4、LESS 导入：CSS选项关键字
+  @import(css)会将文件导入为常规CSS，而不管文件扩展名。 这是在版本1.4.0 中发布的。
+*/
+.my_css {
+  font-family: "Comic Sans MS";
+  font-size: 20px;
+}
+.para_3 {
+  color: green;
+  font-family: "Comic Sans MS";
+  font-size: 20px;
+}
+.para_4 {
+  color: blue;
+}
+/*5、LESS 导入：once选项关键字
+@import(once)确保文件只导入一次，并且对该文件将忽略任何以下import语句。 
+这是 @import statments的默认行为。 这是在版本1.4.0 中发布的。
+*/
+.style14 {
+  font-family: "Comic Sans MS";
+  font-size: 20px;
+}
+.para_5 {
+  color: red;
+  font-family: "Comic Sans MS";
+  font-size: 20px;
+}
+.para_6 {
+  color: blue;
+}
+/*6、LESS 导入：multiple选项关键字
+通过 @import(multiple)，您可以导入具有相同名称的多个文件。 这与一次完全相反。 这是在版本1.4.0 中发布的。
+*/
+.style15 {
+  font-family: "Comic Sans MS";
+  font-size: 20px;
+}
+.style15 {
+  font-family: "Comic Sans MS";
+  font-size: 20px;
+}
+.para_1 {
+  color: red;
+}
+.para_2 {
+  color: blue;
+}
+/*7、LESS 导入：optional选项关键字
+optional允许您在文件不存在时导入文件。 如果要导入的文件不存在并且未使用可选关键字optional，
+则LESS会抛出 FileError 错误并停止编译。 这是在版本2.3.0 中发布的。
+*/
+p {
+  color: red;
+}
+/*================================Less Mixin Guards==============================
+如果你想在表达式上匹配简单的值或参数数量，那么你可以使用Guards。 
+它与mixin声明相关联，并包括附加到mixin的条件。 每个mixin将有一个或多个由逗号分隔的防护，
+并且guard必须括在括号中。 LESS使用Guards的mixins而不是if / else语句，并执行计算以指定匹配的mixin。
+*/
