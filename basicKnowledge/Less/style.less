@@ -653,6 +653,208 @@ p{
 它与mixin声明相关联，并包括附加到mixin的条件。 每个mixin将有一个或多个由逗号分隔的防护，
 并且guard必须括在括号中。 LESS使用Guards的mixins而不是if / else语句，并执行计算以指定匹配的mixin。
 */
+.mixinlg (@a) when (lightness(@a) >= 50%) {
+   font-size: 14px;
+}
+.mixinlg (@a) when (lightness(@a) < 50%) {
+   font-size: 16px;
+}
+.mixinlg (@a) {
+   color: @a;
+}
+.class1 {
+   .mixinlg(#FF0000)
+}
+.class2 {
+   .mixinlg(#555)
+}
+/*1、LESS Guard比较运算符
+  LESS包含五个保护比较运算符：<，>，<=，> =和=。 
+  您可以使用比较运算符（=）来比较数字，字符串，标识符等，而剩余的运算符只能与数字一起使用。
+*/
+.mixinGs (@a) when (@a = 20px){ color:red;}
+.mixinGs (@a) when (@a < 20px){color:blue;}
+.mixinGS (@a) {  font-size: @a;}
+.myclass3 { .mixin(20px) }
+/*2、LESS Guard逻辑运算符
+  您可以使用关键字来解决Guard逻辑运算符。 您可以使用and关键字组合使用Guard条件，并使用not关键字取消条件。
+*/
+.mixinL (@a) when (@a > 50%) and (@a > 5px){
+font-size: 14px;
+}
+.mixinL (@a) when not (@a < 50%) and not (@a < 5px){
+font-size: 20px;
+}
+.mixinL (@a) {
+  color: @a;
+}
+.class1 { .mixinL(#FF0000) }
+.class2 { .mixinL(#555) }
+/*3、LESS 类型检查函数
+您可以使用类型检查内置函数来确定匹配混合宏的值类型。 为此，您可以使用 is 函数。 以下是可用功能的列表：
+● iscolor       判断一个值是否是颜色
+● isnumber      判断一个值是否是数字（可含单位）
+● isstring      判断一个值是否是字符串
+● iskeyword     判断一个值是否是关键字
+● isurl         判断一个值是否是url
+这些都是基本的类型检查功能。 您可以使用以下函数检查值是否在特定单位中：
+● ispixel           判断一个值是否是以px为单位的数值
+● ispercentage      判断一个值是否是百分数
+● isem              判断一个值是否是以em为单位的数值
+● isunit            判断一个值是否是指定单位的数值
+*/
+.mixin (@a; @b: red) when (iscolor(@b)){
+color:blue;
+}
+.mixin (@a) {
+  font-size: @a;
+}
+.myclass { .mixin(20px) }
+/*4、LESS Mixin Guards
+您可以使用默认函数将mixin与其他混合匹配进行匹配，并创建 else 或默认 语句。
+*/
+.mixin (@a) when (@a > 22px){color:blue;}
+.mixin (@a) when (@a <= 20px){color:red;}
+.mixin (@a) {  font-size: @a;}
+.myclass { .mixin(20px) }
+
+
+/*=============================Less CSS Guards=============================================
+Guard用于匹配表达式上的简单值或参数个数。 它应用于CSS选择器。 它是用于声明mixin并立即调用它的语法。
+ 要成功地引出 if 类型语句; 将此功能与功能＆结合使用，您可以将多个guards分组。
+============================================================================================*/
+@usedScope: global;
+.mixin() {
+  @usedScope: mixin;
+  .cont when (@usedScope=global) {
+    background-color: red;
+    color: black;
+  }
+  .style when (@usedScope=mixin) {
+    background-color: blue;
+    color: white;
+  }
+  @usedScope: mixin;
+}
+.mixin();
+/*===================================Less 循环============================================
+循环语句允许我们多次执行一个语句或一组语句。 当递归mixin与 Guard表达式和模式匹配组合时，
+可以创建各种迭代/循环结构。
+==========================================================================================*/
+.cont(@count) when (@count > 0) {
+  .cont((@count - 1));
+  width: (25px * @count);
+}
+div {
+  .cont(7);
+}
+
+/*====================================Less 合并================================================
+它是LESS的一个特性，它允许使用单个属性从多个属性中为逗号或空格分隔列表添加值。 它可以用于背景和变换属性。
+===============================================================================================*/
+/*1、LESS 合并，用逗号（Comma）分隔：
+    它添加属性值到最后。
+*/
+.myfunc() {
+  box-shadow+: 5px 5px 5px grey;
+}
+.class {
+  .myfunc();
+  box-shadow+: 0 0 5px #f78181;
+}
+/*2、LESS 合并，用空格（Space）分隔*/
+.mixin21() {
+  transform+_: scale(1);
+}
+.class {
+  .mixin21();
+  transform+_: rotate(2deg);
+}
+/*3、LESS 多个 & 组合使用
+通过使用＆运算符，可以重复引用父选择器，而不使用其名称。 在选择器＆中可以多次使用。
+*/
+.select {
+  & + & {    color: #A9F5F2;  }
+  & &   {    color: #D0FA58;  }
+  &&    {    color: #81BEF7;  }
+  &, &_class1 {    color: #A4A4A4;  }
+}
+/*4、LESS 更改选择器顺序
+  在选择器排序更改时，将选择器预留到继承（父）选择器很有用。 这是通过在选择器之后放置＆。 
+  例如，当您使用Modernizer时，您可能希望根据支持的功能指定不同的规则。
+*/
+.header {
+  .menu {
+    border-radius: 5px;
+    border: 1px solid red;
+    & {
+      padding-left: 200px;
+    }
+  }
+}
+/*5、Less 组合爆炸
+  ＆可以产生列表中的选择器的所有可能的排列，用逗号分隔。
+*/
+p, div {
+  color : red;
+  font-family:Lucida Console;
+  & + & {
+    color : green;
+    background-color: yellow;
+    font-family: "Comic Sans MS";
+  }
+}
+/*=======================Less 其他函数==================================
+S.N.                          函数及描述
+1   color                 它是一个代表颜色的字符串。
+2   image-size            它用于从文件检查图像的维度。
+3   image-width           它检查文件中图像的宽度。
+4   image-height          它检查图像从文件的高度。
+5   convert               数字从一个单位转换为另一个单位。
+6   data-uri              数据uri是统一资源标识符(URI)模式，其在网页中嵌入资源。
+7   default               默认函数仅在保护条件内可用且与任何其他混合程序不匹配时才返回true。
+8   unit                  默认函数仅在保护条件内可用且与任何其他mixin不匹配时才返回true
+9   get-unit              get-unit函数返回其中存在参数的单位，其数字和单位。
+10  svg-gradient          svg-gradient是一种颜色到另一种颜色的转换。 它可以向同一元素添加许多颜色。
+==============================================================================================*/
+/*1、它是一个代表颜色的字符串。 颜色可以设置为元素的背景或前景。 颜色值用于指定颜色。*/
+.styleOth{
+  color:(#fe2700);
+}
+/*2、image-size它用于从文件检查图像的维度。 它检查图像的宽度和高度。*/
+body{
+   background-image:url("./img/fscl.jpg");
+   image-size:image-size("./img/fscl.jpg");
+}
+/*3、image-width它检查文件中图像的宽度。*/
+body{
+   background-image:url("./img/fscl.jpg");
+   width:image-width("./img/fscl.jpg");
+}
+/*4、image-height它检查文件中图像的高度。*/
+body{
+  background-image:url("./img/fscl.jpg");
+  height:image-height("./img/fscl.jpg")
+}
+/*5、convert函数：
+  数字从一个单位转换为另一个单位。 它包括两个论点; 第一个参数遍编号以及单位和第二个参数包含单位。 
+  当本机兼容时，转换该数字。 如果第一个参数不变，则单位不兼容。
+*/
+body{
+  meter:convert(10cm, mm);
+  time:convert(3s, "ms");
+  no-unit:convert(5, mm);
+}
+/*6、data-uri函数
+  data-uri是统一资源标识符(URI)模式，其在网页中嵌入资源。 当没有给出MIME类型时，
+  节点使用mime包来控制正确的MIME类型。
+*/
+body{
+   @bg: data-uri('./img/fscl.jpg');
+   background-image:@bg;
+}
+
+
 
 
 
