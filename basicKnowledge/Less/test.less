@@ -1,3 +1,11 @@
-body {
-  background: url('./img/fscl.jpg');
+.list{
+   @rgb:rgb(220,20,60);
+   @red:red(@rgb);
+   @green:green(@rgb);
+   @blue:blue(@rgb);
+   background: rgb(@red,@green,@blue);
+}
+
+.style:extend(.list){
+    font-size: 15px;
 }

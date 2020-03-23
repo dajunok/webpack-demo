@@ -853,9 +853,27 @@ body{
    @bg: data-uri('./img/fscl.jpg');
    background-image:@bg;
 }
-
-
-
+/*default函数
+  default函数仅在Guards条件内可用时返回true，并且与任何其他mixin不匹配，否则返回false。 
+  当default函数在mixin guard条件之外使用时，它解释为常规css。
+*/
+.mixin(1)                   {a: 5}
+.mixin(2)                   {b: 10}
+.mixin(3)                   {c: 15}
+.mixin(@a) when (default()) {d: @a}  //如果@a变量值等于1、2或者3时default()返回false。
+div {  .mixin(1);}
+div {  .mixin(2);}
+div {  .mixin(3);}
+div {  .mixin(12);}
+/*unit函数：
+  unit(dimension, unit)
+  参数：
+  dimension   指定带有或不带尺寸的数字。
+  unit        指定单位
+*/
+.style{
+  font-size:unit(30, px);
+}
 
 
 
